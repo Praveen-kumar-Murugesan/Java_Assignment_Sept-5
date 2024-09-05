@@ -112,6 +112,7 @@ public class SingleLinkedList {
             }
             current = current.next;
         }
+        System.out.println();
     }
 
     public int size() {
