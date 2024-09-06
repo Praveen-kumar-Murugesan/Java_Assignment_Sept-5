@@ -39,10 +39,12 @@ public class SingleLinkedListTest {
         list2.addLast(4);
         list2.addLast(4);
         list2.printListSLL();
-        list2.removeElementAllOcc(4);
+//        list2.removeElementAllOcc(4);
 //        list2.removeFirst();
 //        list2.removeFirst();
 //        list2.removeFirst();
         list2.printListSLL();
+        list2.toDLList();
+        list2.printListDLL();
     }
 }

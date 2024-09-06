@@ -5,10 +5,15 @@ public class SingleLinkedList {
     private static class Node {
         Object item;
         Node next;
-
+        Node prev;
         Node(Object item, Node next) {
             this.item = item;
             this.next = next;
+        }
+        Node(Object item, Node next, Node prev) {
+            this.item = item;
+            this.next = next;
+            this.prev = prev;
         }
         Node(Object item) {
             this.item = item;
@@ -215,15 +220,17 @@ public class SingleLinkedList {
     }
 
     public void printListDLL(){
-        Node current = first;
-        while(current!= null){
-            if(current.next != null){
+        Node current = last;
+        while(current!= first){
+            if(current.prev != null){
                 System.out.print(current.item + "<->");
-            }else {
+            }
+            else {
                 System.out.print(current.item);
             }
-            current = current.next;
+            current = current.prev;
         }
+        System.out.println(current.item);
         System.out.println();
     }
 
@@ -343,6 +350,16 @@ public class SingleLinkedList {
         first = null;
         last = null;
         size = 0;
+    }
+
+    public void toDLList(){
+        Node current = first;
+        while(current!= null) {
+            if(current.next != null) {
+                current.next.prev = current;
+            }
+            current=current.next;
+        }
     }
 
     public static class NoSuchElementException extends RuntimeException {
