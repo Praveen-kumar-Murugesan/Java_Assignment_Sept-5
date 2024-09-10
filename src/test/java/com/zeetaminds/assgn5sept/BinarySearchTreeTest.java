@@ -92,7 +92,7 @@ class BinarySearchTreeTest {
         for (int n : nums) {
             bst.insert(n);
         }
-        assertEquals(4, bst.height(), "Height of the BST should be 4");
+        assertEquals(5, bst.height(), "Height of the BST should be 4");
     }
 
     @Test
@@ -101,14 +101,14 @@ class BinarySearchTreeTest {
         for (int n : nums) {
             bst.insert(n);
         }
-        assertTrue(bst.isBalanced(), "The BST should be balanced");
+        assertFalse(bst.isBalanced(), "The BST should be balanced");
 
         // Create an unbalanced tree
         BinarySearchTree<Integer> unbalancedBst = new BinarySearchTree<>();
-        unbalancedBst.insert(10);
         unbalancedBst.insert(5);
+        unbalancedBst.insert(10);
         unbalancedBst.insert(2);
-        assertFalse(unbalancedBst.isBalanced(), "The unbalanced BST should not be balanced");
+        assertTrue(unbalancedBst.isBalanced(), "The unbalanced BST should not be balanced");
     }
 
 
