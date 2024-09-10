@@ -1,4 +1,4 @@
-package com.zeetaminds.assgn5sept;
+package com.zeetaminds.assgn5sept.ds;
 
 public class SingleLinkedList<T extends Comparable<T>> {
 

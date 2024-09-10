@@ -1,4 +1,4 @@
-package com.zeetaminds.assgn5sept;
+package com.zeetaminds.assgn5sept.ds;
 
 import org.junit.jupiter.api.Test;
 
