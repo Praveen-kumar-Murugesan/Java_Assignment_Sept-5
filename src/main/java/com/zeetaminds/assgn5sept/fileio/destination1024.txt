@@ -1,0 +1,52 @@
+File IO
+1. Buffered Streams and Performance Comparison
+Objective: Explore the use of buffered streams and understand their performance benefits.
+Task:
+1. Write a program that reads a large text file (e.g., `largefile.txt`) and copies its contents to
+another file (`copy.txt`) using standard `FileInputStream` and `FileOutputStream`.
+2. Measure and print the time taken for the copy operation.
+3. Modify the program to use `BufferedInputStream` and `BufferedOutputStream` instead, and
+measure the time taken for this operation as well.
+Additional Challenge:
+- Experiment with different buffer sizes and analyze their impact on performance.
+2. Directory Traversal and File Search
+Objective: Practice working with directories and file paths.
+Task:
+1. Write a program that traverses a given directory and its subdirectories to list all files with a
+specific extension (e.g., `.txt`).
+2. For each file found, print the file name and its absolute path to the console.
+Additional Challenge:
+- Modify the program to search for files containing a specific keyword in their content.
+3. Serialization and Deserialization
+Objective: Learn about object serialization and deserialization in Java.
+Task:
+1. Create a class `Person` with fields `name`, `age`, and `address`.
+2. Write a program that creates an instance of the `Person` class, serializes it to a file named
+`person.ser`, and then deserializes it back into a new object.
+3. Print the deserialized object's details to the console to verify that serialization and
+deserialization worked correctly.4. Properties File Handling
+Objective: Learn how to work with properties files in Java.
+Task:
+1. Create a properties file named `config.properties` with some key-value pairs (e.g., database
+configurations).
+2. Write a program that reads the properties from the file and prints them to the console.
+3. Modify the properties file using your program to add a new key-value pair.
+Additional Challenge:
+- Implement a method to search for a specific key in the properties file and update its value.
+5. Custom Logger System
+Objective:
+Build a custom logger system using Java IO, incorporating OOP principles.
+Instructions:
+1. Create an abstract class `Logger` with an abstract method `log(String message)`.
+2. Implement two subclasses:
+- `FileLogger` to log messages to a text file.
+- `ConsoleLogger` to log messages to the console.
+3. Implement a `LoggerManager` class that accepts a `Logger` object and uses it to log
+messages.
+4. Extend the `FileLogger` to `TimestampedFileLogger`, which adds a timestamp to each log
+message before writing it to the file.
+5. Demonstrate polymorphism by logging a series of messages using both `FileLogger` and
+`TimestampedFileLogger`, and then switching to `ConsoleLogger`.
+Expected Output:
+- Log messages should be written to the respective outputs with or without timestamps based
+on the logger type used.
