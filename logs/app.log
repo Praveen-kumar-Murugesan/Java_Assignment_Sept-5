@@ -1,0 +1,2 @@
+2024-09-12 16:35:54 [main] INFO  com.zeetaminds.assgn5sept.fileio.SerializationAndDeserialization - Serialized data is saved in /home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/person.ser
+2024-09-12 18:30:09 [main] INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data is saved in /home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/serialize/person.ser
