@@ -1,4 +1,4 @@
-package com.zeetaminds.assgn5sept.fileio;
+package com.zeetaminds.assgn5sept.fileio.dirtraversal;
 import java.io.*;
 
 public class DirectoryTraversalAndFileSearch {

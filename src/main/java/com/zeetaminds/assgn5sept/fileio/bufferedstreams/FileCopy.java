@@ -1,11 +1,11 @@
-package com.zeetaminds.assgn5sept.fileio;
+package com.zeetaminds.assgn5sept.fileio.bufferedstreams;
 
 import java.io.*;
 
 public class FileCopy {
     public static void main(String[] args) {
-        String sourceFile = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/source.txt";
-        String destinationFile = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/";
+        String sourceFile = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/bufferedstreams/source.txt";
+        String destinationFile = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/bufferedstreams/";
 
         copyFileUsingFileStreams(sourceFile, destinationFile+"destination.txt");
 

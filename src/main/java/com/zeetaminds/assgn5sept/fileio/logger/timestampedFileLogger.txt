@@ -1,0 +1,1 @@
+[2024-09-12 18:22:43] TimestampedFileLogger: This is a file log message with a timestamp.

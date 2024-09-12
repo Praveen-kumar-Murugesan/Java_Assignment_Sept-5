@@ -1,11 +1,12 @@
-package com.zeetaminds.assgn5sept.fileio;
+package com.zeetaminds.assgn5sept.fileio.properties;
 import  java.io.*;
 import java.util.Properties;
 
 public class PropertiesFileHandling {
+    static String fileName = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/properties/config.properties";
     public static void main(String[] args) {
         Properties properties = new Properties();
-        try(InputStream in = new BufferedInputStream(new FileInputStream("/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/config.properties"))) {
+        try(InputStream in = new BufferedInputStream(new FileInputStream(fileName))) {
             properties.load(in);
 
         }catch (IOException e) {
@@ -33,7 +34,7 @@ public class PropertiesFileHandling {
 
     public static void updateProperty(Properties properties, String keyToUpdate, String newValue) {
         properties.setProperty(keyToUpdate, newValue);
-        try (OutputStream output = new FileOutputStream("/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/config.properties")) {
+        try (OutputStream output = new FileOutputStream(fileName)) {
             properties.store(output, "Updated properties file with new key");
             System.out.println("Property updated.");
         } catch (FileNotFoundException e) {
