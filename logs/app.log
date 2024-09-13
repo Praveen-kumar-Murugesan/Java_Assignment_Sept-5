@@ -7,3 +7,24 @@
 2024-09-13 10:39:13 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:23)] 
  INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Person{name='Praveen', age=21, address='Zeetaminds'}
  
+2024-09-13 12:30:49 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:14)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-13 12:31:02 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:14)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-13 12:31:55 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:14)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-13 12:32:39 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:14)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-13 17:09:26 [main] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:15)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-13 17:09:26 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:24)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Deserialized Person:
+ 
+2024-09-13 17:09:26 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:25)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Person{name='Praveen', age=21, address='Zeetaminds'}
+ 

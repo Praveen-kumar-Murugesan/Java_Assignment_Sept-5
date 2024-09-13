@@ -6,7 +6,7 @@ import java.util.*;
 
 
 public class BloomFilter {
-    static String fileName = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/misc/word.txt";
+    static String fileName = "/usr/share/dict/words";
     private BitSet bitSet;
     private int bitSetSize;
     private int numHashFunctions;
@@ -44,9 +44,9 @@ public class BloomFilter {
                 byte[] hash = md.digest();
 //                System.out.println(Arrays.toString(hash));
                 int hashValue = ((hash[0] & 0xFF) << 24) | ((hash[1] & 0xFF) << 16) | ((hash[2] & 0xFF) << 8) | (hash[3] & 0xFF);
-                System.out.println(hashValue);
+//                System.out.println(hashValue);
                 hashIndices[i] = Math.abs(hashValue % bitSetSize);
-                System.out.println(Arrays.toString(hashIndices));
+//                System.out.println(Arrays.toString(hashIndices));
             }
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
