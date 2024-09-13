@@ -69,7 +69,7 @@ class SingleLinkedListTest {
         list.addFirst(2);
         list.removeLast();
         assertEquals(2, list.getFirst());
-        assertEquals(2, list.size());
+        assertEquals(1, list.size());
     }
 
     @Test
