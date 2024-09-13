@@ -1,2 +1,9 @@
-2024-09-12 16:35:54 [main] INFO  com.zeetaminds.assgn5sept.fileio.SerializationAndDeserialization - Serialized data is saved in /home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/person.ser
-2024-09-12 18:30:09 [main] INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data is saved in /home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/fileio/serialize/person.ser
+2024-09-13 10:39:13 [main] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:14)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-13 10:39:13 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Deserialized Person:
+ 
+2024-09-13 10:39:13 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Person{name='Praveen', age=21, address='Zeetaminds'}
+ 

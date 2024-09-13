@@ -8,17 +8,15 @@ public class SerializationAndDeserialization {
 
     private static final Logger logger = LogManager.getLogger(SerializationAndDeserialization.class);
 
-    public static void serialize(Object obj, String fileName) throws IOException {
-        try (FileOutputStream fileOut = new FileOutputStream(fileName);
-             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+    public static void serialize(Object obj, OutputStream os) throws IOException {
+        try (ObjectOutputStream out = new ObjectOutputStream(os)) {
             out.writeObject(obj);
-            logger.info("Serialized data is saved in " + fileName);
+            logger.info("Serialized data has been written to the provided OutputStream.");
         }
     }
 
-    public static Object deserialize(String fileName) throws IOException, ClassNotFoundException {
-        try (FileInputStream fileIn = new FileInputStream(fileName);
-             ObjectInputStream in = new ObjectInputStream(fileIn)) {
+    public static Object deserialize(InputStream is) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream in = new ObjectInputStream(is)) {
             return in.readObject();
         }
     }
