@@ -15,7 +15,8 @@ class SerializationAndDeserializationTest {
     @Test
     void serialization() {
         Person originalPerson = new Person("Praveen", 21, "Zeetaminds");
-        SerializationAndDeserialization<Person> serializer = new SerializationAndDeserialization<>();        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        SerializationAndDeserialization<Person> serializer = new SerializationAndDeserialization<>();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
             serializer.serialize(originalPerson, baos);
             assertTrue(baos.size() > 0, "Serialized data should be written to the ByteArrayOutputStream.");
@@ -36,10 +37,12 @@ class SerializationAndDeserializationTest {
 
             Person deserializedPerson = (Person) serializer.deserialize(bais);
 
-            assertNotNull(deserializedPerson, "Deserialized person should not be null.");
-            assertEquals(originalPerson.getName(), deserializedPerson.getName(), "Names should match.");
-            assertEquals(originalPerson.getAge(), deserializedPerson.getAge(), "Ages should match.");
-            assertEquals(originalPerson.getAddress(), deserializedPerson.getAddress(), "Addresses should match.");
+//            assertNotNull(deserializedPerson, "Deserialized person should not be null.");
+//            assertEquals(originalPerson.getName(), deserializedPerson.getName(), "Names should match.");
+//            assertEquals(originalPerson.getAge(), deserializedPerson.getAge(), "Ages should match.");
+//            assertEquals(originalPerson.getAddress(), deserializedPerson.getAddress(), "Addresses should match.");
+            assertEquals(originalPerson, deserializedPerson, "Deserialized person should be equal to the original person.");
+
         } catch (IOException | ClassNotFoundException e) {
             fail("Deserialization failed: " + e.getMessage());
         }

@@ -15,11 +15,6 @@ public class Person implements Serializable {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "Person{name='" + name + "', age=" + age + ", address='" + address + "'}";
-    }
-
     public String getName() {
         return name;
     }
@@ -30,5 +25,20 @@ public class Person implements Serializable {
 
     public String getAddress() {
         return address;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', age=" + age + ", address='" + address + "'}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return age == person.age &&
+                name.equals(person.name) &&
+                address.equals(person.address);
     }
 }

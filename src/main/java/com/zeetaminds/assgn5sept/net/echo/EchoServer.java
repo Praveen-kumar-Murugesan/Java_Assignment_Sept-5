@@ -10,33 +10,14 @@ public class EchoServer {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Echo server is listening on port " + PORT);
 
+            //noinspection InfiniteLoopStatement
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Client connected: " + clientSocket.getInetAddress());
 
-                handleClient(clientSocket);
+                ClientHandler clientHandler = new ClientHandler(clientSocket);
+                clientHandler.handleClient();
             }
-        }
-    }
-
-    private static void handleClient(Socket clientSocket) throws IOException {
-        try (
-                BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true)
-        ) {
-            String message;
-
-            while ((message = input.readLine()) != null) {
-                if (message.equals("end")) {
-                    System.out.println("Termination Signal Received.");
-                    break;
-                }
-                System.out.println("Received from client: " + message);
-                output.println("Echo: " + message);
-            }
-        } finally {
-            clientSocket.close();
-            System.out.println("Client disconnected.");
         }
     }
 }

@@ -55,3 +55,24 @@
 2024-09-16 11:00:49 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:24)] 
  INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Deserialized Person: Person{name='Praveen', age=21, address='Zeetaminds'}
  
+2024-09-16 15:10:56 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 15:15:00 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 15:16:39 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 15:18:22 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 15:18:30 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 15:20:22 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 15:20:22 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
