@@ -28,3 +28,30 @@
 2024-09-13 17:09:26 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:25)] 
  INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Person{name='Praveen', age=21, address='Zeetaminds'}
  
+2024-09-16 10:55:12 [main] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 10:55:12 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:24)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Deserialized Person:
+ 
+2024-09-16 10:55:12 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:25)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Person{name='Praveen', age=21, address='Zeetaminds'}
+ 
+2024-09-16 10:56:17 [main] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 10:56:17 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:24)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Deserialized Person: Person{name='Praveen', age=21, address='Zeetaminds'}
+ 
+2024-09-16 11:00:41 [main] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 11:00:41 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:24)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Deserialized Person: Person{name='Praveen', age=21, address='Zeetaminds'}
+ 
+2024-09-16 11:00:49 [main] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-16 11:00:49 [main] [SerializationDemo.java] [main] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo.main(SerializationDemo.java:24)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationDemo - Deserialized Person: Person{name='Praveen', age=21, address='Zeetaminds'}
+ 

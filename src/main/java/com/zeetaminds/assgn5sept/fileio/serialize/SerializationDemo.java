@@ -11,7 +11,7 @@ public class SerializationDemo {
 
     public static void main(String[] args) {
 
-        SerializationAndDeserialization serializer = new SerializationAndDeserialization();
+        SerializationAndDeserialization<Person> serializer = new SerializationAndDeserialization<>();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ByteArrayInputStream bais = null;
         try {
@@ -19,10 +19,9 @@ public class SerializationDemo {
 
             serializer.serialize(person, baos);
             bais = new ByteArrayInputStream(baos.toByteArray());
-            Person deserializedPerson = (Person) serializer.deserialize(bais);
+            Person deserializedPerson = serializer.deserialize(bais);
 
-            LOG.info("Deserialized Person:");
-            LOG.info(deserializedPerson.toString());
+            LOG.info("Deserialized Person: {}", deserializedPerson.toString());
 
         } catch (IOException | ClassNotFoundException e) {
             LOG.error(e.getMessage(), e);
