@@ -15,7 +15,7 @@ class SerializationAndDeserializationTest {
     @Test
     void serialization() {
         Person originalPerson = new Person("Praveen", 21, "Zeetaminds");
-        SerializationAndDeserialization serializer = new SerializationAndDeserialization();        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        SerializationAndDeserialization<Person> serializer = new SerializationAndDeserialization<>();        ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
             serializer.serialize(originalPerson, baos);
             assertTrue(baos.size() > 0, "Serialized data should be written to the ByteArrayOutputStream.");
@@ -27,7 +27,7 @@ class SerializationAndDeserializationTest {
     @Test
     void deserialization() {
         Person originalPerson = new Person("Praveen", 21, "Zeetaminds");
-        SerializationAndDeserialization serializer = new SerializationAndDeserialization();
+        SerializationAndDeserialization<Person> serializer = new SerializationAndDeserialization<Person>();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
             serializer.serialize(originalPerson, baos);

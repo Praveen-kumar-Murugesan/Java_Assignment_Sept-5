@@ -3,8 +3,8 @@ package com.zeetaminds.assgn5sept.net.echo;
 import java.io.*;
 import java.net.*;
 
-public class EchoServer {
-    private static final int PORT = 1234; // Server listens on port 1234
+public class MultiThreadedEchoServer {
+    private static final int PORT = 1234;
 
     public static void main(String[] args) throws IOException {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
@@ -14,7 +14,14 @@ public class EchoServer {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Client connected: " + clientSocket.getInetAddress());
 
-                handleClient(clientSocket);
+                new Thread(() -> {
+                    try {
+                        handleClient(clientSocket);
+                        System.out.println(clientSocket.getInetAddress());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }).start();
             }
         }
     }
@@ -22,10 +29,9 @@ public class EchoServer {
     private static void handleClient(Socket clientSocket) throws IOException {
         try (
                 BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true)
+                PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
         ) {
             String message;
-
             while ((message = input.readLine()) != null) {
                 if (message.equals("end")) {
                     System.out.println("Termination Signal Received.");
@@ -36,7 +42,8 @@ public class EchoServer {
             }
         } finally {
             clientSocket.close();
-            System.out.println("Client disconnected.");
+            System.out.print("Client disconnected: ");
         }
+
     }
 }
