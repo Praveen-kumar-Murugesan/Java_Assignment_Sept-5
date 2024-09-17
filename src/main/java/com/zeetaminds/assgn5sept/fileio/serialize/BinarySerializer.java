@@ -5,10 +5,11 @@ import java.io.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class SerializationAndDeserialization <T extends Serializable> implements Serializer<T>{
+public class BinarySerializer<T extends Serializable> implements Serializer<T> {
 
-    private static final Logger LOG = LogManager.getLogger(SerializationAndDeserialization.class);
+    private static final Logger LOG = LogManager.getLogger(BinarySerializer.class);
 
+    @Override
     public void serialize(T obj, OutputStream os) throws IOException {
         if (obj == null) {
             LOG.error("Cannot serialize a null object");
@@ -20,9 +21,9 @@ public class SerializationAndDeserialization <T extends Serializable> implements
         }
     }
 
+    @Override
     public T deserialize(InputStream is) throws IOException, ClassNotFoundException {
         try (ObjectInputStream in = new ObjectInputStream(is)) {
-            //noinspection unchecked
             return (T) in.readObject();
         }
     }

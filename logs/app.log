@@ -76,3 +76,9 @@
 2024-09-16 15:20:22 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
  INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
  
+2024-09-17 10:58:11 [Test worker] [BinarySerializer.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer.serialize(BinarySerializer.java:20)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-17 10:58:17 [Test worker] [BinarySerializer.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer.serialize(BinarySerializer.java:20)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer - Serialized data has been written to the provided OutputStream.
+ 

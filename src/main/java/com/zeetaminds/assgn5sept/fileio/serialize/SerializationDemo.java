@@ -11,7 +11,8 @@ public class SerializationDemo {
 
     public static void main(String[] args) {
 
-        SerializationAndDeserialization<Person> serializer = new SerializationAndDeserialization<>();
+//        SerializationAndDeserialization<Person> serializer = new SerializationAndDeserialization<>();
+        Serializer<Person> serializer = new BinarySerializer<>();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ByteArrayInputStream bais = null;
         try {

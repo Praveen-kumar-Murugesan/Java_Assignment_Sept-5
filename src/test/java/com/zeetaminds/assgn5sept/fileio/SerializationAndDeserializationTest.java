@@ -1,7 +1,9 @@
 package com.zeetaminds.assgn5sept.fileio;
 
+import com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer;
 import com.zeetaminds.assgn5sept.fileio.serialize.Person;
 import com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization;
+import com.zeetaminds.assgn5sept.fileio.serialize.Serializer;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -28,7 +30,7 @@ class SerializationAndDeserializationTest {
     @Test
     void deserialization() {
         Person originalPerson = new Person("Praveen", 21, "Zeetaminds");
-        SerializationAndDeserialization<Person> serializer = new SerializationAndDeserialization<Person>();
+        Serializer<Person> serializer = new BinarySerializer<>();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
             serializer.serialize(originalPerson, baos);
@@ -37,10 +39,6 @@ class SerializationAndDeserializationTest {
 
             Person deserializedPerson = (Person) serializer.deserialize(bais);
 
-//            assertNotNull(deserializedPerson, "Deserialized person should not be null.");
-//            assertEquals(originalPerson.getName(), deserializedPerson.getName(), "Names should match.");
-//            assertEquals(originalPerson.getAge(), deserializedPerson.getAge(), "Ages should match.");
-//            assertEquals(originalPerson.getAddress(), deserializedPerson.getAddress(), "Addresses should match.");
             assertEquals(originalPerson, deserializedPerson, "Deserialized person should be equal to the original person.");
 
         } catch (IOException | ClassNotFoundException e) {
