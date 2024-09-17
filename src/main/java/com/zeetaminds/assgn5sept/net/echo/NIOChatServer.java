@@ -28,16 +28,14 @@ public class NIOChatServer {
                 keyIterator.remove();
 
                 if (key.isAcceptable()) {
-                    // Accept new client
-                    ServerSocketChannel server = (ServerSocketChannel) key.channel();
-                    SocketChannel clientChannel = server.accept();
-                    clientChannel.configureBlocking(false);
-                    clientChannel.register(selector, SelectionKey.OP_READ);
-                    System.out.println("Client connected: " + clientChannel.getRemoteAddress());
+                    try (ServerSocketChannel server = (ServerSocketChannel) key.channel()) {
+                        SocketChannel clientChannel = server.accept();
+                        clientChannel.configureBlocking(false);
+                        clientChannel.register(selector, SelectionKey.OP_READ);
+                        System.out.println("Client connected: " + clientChannel.getRemoteAddress());
 
-                    // Add client to the map (assign a default name or wait for name input)
-                    clientNames.put(clientChannel, "Client" + clientChannel.hashCode());
-
+                        clientNames.put(clientChannel, "Client" + clientChannel.hashCode());
+                    }
                 } else if (key.isReadable()) {
                     // Read data from the client
                     SocketChannel clientChannel = (SocketChannel) key.channel();

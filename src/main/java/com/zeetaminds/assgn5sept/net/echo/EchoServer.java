@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 public class EchoServer {
-    private static final int PORT = 1234; // Server listens on port 1234
+    private static final int PORT = 1234;
 
     public static void main(String[] args) throws IOException {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {

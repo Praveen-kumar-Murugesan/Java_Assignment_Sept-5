@@ -30,11 +30,13 @@ public class NIOEchoServer {
                 keyIterator.remove();
 
                 if (key.isAcceptable()) {
-                    ServerSocketChannel server = (ServerSocketChannel) key.channel();
-                    SocketChannel clientChannel = server.accept();
-                    clientChannel.configureBlocking(false);
-                    clientChannel.register(selector, SelectionKey.OP_READ);
-                    System.out.println("Client connected: " + clientChannel.getRemoteAddress());
+                    try(
+                    ServerSocketChannel server = (ServerSocketChannel) key.channel()) {
+                        SocketChannel clientChannel = server.accept();
+                        clientChannel.configureBlocking(false);
+                        clientChannel.register(selector, SelectionKey.OP_READ);
+                        System.out.println("Client connected: " + clientChannel.getRemoteAddress());
+                    }
                 } else if (key.isReadable()) {
                     SocketChannel clientChannel = (SocketChannel) key.channel();
                     ByteBuffer buffer = ByteBuffer.allocate(1024);
