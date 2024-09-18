@@ -271,3 +271,33 @@
 2024-09-18 12:56:23 [main] [Server.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Server.main(Server.java:40)] 
  INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Server - Server Side Terminating connection...
  
+2024-09-18 16:07:10 [main] [Server.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Server.main(Server.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Server - Server is Starting in Port 8888
+ 
+2024-09-18 16:07:18 [main] [Server.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Server.main(Server.java:25)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Server - Server Connected to Client/127.0.0.1
+ 
+2024-09-18 16:07:34 [main] [Server.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Server.main(Server.java:33)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Server - Command received: LIST
+ 
+2024-09-18 16:07:34 [main] [ListFiles.java] [listFiles] [com.zeetaminds.assgn5sept.net.ftp.basic.ListFiles.listFiles(ListFiles.java:35)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.basic.ListFiles - List of files sent.
+ 
+2024-09-18 16:07:34 [main] [Client.java] [listFiles] [com.zeetaminds.assgn5sept.net.ftp.basic.Client.listFiles(Client.java:65)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Client - List of files: Files on server:
+NewFile1.txt
+test4.txt
+ReceivedFromClient.txt
+test5.txt
+test3.txt
+
+ 
+2024-09-18 16:08:05 [main] [Server.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Server.main(Server.java:33)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Server - Command received: end
+ 
+2024-09-18 16:08:05 [main] [Client.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Client.main(Client.java:46)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Client - Client Side Terminating connection...
+ 
+2024-09-18 16:08:05 [main] [Server.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Server.main(Server.java:43)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Server - Server Side Terminating connection...
+ 

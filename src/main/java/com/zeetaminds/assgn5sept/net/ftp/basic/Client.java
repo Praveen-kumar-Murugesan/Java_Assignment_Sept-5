@@ -57,9 +57,11 @@ public class Client {
     }
 
     private void listFiles() throws IOException {
+        StringBuilder sb = new StringBuilder();
         String response;
         while (!(response = dataInputStream.readUTF()).equals("END_OF_LIST")) {
-            LOG.info(response);
+            sb.append(response).append("\n");
         }
+        LOG.info(sb.toString());
     }
 }

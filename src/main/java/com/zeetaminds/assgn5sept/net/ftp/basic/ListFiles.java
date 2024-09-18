@@ -32,6 +32,5 @@ public class ListFiles {
         }
         dataOutputStream.writeUTF("END_OF_LIST");
         dataOutputStream.flush();
-        LOG.info("List of files sent.");
     }
 }
