@@ -3,14 +3,18 @@ package com.zeetaminds.assgn5sept.net.ftp.basic;
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Client {
-    public static DataOutputStream dataOutputStream = null;
-    private static DataInputStream dataInputStream = null;
-    private static final String FILE_PATH = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/net/ftp/client_files/";
-    private static final Logger LOG = LogManager.getLogger(Client.class);
+    static DataOutputStream dataOutputStream = null;
+    static DataInputStream dataInputStream = null;
+    static final String FILE_PATH = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/net/ftp/client_files/";
+    static final Logger LOG = LogManager.getLogger(Client.class);
+    static Client list = new Client();
+    static SendFile sender = new SendFile();
+    static ReceiveFile receiver = new ReceiveFile();
 
     public static void main(String[] args) {
         try (Socket socket = new Socket("localhost", 8888)) {
@@ -27,33 +31,32 @@ public class Client {
                 String[] parts = option.split(" ", 2);
                 String option1 = parts[0].toUpperCase();
                 String filePath = "";
-                if(parts.length > 1) {
+                if (parts.length > 1) {
                     filePath = FILE_PATH + parts[1];
                 }
                 if ("PUT".equalsIgnoreCase(option1)) {
 //                    System.out.println("Enter the file path to send:");
 //                    filePath = scanner.nextLine();
-                    SendFile.sendFile(dataOutputStream, filePath);
+                    sender.sendFile(dataOutputStream, filePath);
                 } else if ("GET".equalsIgnoreCase(option1)) {
-                    ReceiveFile.receiveFile(dataInputStream, filePath);
+                    receiver.receiveFile(dataInputStream, filePath);
                 } else if ("LIST".equalsIgnoreCase(option1)) {
-                    listFiles();
+                    list.listFiles();
                 } else if ("END".equalsIgnoreCase(option1)) {
                     LOG.info("Client Side Terminating connection...");
                 } else {
                     LOG.error("Invalid command.");
                 }
             }
-
             dataInputStream.close();
             dataInputStream.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             //noinspection CallToPrintStackTrace
             e.printStackTrace();
         }
     }
 
-    private static void listFiles() throws IOException {
+    private void listFiles() throws IOException {
         String response;
         while (!(response = dataInputStream.readUTF()).equals("END_OF_LIST")) {
             LOG.info(response);

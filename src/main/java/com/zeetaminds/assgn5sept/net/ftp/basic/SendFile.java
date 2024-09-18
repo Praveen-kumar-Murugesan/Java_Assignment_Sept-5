@@ -3,13 +3,15 @@ package com.zeetaminds.assgn5sept.net.ftp.basic;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class SendFile {
     private static final Logger LOG = LogManager.getLogger(SendFile.class);
 
-    public static void sendFile(DataOutputStream dataOutputStream, String filePath) throws Exception {
+    public void sendFile(DataOutputStream dataOutputStream, String filePath) throws IOException {
         int bytes;
         File file = new File(filePath);
 

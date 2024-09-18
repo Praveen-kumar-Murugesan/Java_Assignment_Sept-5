@@ -9,10 +9,13 @@ import org.apache.logging.log4j.Logger;
 
 public class Server {
 
-    private static DataOutputStream dataOutputStream = null;
-    public static DataInputStream dataInputStream = null;
-    private static final String FILE_PATH = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/net/ftp/server_files/";
-    private static final Logger LOG = LogManager.getLogger(Server.class);
+    static DataOutputStream dataOutputStream = null;
+    static DataInputStream dataInputStream = null;
+    static final String FILE_PATH = "/home/pk/IdeaProjects/Java-Assignment/src/main/java/com/zeetaminds/assgn5sept/net/ftp/server_files/";
+    static final Logger LOG = LogManager.getLogger(Server.class);
+    static ListFiles list = new ListFiles(FILE_PATH);
+    static SendFile sender = new SendFile();
+    static ReceiveFile receiver = new ReceiveFile();
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(8888)) {
@@ -31,11 +34,11 @@ public class Server {
                 String[] parts = option.split(" ", 2);
                 String option1 = parts[0];
                 if ("PUT".equalsIgnoreCase(option1)) {
-                    ReceiveFile.receiveFile(dataInputStream, FILE_PATH + parts[1]);
+                    receiver.receiveFile(dataInputStream, FILE_PATH + parts[1]);
                 } else if ("GET".equalsIgnoreCase(option1)) {
-                    SendFile.sendFile(dataOutputStream, FILE_PATH + parts[1]);
+                    sender.sendFile(dataOutputStream, FILE_PATH + parts[1]);
                 } else if ("LIST".equalsIgnoreCase(option1)) {
-                    listFiles();
+                    list.listFiles(dataOutputStream);
                 } else if ("END".equalsIgnoreCase(option1)) {
                     LOG.info("Server Side Terminating connection...");
                 } else {
@@ -46,27 +49,9 @@ public class Server {
             dataInputStream.close();
             dataOutputStream.close();
             clientSocket.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             //noinspection CallToPrintStackTrace
             e.printStackTrace();
         }
-    }
-
-    private static void listFiles() throws IOException {
-        File folder = new File(FILE_PATH);
-        File[] listOfFiles = folder.listFiles();
-
-        if (listOfFiles != null && listOfFiles.length > 0) {
-            dataOutputStream.writeUTF("Files on server:");
-            for (File file : listOfFiles) {
-                if (file.isFile()) {
-                    dataOutputStream.writeUTF(file.getName());
-                }
-            }
-        } else {
-            dataOutputStream.writeUTF("No files found on server.");
-        }
-        dataOutputStream.writeUTF("END_OF_LIST");
-        dataOutputStream.flush();
     }
 }
