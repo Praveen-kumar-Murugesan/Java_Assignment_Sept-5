@@ -35,20 +35,30 @@ public class ChatServer {
             });
 
             Thread receiveThread = new Thread(() -> {
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
-                    String message;
-                    while ((message = in.readLine()) != null) {
-                        if ("exit".equalsIgnoreCase(message)) {
-                            System.out.println("Client requested termination. Server shutting down...");
-                            break;
-                        }
-                        System.out.println("Client: " + message);
+                byte[] b = new byte[1024];
+                int read;
+                try {
+                    InputStream raw = clientSocket.getInputStream();
+                    while ((read = raw.read(b)) > 0) {
+                        System.out.println(new String(b, 0 , read));
                     }
                 } catch (IOException e) {
-                    if (!clientSocket.isClosed()) {
-                        e.printStackTrace();
-                    }
+                    e.printStackTrace();
                 }
+//                try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
+//                    String message;
+//                    while ((message = in.readLine()) != null) {
+//                        if ("exit".equalsIgnoreCase(message)) {
+//                            System.out.println("Client requested termination. Server shutting down...");
+//                            System.exit(0);
+//                        }
+//                        System.out.println("Client: " + message);
+//                    }
+//                } catch (IOException e) {
+//                    if (!clientSocket.isClosed()) {
+//                        e.printStackTrace();
+//                    }
+//                }
             });
 
             sendThread.start();

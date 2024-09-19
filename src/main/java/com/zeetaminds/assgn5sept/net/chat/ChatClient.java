@@ -38,12 +38,12 @@ public class ChatClient {
                     while ((message = in.readLine()) != null) {
                         if ("exit".equalsIgnoreCase(message)) {
                             System.out.println("Server requested termination. Client shutting down...");
-                            break;
+                            System.exit(0);
                         }
                         System.out.println("Server: " + message);
                     }
                 } catch (IOException e) {
-                    if (!socket.isClosed()) {  // Only print stack trace if the socket isn't already closed
+                    if (!socket.isClosed()) {
                         e.printStackTrace();
                     }
                 }
