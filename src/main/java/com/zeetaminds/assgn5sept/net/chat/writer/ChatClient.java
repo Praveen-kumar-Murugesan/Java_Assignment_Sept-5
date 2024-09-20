@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ChatClient {
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
 
     public static void main(String[] args) {
         try (Socket socket = new Socket("localhost", 5000)) {
@@ -89,6 +89,6 @@ public class ChatClient {
     }
 
     private static String getCurrentTimestamp() {
-        return LocalDateTime.now().format(formatter);
+        return LocalDateTime.now().format(FORMATTER);
     }
 }

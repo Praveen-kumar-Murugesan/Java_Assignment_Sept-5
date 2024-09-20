@@ -1,7 +1,12 @@
 package com.zeetaminds.assgn5sept.net.chat.stream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
 import java.net.Socket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MessageSender implements Runnable {
     private Socket socket;
@@ -9,6 +14,7 @@ public class MessageSender implements Runnable {
     public MessageSender(Socket socket) {
         this.socket = socket;
     }
+    private static final Logger LOG = LogManager.getLogger(MessageSender.class);
 
     @Override
     public void run() {
@@ -27,12 +33,14 @@ public class MessageSender implements Runnable {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         } finally {
             try {
-                socket.close();
+                if (!socket.isClosed()) {
+                    socket.close();
+                }
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.error(e.getMessage());
             }
         }
     }

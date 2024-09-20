@@ -9,7 +9,7 @@ public class ChatServer {
         try (ServerSocket serverSocket = new ServerSocket(5000)) {
             System.out.println("Server listening on port 5000...");
             Socket clientSocket = serverSocket.accept();
-//            clientSocket.setTcpNoDelay(true);
+            clientSocket.setTcpNoDelay(true);
             System.out.println("Client connected.");
 
             Thread sendThread = new Thread(new MessageSender(clientSocket));

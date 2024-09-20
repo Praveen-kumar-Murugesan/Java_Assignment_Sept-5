@@ -2,11 +2,12 @@ package com.zeetaminds.assgn5sept.net.chat.writer;
 
 import java.io.*;
 import java.net.*;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ChatServer {
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(5000)) {
@@ -22,20 +23,20 @@ public class ChatServer {
                     String message;
                     while (true) {
                         message = reader.readLine();
-//                        LocalDateTime beforeWrite = LocalDateTime.now();
-//                        System.out.println("Before write [" + beforeWrite.format(formatter) + "]");
+                        LocalDateTime beforeWrite = LocalDateTime.now();
+                        System.out.println("Before write [" + beforeWrite.format(FORMATTER) + "]");
 
                         // Convert message to bytes and send
                         byte[] messageBytes = (message + "\n").getBytes();
                         out.write(messageBytes);
                         out.flush();
-//
-//                        LocalDateTime afterWrite = LocalDateTime.now();
-//                        System.out.println("After write [" + afterWrite.format(formatter) + "]");
-//
-//                        // Calculate time difference in microseconds
-//                        long microseconds = Duration.between(beforeWrite, afterWrite).toNanos() / 1000;
-//                        System.out.println("Time difference: " + microseconds + " microseconds");
+
+                        LocalDateTime afterWrite = LocalDateTime.now();
+                        System.out.println("After write [" + afterWrite.format(FORMATTER) + "]");
+
+                        // Calculate time difference in microseconds
+                        long microseconds = Duration.between(beforeWrite, afterWrite).toNanos() / 1000;
+                        System.out.println("Time difference: " + microseconds + " microseconds");
 
                         if ("exit".equalsIgnoreCase(message)) {
                             System.out.println("Server terminating connection...");
@@ -91,6 +92,6 @@ public class ChatServer {
     }
 
     private static String getCurrentTimestamp() {
-        return LocalDateTime.now().format(formatter);
+        return LocalDateTime.now().format(FORMATTER);
     }
 }
