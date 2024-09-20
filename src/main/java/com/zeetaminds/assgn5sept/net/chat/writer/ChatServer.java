@@ -1,23 +1,24 @@
-package com.zeetaminds.assgn5sept.net.chat;
+package com.zeetaminds.assgn5sept.net.chat.writer;
 
 import java.io.*;
 import java.net.*;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ChatClient {
+public class ChatServer {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
 
     public static void main(String[] args) {
-        try (Socket socket = new Socket("localhost", 5000)) {
-            socket.setTcpNoDelay(true);
-            System.out.println("Connected to server.");
+        try (ServerSocket serverSocket = new ServerSocket(5000)) {
+            System.out.println("Server listening on port 5000...");
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Client connected.");
 
             // Create threads for sending and receiving data
             Thread sendThread = new Thread(() -> {
-                try (OutputStream out = socket.getOutputStream();
+                try (OutputStream out = clientSocket.getOutputStream();
                      BufferedReader reader = new BufferedReader(new InputStreamReader(System.in), 1024)) {
+                    clientSocket.setTcpNoDelay(true);
                     String message;
                     while (true) {
                         message = reader.readLine();
@@ -37,7 +38,7 @@ public class ChatClient {
 //                        System.out.println("Time difference: " + microseconds + " microseconds");
 
                         if ("exit".equalsIgnoreCase(message)) {
-                            System.out.println("Client terminating connection...");
+                            System.out.println("Server terminating connection...");
                             break;
                         }
                     }
@@ -45,7 +46,7 @@ public class ChatClient {
                     e.printStackTrace();
                 } finally {
                     try {
-                        socket.close();
+                        clientSocket.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -53,7 +54,7 @@ public class ChatClient {
             });
 
             Thread receiveThread = new Thread(() -> {
-                try (InputStream in = socket.getInputStream()) {
+                try (InputStream in = clientSocket.getInputStream()) {
                     byte[] buffer = new byte[1024];
                     int bytesRead;
                     StringBuilder messageBuilder = new StringBuilder();
@@ -63,16 +64,16 @@ public class ChatClient {
                         if (message.endsWith("\n")) {
                             String completeMessage = messageBuilder.toString().trim();
                             if ("exit".equalsIgnoreCase(completeMessage)) {
-                                System.out.println("Server requested termination. Client shutting down...");
+                                System.out.println("Client requested termination. Server shutting down...");
                                 System.exit(0);
                             }
+//                            System.out.println("Client [" + getCurrentTimestamp() + "]: " + completeMessage);
                             System.out.println(completeMessage);
-//                            System.out.println("Server [" + getCurrentTimestamp() + "]: " + completeMessage);
                             messageBuilder.setLength(0);
                         }
                     }
                 } catch (IOException e) {
-                    if (!socket.isClosed()) {
+                    if (!clientSocket.isClosed()) {
                         e.printStackTrace();
                     }
                 }
