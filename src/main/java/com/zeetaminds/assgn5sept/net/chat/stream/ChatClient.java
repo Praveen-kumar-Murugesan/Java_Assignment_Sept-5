@@ -18,7 +18,6 @@ public class ChatClient {
 
             sendThread.start();
             receiveThread.start();
-
             sendThread.join();
             receiveThread.join();
         } catch (IOException | InterruptedException e) {
