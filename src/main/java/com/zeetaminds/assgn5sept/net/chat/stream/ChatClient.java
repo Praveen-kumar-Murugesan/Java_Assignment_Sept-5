@@ -2,9 +2,9 @@ package com.zeetaminds.assgn5sept.net.chat.stream;
 
 import java.io.IOException;
 import java.net.Socket;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 public class ChatClient {
     private static final Logger LOG = LogManager.getLogger(ChatClient.class);
 
@@ -22,7 +22,7 @@ public class ChatClient {
             sendThread.join();
             receiveThread.join();
         } catch (IOException | InterruptedException e) {
-            LOG.error(e.getMessage());
+            LOG.error("Error in ChatClient: {}" , e.getMessage());
         }
     }
 }

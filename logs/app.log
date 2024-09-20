@@ -301,3 +301,9 @@ test3.txt
 2024-09-18 16:08:05 [main] [Server.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Server.main(Server.java:43)] 
  INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Server - Server Side Terminating connection...
  
+2024-09-20 17:18:57 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:28)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageReceiver: Socket closed
+ 
+2024-09-20 17:41:07 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:28)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
