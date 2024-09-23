@@ -89,8 +89,8 @@ public class FtpServer {
 
         // LIST Command - Listing the files and directories with file size calculation
         private String handleListCommand() {
-            File currentDir = new File("server_files");
-            String[] fileList = currentDir.list();
+            File currentDir = new File(".");
+            File[] fileList = currentDir.listFiles();
             int fileCount = (fileList != null) ? fileList.length : 0;
 
             if (fileList == null || fileCount == 0) {
@@ -101,12 +101,12 @@ public class FtpServer {
             long totalSize = 0;
 
             // Calculate the total size of all files in bytes
-            for (String file : fileList) {
-                File currentFile = new File(currentDir, file);
-                if (currentFile.isFile()) {
-                    totalSize += currentFile.length();
-                }
-                response.append(file).append("\n");
+            for (File file : fileList) {
+//                File currentFile = new File(currentDir, file);
+//                if (currentFile.isFile()) {
+//                    totalSize += currentFile.length();
+//                }
+                response.append(file.getName()).append("\n");
             }
 
             response.append("Total files listed: ").append(fileCount).append("\n");
