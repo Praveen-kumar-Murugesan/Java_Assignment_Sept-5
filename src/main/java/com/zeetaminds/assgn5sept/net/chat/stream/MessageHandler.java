@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.net.Socket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.time.format.DateTimeFormatter;
 
 public abstract class MessageHandler implements Runnable {
     protected Socket socket;
     protected static final Logger LOG = LogManager.getLogger(MessageHandler.class);
+    protected static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSSSS");
+
 
     public MessageHandler(Socket socket) {
         this.socket = socket;

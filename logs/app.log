@@ -307,3 +307,689 @@ test3.txt
 2024-09-20 17:41:07 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:28)] 
  ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
  
+2024-09-23 11:22:16 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:28)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageReceiver: Connection reset
+ 
+2024-09-23 11:22:33 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:22:33.370669] 
+ After write [2024-09-23 11:22:33.372372] 
+ Time difference: 1703 microseconds
+ 
+2024-09-23 11:22:35 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:28)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageReceiver: Connection reset
+ 
+2024-09-23 11:22:43 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:38)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 11:22:49 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:22:49.490382] 
+ After write [2024-09-23 11:22:49.491639] 
+ Time difference: 1257 microseconds
+ 
+2024-09-23 11:26:04 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:26:04.510778] 
+ After write [2024-09-23 11:26:04.511025] 
+ Time difference: 247 microseconds
+ 
+2024-09-23 11:27:37 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:37.526514] 
+ After write [2024-09-23 11:27:37.526780] 
+ Time difference: 266 microseconds
+ 
+2024-09-23 11:27:37 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:37.528507] 
+ After write [2024-09-23 11:27:37.528693] 
+ Time difference: 186 microseconds
+ 
+2024-09-23 11:27:37 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:37.529972] 
+ After write [2024-09-23 11:27:37.530085] 
+ Time difference: 113 microseconds
+ 
+2024-09-23 11:27:38 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:38.526827] 
+ After write [2024-09-23 11:27:38.527092] 
+ Time difference: 265 microseconds
+ 
+2024-09-23 11:27:41 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:41.527238] 
+ After write [2024-09-23 11:27:41.527452] 
+ Time difference: 214 microseconds
+ 
+2024-09-23 11:27:44 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:44.527948] 
+ After write [2024-09-23 11:27:44.528152] 
+ Time difference: 204 microseconds
+ 
+2024-09-23 11:27:45 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:45.528126] 
+ After write [2024-09-23 11:27:45.528330] 
+ Time difference: 204 microseconds
+ 
+2024-09-23 11:27:51 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:51.529606] 
+ After write [2024-09-23 11:27:51.529853] 
+ Time difference: 247 microseconds
+ 
+2024-09-23 11:27:52 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:52.529623] 
+ After write [2024-09-23 11:27:52.529877] 
+ Time difference: 254 microseconds
+ 
+2024-09-23 11:27:53 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:53.529781] 
+ After write [2024-09-23 11:27:53.529997] 
+ Time difference: 216 microseconds
+ 
+2024-09-23 11:27:54 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:27:54.529916] 
+ After write [2024-09-23 11:27:54.530122] 
+ Time difference: 206 microseconds
+ 
+2024-09-23 11:30:06 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:30:06.552292] 
+ After write [2024-09-23 11:30:06.552505] 
+ Time difference: 213 microseconds
+ 
+2024-09-23 11:37:00 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:29)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:37:00.611790] 
+ After write [2024-09-23 11:37:00.612151] 
+ Time difference: 361 microseconds
+ 
+2024-09-23 11:49:52 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:38)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 11:56:03 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 11:56:03.290157] 
+ After write [2024-09-23 11:56:03.290526] 
+ Time difference: 369 microseconds
+ 
+2024-09-23 11:56:03 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:56:03.292294]
+ 
+2024-09-23 11:58:39 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:58:39.037081]
+ 
+2024-09-23 11:58:39 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 11:58:39.036404] 
+ After write [2024-09-23 11:58:39.036900] 
+ Time difference: 496 microseconds
+ 
+2024-09-23 11:58:39 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 11:58:39.038902] 
+ After write [2024-09-23 11:58:39.038990] 
+ Time difference: 88 microseconds
+ 
+2024-09-23 11:58:39 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:58:39.039002]
+ 
+2024-09-23 11:58:39 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 11:58:39.039463] 
+ After write [2024-09-23 11:58:39.039509] 
+ Time difference: 46 microseconds
+ 
+2024-09-23 11:58:39 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:58:39.039526]
+ 
+2024-09-23 11:58:39 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:58:39.039888]
+ 
+2024-09-23 11:58:39 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:58:39.040168]
+ 
+2024-09-23 11:58:39 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:58:39.040399]
+ 
+2024-09-23 11:58:39 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:58:39.040646]
+ 
+2024-09-23 11:58:41 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:36)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 11:59:38 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 11:59:38.541031000] 
+ After write [2024-09-23 11:59:38.541384000] 
+ Time difference: 353 microseconds
+ 
+2024-09-23 11:59:38 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 11:59:38.544057000]
+ 
+2024-09-23 12:19:31 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:19:31.898286000]
+ 
+2024-09-23 12:19:31 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:19:31.896792000] 
+ After write [2024-09-23 12:19:31.898188000] 
+ Time difference: 1396 microseconds
+ 
+2024-09-23 12:19:31 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:19:31.899908000]
+ 
+2024-09-23 12:19:31 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:19:31.899713000] 
+ After write [2024-09-23 12:19:31.899767000] 
+ Time difference: 54 microseconds
+ 
+2024-09-23 12:19:31 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:19:31.900326000]
+ 
+2024-09-23 12:19:31 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:19:31.900277000] 
+ After write [2024-09-23 12:19:31.900323000] 
+ Time difference: 46 microseconds
+ 
+2024-09-23 12:19:31 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:19:31.900863000]
+ 
+2024-09-23 12:19:31 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:19:31.901187000]
+ 
+2024-09-23 12:19:31 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:19:31.901404000]
+ 
+2024-09-23 12:19:34 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:36)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 12:19:56 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:19:56.075073000] 
+ After write [2024-09-23 12:19:56.076333000] 
+ Time difference: 1260 microseconds
+ 
+2024-09-23 12:19:56 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:19:56.083672000]
+ 
+2024-09-23 12:21:55 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:21:55.087162000] 
+ After write [2024-09-23 12:21:55.087466000] 
+ Time difference: 304 microseconds
+ 
+2024-09-23 12:21:55 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:21:55.087756000]
+ 
+2024-09-23 12:23:59 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:23:59.108712000] 
+ After write [2024-09-23 12:23:59.109091000] 
+ Time difference: 379 microseconds
+ 
+2024-09-23 12:23:59 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:23:59.109349000]
+ 
+2024-09-23 12:24:48 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:24:48.116682000] 
+ After write [2024-09-23 12:24:48.117030000] 
+ Time difference: 348 microseconds
+ 
+2024-09-23 12:24:48 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:24:48.117218000]
+ 
+2024-09-23 12:24:51 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:24:51.117189000] 
+ After write [2024-09-23 12:24:51.117406000] 
+ Time difference: 217 microseconds
+ 
+2024-09-23 12:24:51 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:24:51.117527000]
+ 
+2024-09-23 12:24:55 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:24:55.117899000] 
+ After write [2024-09-23 12:24:55.118208000] 
+ Time difference: 309 microseconds
+ 
+2024-09-23 12:24:55 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:24:55.118427000]
+ 
+2024-09-23 12:24:58 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:24:58.118369000] 
+ After write [2024-09-23 12:24:58.118598000] 
+ Time difference: 229 microseconds
+ 
+2024-09-23 12:24:58 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:24:58.118787000]
+ 
+2024-09-23 12:25:01 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:01.118884000] 
+ After write [2024-09-23 12:25:01.119103000] 
+ Time difference: 219 microseconds
+ 
+2024-09-23 12:25:01 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:01.119258000]
+ 
+2024-09-23 12:25:03 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:03.119258000] 
+ After write [2024-09-23 12:25:03.119483000] 
+ Time difference: 225 microseconds
+ 
+2024-09-23 12:25:03 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:03.119635000]
+ 
+2024-09-23 12:25:05 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:05.119520000] 
+ After write [2024-09-23 12:25:05.119757000] 
+ Time difference: 237 microseconds
+ 
+2024-09-23 12:25:05 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:05.119891000]
+ 
+2024-09-23 12:25:05 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:05.121125000]
+ 
+2024-09-23 12:25:05 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:05.120979000] 
+ After write [2024-09-23 12:25:05.121081000] 
+ Time difference: 102 microseconds
+ 
+2024-09-23 12:25:06 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:06.119687000] 
+ After write [2024-09-23 12:25:06.119943000] 
+ Time difference: 256 microseconds
+ 
+2024-09-23 12:25:06 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:06.120081000]
+ 
+2024-09-23 12:25:06 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:06.121194000] 
+ After write [2024-09-23 12:25:06.121304000] 
+ Time difference: 110 microseconds
+ 
+2024-09-23 12:25:06 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:06.121458000]
+ 
+2024-09-23 12:25:07 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:07.120098000] 
+ After write [2024-09-23 12:25:07.120327000] 
+ Time difference: 229 microseconds
+ 
+2024-09-23 12:25:07 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:07.120473000]
+ 
+2024-09-23 12:25:07 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:07.121858000]
+ 
+2024-09-23 12:25:07 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:07.121666000] 
+ After write [2024-09-23 12:25:07.121779000] 
+ Time difference: 113 microseconds
+ 
+2024-09-23 12:25:08 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:08.120275000] 
+ After write [2024-09-23 12:25:08.120488000] 
+ Time difference: 213 microseconds
+ 
+2024-09-23 12:25:08 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:08.120631000]
+ 
+2024-09-23 12:25:08 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:08.121938000] 
+ After write [2024-09-23 12:25:08.122054000] 
+ Time difference: 116 microseconds
+ 
+2024-09-23 12:25:08 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:08.122076000]
+ 
+2024-09-23 12:25:08 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:08.123171000]
+ 
+2024-09-23 12:25:08 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:08.123008000] 
+ After write [2024-09-23 12:25:08.123099000] 
+ Time difference: 91 microseconds
+ 
+2024-09-23 12:25:08 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:08.124011000] 
+ After write [2024-09-23 12:25:08.124101000] 
+ Time difference: 90 microseconds
+ 
+2024-09-23 12:25:08 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:08.124212000]
+ 
+2024-09-23 12:25:09 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:09.120431000] 
+ After write [2024-09-23 12:25:09.120644000] 
+ Time difference: 213 microseconds
+ 
+2024-09-23 12:25:09 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:09.120822000]
+ 
+2024-09-23 12:25:09 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:09.122081000]
+ 
+2024-09-23 12:25:09 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:09.121914000] 
+ After write [2024-09-23 12:25:09.122016000] 
+ Time difference: 102 microseconds
+ 
+2024-09-23 12:25:10 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:10.120562000] 
+ After write [2024-09-23 12:25:10.120783000] 
+ Time difference: 221 microseconds
+ 
+2024-09-23 12:25:10 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:10.120895000]
+ 
+2024-09-23 12:25:10 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:10.121886000] 
+ After write [2024-09-23 12:25:10.121981000] 
+ Time difference: 95 microseconds
+ 
+2024-09-23 12:25:10 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:10.122100000]
+ 
+2024-09-23 12:25:11 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:11.120794000] 
+ After write [2024-09-23 12:25:11.121022000] 
+ Time difference: 228 microseconds
+ 
+2024-09-23 12:25:11 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:11.121171000]
+ 
+2024-09-23 12:25:11 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:11.122396000] 
+ After write [2024-09-23 12:25:11.122515000] 
+ Time difference: 119 microseconds
+ 
+2024-09-23 12:25:11 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:11.122585000]
+ 
+2024-09-23 12:25:12 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:12.120926000] 
+ After write [2024-09-23 12:25:12.121130000] 
+ Time difference: 204 microseconds
+ 
+2024-09-23 12:25:12 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:12.121269000]
+ 
+2024-09-23 12:25:12 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:12.122651000]
+ 
+2024-09-23 12:25:12 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:12.122368000] 
+ After write [2024-09-23 12:25:12.122480000] 
+ Time difference: 112 microseconds
+ 
+2024-09-23 12:25:12 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:25:12.123474000] 
+ After write [2024-09-23 12:25:12.123712000] 
+ Time difference: 238 microseconds
+ 
+2024-09-23 12:25:12 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:25:12.123831000]
+ 
+2024-09-23 12:26:15 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:26:15.130552000] 
+ After write [2024-09-23 12:26:15.130817000] 
+ Time difference: 265 microseconds
+ 
+2024-09-23 12:26:15 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:26:15.130947000]
+ 
+2024-09-23 12:29:23 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:29:23.724212000]
+ 
+2024-09-23 12:29:23 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:29:23.723030000] 
+ After write [2024-09-23 12:29:23.724100000] 
+ Time difference: 1070 microseconds
+ 
+2024-09-23 12:29:23 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:26)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:29:23.725233000] 
+ After write [2024-09-23 12:29:23.725334000] 
+ Time difference: 101 microseconds
+ 
+2024-09-23 12:29:23 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:29:23.725666000]
+ 
+2024-09-23 12:29:23 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:29:23.726340000]
+ 
+2024-09-23 12:29:23 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:21)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Before write [2024-09-23 12:29:23.727657000]
+ 
+2024-09-23 12:29:24 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:29)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageReceiver: null
+ 
+2024-09-23 12:29:26 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:35)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 12:29:50 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:29:50.062620000] 
+ After write [2024-09-23 12:29:50.063820000] 
+ Time difference: 1200 microseconds
+ 
+2024-09-23 12:29:50 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:29:50.071401000]
+ 
+2024-09-23 12:29:57 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:29:57.054515000] 
+ After write [2024-09-23 12:29:57.054900000] 
+ Time difference: 385 microseconds
+ 
+2024-09-23 12:29:57 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:29:57.055079000]
+ 
+2024-09-23 12:37:16 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:37:16.134110000]
+ 
+2024-09-23 12:37:16 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:37:16.131516000] 
+ After write [2024-09-23 12:37:16.133784000] 
+ Time difference: 2268 microseconds
+ 
+2024-09-23 12:37:16 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:37:16.136661000]
+ 
+2024-09-23 12:37:16 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:37:16.136526000] 
+ After write [2024-09-23 12:37:16.136593000] 
+ Time difference: 67 microseconds
+ 
+2024-09-23 12:37:16 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:37:16.137118000]
+ 
+2024-09-23 12:37:16 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:37:16.137049000] 
+ After write [2024-09-23 12:37:16.137098000] 
+ Time difference: 49 microseconds
+ 
+2024-09-23 12:37:16 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:37:16.137696000]
+ 
+2024-09-23 12:37:16 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:37:16.138280000]
+ 
+2024-09-23 12:37:16 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:37:16.139239000]
+ 
+2024-09-23 12:37:16 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:30)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageReceiver: null
+ 
+2024-09-23 12:37:20 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:36)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 12:52:13 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:52:13.631276000] 
+ After write [2024-09-23 12:52:13.632763000] 
+ Time difference: 1487 microseconds
+ 
+2024-09-23 12:52:13 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:52:13.640527000]
+ 
+2024-09-23 12:52:17 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:52:17.622945000]
+ 
+2024-09-23 12:52:17 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:52:17.622373000] 
+ After write [2024-09-23 12:52:17.622769000] 
+ Time difference: 396 microseconds
+ 
+2024-09-23 12:52:21 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:52:21.623285000] 
+ After write [2024-09-23 12:52:21.623667000] 
+ Time difference: 382 microseconds
+ 
+2024-09-23 12:52:21 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:52:21.623946000]
+ 
+2024-09-23 12:52:27 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:52:27.087195000]
+ 
+2024-09-23 12:52:27 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:52:27.084932000] 
+ After write [2024-09-23 12:52:27.086895000] 
+ Time difference: 1963 microseconds
+ 
+2024-09-23 12:52:27 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:30)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageReceiver: null
+ 
+2024-09-23 12:52:27 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:36)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 12:52:53 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:36)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 12:52:57 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:52:57.395684000] 
+ After write [2024-09-23 12:52:57.397024000] 
+ Time difference: 1340 microseconds
+ 
+2024-09-23 12:52:57 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:52:57.405143000]
+ 
+2024-09-23 12:52:59 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:52:59.386550000]
+ 
+2024-09-23 12:52:59 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:52:59.385946000] 
+ After write [2024-09-23 12:52:59.386325000] 
+ Time difference: 379 microseconds
+ 
+2024-09-23 12:53:08 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:53:08.468354000] 
+ After write [2024-09-23 12:53:08.468695000] 
+ Time difference: 341 microseconds
+ 
+2024-09-23 12:53:08 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:53:08.468926000]
+ 
+2024-09-23 12:53:08 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:53:08.469569000] 
+ After write [2024-09-23 12:53:08.469627000] 
+ Time difference: 58 microseconds
+ 
+2024-09-23 12:53:08 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:36)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 12:53:08 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:30)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageReceiver: Connection reset
+ 
+2024-09-23 12:53:21 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:36)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
+2024-09-23 12:53:28 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:53:28.290039000] 
+ After write [2024-09-23 12:53:28.291327000] 
+ Time difference: 1288 microseconds
+ 
+2024-09-23 12:53:28 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:53:28.299034000]
+ 
+2024-09-23 12:53:30 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:53:30.280378000] 
+ After write [2024-09-23 12:53:30.280810000] 
+ Time difference: 432 microseconds
+ 
+2024-09-23 12:53:30 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:53:30.281023000]
+ 
+2024-09-23 12:53:32 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:53:32.460762000] 
+ After write [2024-09-23 12:53:32.461188000] 
+ Time difference: 426 microseconds
+ 
+2024-09-23 12:53:32 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:22)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ After receive [2024-09-23 12:53:32.461446000]
+ 
+2024-09-23 12:53:32 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:27)] 
+ INFO  com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - 
+ Before write [2024-09-23 12:53:32.463683000] 
+ After write [2024-09-23 12:53:32.464076000] 
+ Time difference: 393 microseconds
+ 
+2024-09-23 12:53:32 [Thread-1] [MessageReceiver.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageReceiver.run(MessageReceiver.java:30)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageReceiver: Connection reset
+ 
+2024-09-23 12:53:32 [Thread-0] [MessageSender.java] [run] [com.zeetaminds.assgn5sept.net.chat.stream.MessageSender.run(MessageSender.java:36)] 
+ ERROR com.zeetaminds.assgn5sept.net.chat.stream.MessageHandler - Error in MessageSender: Socket closed
+ 
