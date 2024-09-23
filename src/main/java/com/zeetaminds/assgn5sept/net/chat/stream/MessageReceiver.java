@@ -3,6 +3,7 @@ package com.zeetaminds.assgn5sept.net.chat.stream;
 import java.io.*;
 import java.net.Socket;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MessageReceiver extends MessageHandler {
     public MessageReceiver(Socket socket) {
@@ -31,5 +32,14 @@ public class MessageReceiver extends MessageHandler {
         } finally {
             closeSocket();
         }
+    }
+
+    public static void main(String[] agrs) throws InterruptedException {
+        LocalDateTime afterReceive = LocalDateTime.now();
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("SSSSSSSSS");
+        System.out.println(LocalDateTime.now().format(fmt));
+        Thread.sleep(1000);
+        System.out.println(LocalDateTime.now().format(fmt));
+        System.out.println(LocalDateTime.now().format(fmt));
     }
 }
