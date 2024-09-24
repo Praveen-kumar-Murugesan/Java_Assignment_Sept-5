@@ -40,7 +40,7 @@ public class ClientHandler extends Thread {
                 if (cmdHandler != null) {
                     cmdHandler.execute(in, out, command);
                 } else {
-                    responseSender.sendResponse(in, out, "502 Command not implemented.");
+                    responseSender.sendResponse(in, out, "502 Command not implemented.\n");
                 }
             }
         } catch (IOException e) {

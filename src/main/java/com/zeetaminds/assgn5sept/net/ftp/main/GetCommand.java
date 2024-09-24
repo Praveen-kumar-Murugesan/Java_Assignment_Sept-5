@@ -7,7 +7,7 @@ import java.nio.file.Files;
 public class GetCommand implements Command {
     @Override
     public void execute(InputStream in, OutputStream out, String command) throws IOException {
-        String[] tokens = command.split(" ", 2);
+        String[] tokens = command.split(" ");
         if (tokens.length > 1) {
             File file = new File(tokens[1]);
             if (file.exists() && !file.isDirectory()) {

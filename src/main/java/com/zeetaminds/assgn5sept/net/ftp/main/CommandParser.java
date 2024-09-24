@@ -41,7 +41,7 @@ public class CommandParser {
             case "QUIT":
                 return new QuitCommand(clientSocket);
             default:
-                return null; // Or throw an exception for unrecognized commands
+                return null;
         }
     }
 }

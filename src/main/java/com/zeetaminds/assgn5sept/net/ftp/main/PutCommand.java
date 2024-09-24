@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 public class PutCommand implements Command {
     @Override
     public void execute(InputStream in, OutputStream out, String command) throws IOException {
-        String[] tokens = command.split(" ", 2);
+        String[] tokens = command.split(" ");
 
         if (tokens.length > 1) {
             String fileName = tokens[1];

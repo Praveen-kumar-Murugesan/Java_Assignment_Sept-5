@@ -1014,3 +1014,6 @@ test3.txt
 2024-09-24 16:13:10 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
  ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
  
+2024-09-24 17:02:40 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+ 
