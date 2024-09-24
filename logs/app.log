@@ -1002,3 +1002,15 @@ test3.txt
 2024-09-23 12:59:47 [main] [Server.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Server.main(Server.java:25)] 
  INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Server - Server Connected to Client/192.168.1.10
  
+2024-09-24 14:40:36 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Error: Socket closed
+ 
+2024-09-24 14:51:18 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+ 
+2024-09-24 16:12:38 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+ 
+2024-09-24 16:13:10 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+ 

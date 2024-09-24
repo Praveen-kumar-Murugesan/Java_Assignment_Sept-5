@@ -21,7 +21,6 @@ public class QuitCommand implements Command {
 
         if(clientSocket!=null && !clientSocket.isClosed()){
             clientSocket.close();
-            System.out.println("Client Socket Closed");
         }
     }
 }

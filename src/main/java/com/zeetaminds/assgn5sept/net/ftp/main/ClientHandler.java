@@ -44,7 +44,7 @@ public class ClientHandler extends Thread {
                 }
             }
         } catch (IOException e) {
-            LOG.error("Error: {}", e.getMessage());
+            LOG.error("Client {}", e.getMessage());
         } finally {
             try {
                 clientSocket.close();

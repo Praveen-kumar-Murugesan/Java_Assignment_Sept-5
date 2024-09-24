@@ -14,13 +14,12 @@ public class CommandParser {
         while (true) {
             int bytesRead = in.read(buffer);
             if (bytesRead == -1) {
-                return null; // End of stream
+                return null;
             }
             bos.write(buffer[0]);
 
-            // Check for newline character
             if (buffer[0] == '\n') {
-                break; // End of command
+                break;
             }
         }
         return bos.toString(StandardCharsets.UTF_8).trim(); // Use UTF-8 encoding

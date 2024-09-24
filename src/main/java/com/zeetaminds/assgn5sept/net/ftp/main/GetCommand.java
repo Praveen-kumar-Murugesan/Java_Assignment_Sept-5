@@ -21,7 +21,7 @@ public class GetCommand implements Command {
                         out.write(buffer, 0, bytesRead);
                     }
                 }
-                out.write("226 Transfer complete.\r\n".getBytes(StandardCharsets.UTF_8));
+                out.write("\n225 Transfer complete.\r\n\n".getBytes(StandardCharsets.UTF_8));
             } else {
                 out.write("550 File not found.\r\n".getBytes(StandardCharsets.UTF_8));
             }

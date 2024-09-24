@@ -2,7 +2,6 @@ package com.zeetaminds.assgn5sept.net.ftp.main;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Optional;
 
 public class PutCommand implements Command {
     @Override
@@ -13,24 +12,52 @@ public class PutCommand implements Command {
             String fileName = tokens[1];
             File file = new File(fileName);
 
-            // Respond to client that the server is ready to receive the file
             out.write(("150 Opening binary mode data connection for " + fileName + "\r\n").getBytes(StandardCharsets.UTF_8));
 
             try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
                 byte[] buffer = new byte[1024];
                 int bytesRead;
 
-                // Read from the actual client input stream
-                while ((bytesRead = in.read(buffer)) != -1) {
-                    bos.write(buffer, 0, bytesRead);
+                boolean stopReading = false;
+                int count=0;
+
+                while (!stopReading && (bytesRead = in.read(buffer)) != -1) {
+                    for (int i = 0; i < bytesRead; i++) {
+                        byte currentByte = buffer[i];
+
+                        if (currentByte == ':') {
+                            if (i + 1 < bytesRead && buffer[i + 1] == 'q') {
+                                stopReading = true;
+                                break;
+                            }
+                        }
+                        if (count == 1) {
+                            if (buffer[i] == 'q') {
+                                stopReading = true;
+                                break;
+                            }
+                        }
+
+                        if (currentByte == ':') {
+                            count = 1;
+                            while (i + 1 < bytesRead && buffer[i + 1] == ':') {
+                                count++;
+                                if(count == 2){
+                                    bos.write(':');
+                                    count=0;
+                                }
+                                i++;
+                            }
+                            continue;
+                        }
+                        bos.write(currentByte);
+                    }
+                    bos.flush();
                 }
 
-                bos.flush();
-
-                // Notify client that the transfer is complete
                 out.write("226 Transfer complete.\r\n".getBytes(StandardCharsets.UTF_8));
             } catch (IOException e) {
-                out.write("553 Could not create file.\r\n".getBytes(StandardCharsets.UTF_8));
+                out.write("552 Could not create file.\r\n".getBytes(StandardCharsets.UTF_8));
             }
         } else {
             out.write("501 Syntax error in parameters or arguments.\r\n".getBytes(StandardCharsets.UTF_8));
