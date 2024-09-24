@@ -1,4 +1,4 @@
-package com.zeetaminds.assgn5sept.net.ftp.main;
+package com.zeetaminds.assgn5sept.net.ftp;
 
 import java.io.*;
 import java.net.Socket;
