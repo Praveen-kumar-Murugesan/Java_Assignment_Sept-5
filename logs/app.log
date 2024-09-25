@@ -1017,3 +1017,18 @@ test3.txt
 2024-09-24 17:02:40 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
  ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
  
+2024-09-25 11:48:17 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.main.FTPServer.main(FTPServer.java:25)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.main.FTPServer - Address already in use (Bind failed)
+ 
+2024-09-25 11:48:58 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.main.FTPServer.main(FTPServer.java:25)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.main.FTPServer - Address already in use (Bind failed)
+ 
+2024-09-25 11:49:20 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.main.FTPServer.main(FTPServer.java:25)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.main.FTPServer - Address already in use (Bind failed)
+ 
+2024-09-25 11:51:22 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.main.FTPServer.main(FTPServer.java:25)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.main.FTPServer - Address already in use (Bind failed)
+ 
+2024-09-25 13:08:38 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:53)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+ 

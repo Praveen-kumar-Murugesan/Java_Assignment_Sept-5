@@ -7,22 +7,34 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
 public class CommandParser {
-    public String readCommand(InputStream in) throws IOException {
+    private int index = 0;
+    private byte[] data = null;
+    public String readCommand(InputStream in, byte[] remainingData) throws IOException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         byte[] buffer = new byte[1];
-        //noinspection ConditionalBreakInInfiniteLoop
+        if(remainingData != null){
+            data = remainingData;
+        }
         while (true) {
-            int bytesRead = in.read(buffer);
-            if (bytesRead == -1) {
-                return null;
+            if (data != null && index < data.length) {
+                buffer[0] = data[index++];
+            } else {
+                int bytesRead = in.read(buffer);
+                if (bytesRead == -1) {
+                    return null; // End of stream
+                }
             }
             bos.write(buffer[0]);
-
+            if (data != null && index >= data.length) {
+                index = 0;
+                data = null;
+            }
             if (buffer[0] == '\n') {
                 break;
             }
         }
-        return bos.toString(StandardCharsets.UTF_8).trim(); // Use UTF-8 encoding
+
+        return bos.toString(StandardCharsets.UTF_8).trim();
     }
 
     public Command parseCommand(String command, Socket clientSocket) {

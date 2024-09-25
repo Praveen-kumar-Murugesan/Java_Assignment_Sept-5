@@ -16,11 +16,13 @@ public class ClientHandler extends Thread {
     private OutputStream out;
     private CommandParser commandParser;
     private ResponseSender responseSender;
+    private byte[] remainingData;
 
     public ClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
-        commandParser = new CommandParser();
-        responseSender = new ResponseSender();
+        this.commandParser = new CommandParser();
+        this.responseSender = new ResponseSender();
+        this.remainingData = null;
     }
 
     @Override
@@ -31,7 +33,8 @@ public class ClientHandler extends Thread {
             responseSender.sendResponse(in, out, "220 FTP Server ready");
 
             while (true) {
-                String command = commandParser.readCommand(in);
+                String command = commandParser.readCommand(in, remainingData);
+                remainingData = null;
                 if (command == null) {
                     System.out.println("Client Disconnected");
                     break;
@@ -39,6 +42,9 @@ public class ClientHandler extends Thread {
                 Command cmdHandler = commandParser.parseCommand(command, clientSocket);
                 if (cmdHandler != null) {
                     cmdHandler.execute(in, out, command);
+                    if (cmdHandler instanceof PutCommand) {
+                        remainingData = ((PutCommand) cmdHandler).getRemainingData();
+                    }
                 } else {
                     responseSender.sendResponse(in, out, "502 Command not implemented.\n");
                 }
