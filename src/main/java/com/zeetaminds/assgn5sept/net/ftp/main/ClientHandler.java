@@ -1,6 +1,5 @@
 package com.zeetaminds.assgn5sept.net.ftp.main;
 
-import com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,11 +10,11 @@ import java.net.Socket;
 
 public class ClientHandler extends Thread {
     private static final Logger LOG = LogManager.getLogger(ClientHandler.class);
-    private Socket clientSocket;
+    private final Socket clientSocket;
     private InputStream in;
     private OutputStream out;
-    private CommandParser commandParser;
-    private ResponseSender responseSender;
+    private final CommandParser commandParser;
+    private final ResponseSender responseSender;
     private byte[] remainingData;
 
     public ClientHandler(Socket clientSocket) {
@@ -52,11 +51,20 @@ public class ClientHandler extends Thread {
         } catch (IOException e) {
             LOG.error("Client {}", e.getMessage());
         } finally {
-            try {
+            closeResources();
+        }
+    }
+
+    private void closeResources() {
+        try {
+            if (in != null) in.close();
+            if (out != null) out.close();
+            if (clientSocket != null && !clientSocket.isClosed()) {
                 clientSocket.close();
-            } catch (IOException e) {
-                LOG.error(e.getMessage());
+                LOG.info("Resources closed for client: {}", clientSocket.getInetAddress());
             }
+        } catch (IOException e) {
+            LOG.error("Error closing resources {}", e.getMessage());
         }
     }
 }

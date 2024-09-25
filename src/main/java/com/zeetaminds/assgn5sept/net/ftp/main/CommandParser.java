@@ -15,6 +15,7 @@ public class CommandParser {
         if(remainingData != null){
             data = remainingData;
         }
+        //noinspection ConditionalBreakInInfiniteLoop
         while (true) {
             if (data != null && index < data.length) {
                 buffer[0] = data[index++];

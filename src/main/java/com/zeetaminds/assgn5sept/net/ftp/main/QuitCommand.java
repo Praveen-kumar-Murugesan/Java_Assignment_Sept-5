@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
 public class QuitCommand implements Command {
-    private Socket clientSocket;
+    private final Socket clientSocket;
 
     public QuitCommand(Socket clientSocket){
         this.clientSocket = clientSocket;

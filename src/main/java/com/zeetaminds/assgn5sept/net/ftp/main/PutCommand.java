@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class PutCommand implements Command {
-    private byte[] remainingData = null; // To store leftover data as a byte array
+    private byte[] remainingData = null;
 
     @Override
     public void execute(InputStream in, OutputStream out, String command) throws IOException {
@@ -17,18 +17,17 @@ public class PutCommand implements Command {
             out.write(("150 Opening binary mode data connection for " + fileName + "\r\n").getBytes(StandardCharsets.UTF_8));
 
             try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
-                byte[] buffer = new byte[10]; // Buffer size can be adjusted
+                byte[] buffer = new byte[10];
                 int bytesRead = 0;
 
                 boolean stopReading = false;
                 int count = 0;
-                int leftoverIndex = 0; // Index to track where we stopped
+                int leftoverIndex = 0;
 
                 while (!stopReading && (bytesRead = in.read(buffer)) != -1) {
                     for (int i = 0; i < bytesRead; i++) {
                         byte currentByte = buffer[i];
 
-                        // Check for ':q' sequence
                         if (currentByte == ':') {
                             if (i + 1 < bytesRead && buffer[i + 1] == 'q') {
                                 stopReading = true;
@@ -37,7 +36,6 @@ public class PutCommand implements Command {
                             }
                         }
 
-                        // Handle special case for '::' (escaped ':')
                         if (count == 1) {
                             if (buffer[i] == 'q') {
                                 stopReading = true;
@@ -58,13 +56,11 @@ public class PutCommand implements Command {
                             }
                             continue;
                         }
-
                         bos.write(currentByte);
                     }
                     bos.flush();
                 }
 
-                // If there are remaining bytes after ':q', store them
                 if (leftoverIndex < bytesRead) {
                     remainingData = new byte[bytesRead - leftoverIndex];
                     System.arraycopy(buffer, leftoverIndex, remainingData, 0, remainingData.length);
