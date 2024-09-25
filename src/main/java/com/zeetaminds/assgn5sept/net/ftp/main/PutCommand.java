@@ -7,11 +7,9 @@ public class PutCommand implements Command {
     private byte[] remainingData = null;
 
     @Override
-    public void execute(InputStream in, OutputStream out, String command) throws IOException {
-        String[] tokens = command.split(" ");
+    public void execute(InputStream in, OutputStream out, String fileName) throws IOException {
 
-        if (tokens.length > 1) {
-            String fileName = tokens[1];
+        if (fileName.length() > 1) {
             File file = new File(fileName);
 
             out.write(("150 Opening binary mode data connection for " + fileName + "\r\n").getBytes(StandardCharsets.UTF_8));

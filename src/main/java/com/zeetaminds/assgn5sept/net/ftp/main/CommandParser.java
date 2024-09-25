@@ -3,58 +3,86 @@ package com.zeetaminds.assgn5sept.net.ftp.main;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
 public class CommandParser {
+
     private int index = 0;
     private byte[] data = null;
-    public String readCommand(InputStream in, byte[] remainingData) throws IOException {
+    private final ResponseSender responseSender = new ResponseSender();
+
+    public void readCommand(InputStream in, OutputStream out, byte[] remainingData, Socket clientSocket) throws IOException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        byte[] buffer = new byte[1];
-        if(remainingData != null){
+        byte[] buffer = new byte[256];
+        int bytesRead;
+
+        if (remainingData != null) {
             data = remainingData;
         }
-        //noinspection ConditionalBreakInInfiniteLoop
-        while (true) {
+
+        boolean commandComplete = false;
+        while (!commandComplete) {
             if (data != null && index < data.length) {
-                buffer[0] = data[index++];
+                int length = Math.min(buffer.length, data.length - index);
+                System.arraycopy(data, index, buffer, 0, length);
+                bytesRead = length;
+                index += length;
             } else {
-                int bytesRead = in.read(buffer);
+                bytesRead = in.read(buffer);
                 if (bytesRead == -1) {
-                    return null; // End of stream
+                    return;
                 }
             }
+
+            for (int i = 0; i < bytesRead; i++) {
+                bos.write(buffer[i]);
+                if (buffer[i] == '\n') {
+                    commandComplete = true;
+                    break;
+                }
+            }
+
             bos.write(buffer[0]);
             if (data != null && index >= data.length) {
                 index = 0;
                 data = null;
             }
-            if (buffer[0] == '\n') {
-                break;
-            }
         }
 
-        return bos.toString(StandardCharsets.UTF_8).trim();
+        String command = bos.toString(StandardCharsets.UTF_8).trim();
+        parseCommand(command, in, out, clientSocket);
     }
 
-    public Command parseCommand(String command, Socket clientSocket) {
+    public void parseCommand(String command, InputStream in, OutputStream out, Socket clientSocket) throws IOException {
         String[] tokens = command.split(" ", 2);
         String cmd = tokens[0].toUpperCase();
 
+        Command cmdHandler;
+
         switch (cmd) {
             case "LIST":
-                return new ListCommand();
+                cmdHandler = new ListCommand();
+                break;
             case "GET":
-                return new GetCommand();
+                cmdHandler = new GetCommand();
+                break;
             case "PUT":
-                return new PutCommand();
+                cmdHandler = new PutCommand();
+                break;
             case "PWD":
-                return new PwdCommand();
+                cmdHandler = new PwdCommand();
+                break;
             case "QUIT":
-                return new QuitCommand(clientSocket);
+                cmdHandler = new QuitCommand(clientSocket);
+                break;
             default:
-                return null;
+                responseSender.sendResponse(out, "502 Command not implemented.\n");
+                return;
         }
+
+        // Execute the parsed command
+        cmdHandler.execute(in, out, command);
     }
 }

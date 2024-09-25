@@ -1032,3 +1032,33 @@ test3.txt
 2024-09-25 13:08:38 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:53)] 
  ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
  
+2024-09-25 14:19:21 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-25 14:19:21 [Test worker] [BinarySerializer.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer.serialize(BinarySerializer.java:20)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-25 14:19:44 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-25 14:19:44 [Test worker] [BinarySerializer.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer.serialize(BinarySerializer.java:20)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-25 14:47:30 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:52)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+ 
+2024-09-25 14:47:52 [Thread-2] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:52)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+ 
+2024-09-25 14:49:47 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:52)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+ 
+2024-09-25 14:52:09 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:53)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Resources closed for client: /127.0.0.1
+ 
+2024-09-25 14:55:17 [Thread-0] [ClientHandler.java] [closeResources] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.closeResources(ClientHandler.java:68)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Resources closed for client: /127.0.0.1
+ 
+2024-09-25 14:55:17 [Thread-0] [ClientHandler.java] [closeResources] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.closeResources(ClientHandler.java:68)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Resources closed for client: /127.0.0.1
+ 

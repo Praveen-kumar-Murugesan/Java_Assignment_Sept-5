@@ -6,10 +6,9 @@ import java.nio.file.Files;
 
 public class GetCommand implements Command {
     @Override
-    public void execute(InputStream in, OutputStream out, String command) throws IOException {
-        String[] tokens = command.split(" ");
-        if (tokens.length > 1) {
-            File file = new File(tokens[1]);
+    public void execute(InputStream in, OutputStream out, String fileName) throws IOException {
+        if (fileName.length() > 1) {
+            File file = new File(fileName);
             if (file.exists() && !file.isDirectory()) {
                 long fileSize = Files.size(file.toPath());
                 out.write(("File size: " + fileSize + " bytes\r\n").getBytes(StandardCharsets.UTF_8));

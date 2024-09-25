@@ -31,22 +31,10 @@ public class ClientHandler extends Thread {
             out = clientSocket.getOutputStream();
             responseSender.sendResponse(out, "220 FTP Server ready");
 
+            //noinspection InfiniteLoopStatement
             while (true) {
-                String command = commandParser.readCommand(in, remainingData);
+                commandParser.readCommand(in, out, remainingData, clientSocket);
                 remainingData = null;
-                if (command == null) {
-                    System.out.println("Client Disconnected");
-                    break;
-                }
-                Command cmdHandler = commandParser.parseCommand(command, clientSocket);
-                if (cmdHandler != null) {
-                    cmdHandler.execute(in, out, command);
-                    if (cmdHandler instanceof PutCommand) {
-                        remainingData = ((PutCommand) cmdHandler).getRemainingData();
-                    }
-                } else {
-                    responseSender.sendResponse(out, "502 Command not implemented.\n");
-                }
             }
         } catch (IOException e) {
             LOG.error("Client {}", e.getMessage());
