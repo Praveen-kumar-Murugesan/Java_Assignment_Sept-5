@@ -29,7 +29,7 @@ public class ClientHandler extends Thread {
         try {
             in = clientSocket.getInputStream();
             out = clientSocket.getOutputStream();
-            responseSender.sendResponse(in, out, "220 FTP Server ready");
+            responseSender.sendResponse(out, "220 FTP Server ready");
 
             while (true) {
                 String command = commandParser.readCommand(in, remainingData);
@@ -45,7 +45,7 @@ public class ClientHandler extends Thread {
                         remainingData = ((PutCommand) cmdHandler).getRemainingData();
                     }
                 } else {
-                    responseSender.sendResponse(in, out, "502 Command not implemented.\n");
+                    responseSender.sendResponse(out, "502 Command not implemented.\n");
                 }
             }
         } catch (IOException e) {
