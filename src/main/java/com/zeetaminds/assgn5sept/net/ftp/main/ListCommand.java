@@ -1,14 +1,11 @@
 package com.zeetaminds.assgn5sept.net.ftp.main;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class ListCommand implements Command {
     @Override
-    public void execute(InputStream in, OutputStream out, String command) throws IOException {
+    public void execute(BufferedInputStream bin, OutputStream out, String command) throws IOException {
         File dir = new File(".");
         File[] files = dir.listFiles();
         if (files != null) {
@@ -21,6 +18,5 @@ public class ListCommand implements Command {
         }else {
             out.write("000 Empty Folder\r\n\n".getBytes(StandardCharsets.UTF_8));
         }
-
     }
 }

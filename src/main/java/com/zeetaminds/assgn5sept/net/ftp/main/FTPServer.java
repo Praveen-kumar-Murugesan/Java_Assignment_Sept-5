@@ -21,7 +21,7 @@ public class FTPServer {
                 new ClientHandler(clientSocket).start();
             }
         } catch (IOException e) {
-            LOG.info(e.getMessage());
+            LOG.info("Error in Socket: {}", e.getMessage());
         }
     }
 }

@@ -6,7 +6,7 @@ import java.nio.file.Files;
 
 public class GetCommand implements Command {
     @Override
-    public void execute(InputStream in, OutputStream out, String fileName) throws IOException {
+    public void execute(BufferedInputStream in, OutputStream out, String fileName) throws IOException {
         if (fileName.length() > 1) {
             File file = new File(fileName);
             if (file.exists() && !file.isDirectory()) {
@@ -20,7 +20,7 @@ public class GetCommand implements Command {
                         out.write(buffer, 0, bytesRead);
                     }
                 }
-                out.write("\n225 Transfer complete.\r\n\n".getBytes(StandardCharsets.UTF_8));
+                out.write("225 Transfer complete.\r\n\n".getBytes(StandardCharsets.UTF_8));
             } else {
                 out.write("550 File not found.\r\n".getBytes(StandardCharsets.UTF_8));
             }
