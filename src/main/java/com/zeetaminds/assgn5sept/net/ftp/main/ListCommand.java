@@ -1,22 +1,28 @@
 package com.zeetaminds.assgn5sept.net.ftp.main;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class ListCommand implements Command {
     @Override
-    public void execute(BufferedInputStream bin, OutputStream out, String command) throws IOException {
+    public void execute(BufferedInputStream bin, OutputStream out) throws IOException {
+
         File dir = new File(".");
         File[] files = dir.listFiles();
-        if (files != null) {
-            out.write("150 Opening data connection for file list.\r\n".getBytes(StandardCharsets.UTF_8));
-            out.write(("Number of files in Server: "+(files.length)+"\r\n").getBytes());
-            for (File file : files) {
-                out.write((file.getName() + "\r\n").getBytes(StandardCharsets.UTF_8));
-            }
-            out.write("226 Transfer complete.\r\n\n".getBytes(StandardCharsets.UTF_8));
-        }else {
-            out.write("000 Empty Folder\r\n\n".getBytes(StandardCharsets.UTF_8));
+
+        if (files == null) {
+            writeResponse(out, "000 Empty Folder");
+            return;
         }
+
+        writeResponse(out, "150 Opening data connection for file list.");
+        writeResponse(out, ("Number of files in Server: " + (files.length)));
+
+        for (File file : files) {
+            writeResponse(out, (file.getName()));
+        }
+        writeResponse(out, "226 Transfer complete.");
     }
 }

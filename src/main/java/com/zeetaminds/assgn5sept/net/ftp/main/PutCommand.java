@@ -1,72 +1,79 @@
 package com.zeetaminds.assgn5sept.net.ftp.main;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 
 public class PutCommand implements Command {
 
+    private final String fileName;
+
+    public PutCommand(String token) {
+        this.fileName = token;
+    }
+
     @Override
-    public void execute(BufferedInputStream bin, OutputStream out, String fileName) throws IOException {
+    public void execute(BufferedInputStream bin, OutputStream out) throws IOException {
 
-        if (fileName.length() > 1) {
-            File file = new File(fileName);
+        if (fileName.isEmpty()) {
+            writeResponse(out, "501 Syntax error in parameters or arguments.");
+        }
 
-            try (FileOutputStream bos = new FileOutputStream(file)) {
-                byte[] buffer = new byte[1024];
-                int bytesRead = 0;
+        File file = new File(fileName);
 
-                boolean stopReading = false;
-                int count = 0;
-                int leftoverIndex = 0;
+        try (FileOutputStream bos = new FileOutputStream(file)) {
 
-                bin.reset();
-                while (!stopReading && (bytesRead = bin.read(buffer)) != -1) {
+            byte[] buffer = new byte[1024];
+            boolean stopReading = false;
+            int bytesRead = 0;
+            int count = 0;
+            int leftoverIndex = 0;
+
+            bin.reset();
+
+            while (!stopReading && (bytesRead = bin.read(buffer)) != -1) {
                     /*
                     read min 2 bytes
                     if file end. -> reset and mark, close fout
                     else continue reading
                      */
-                    for (int i = 0; i < bytesRead; i++) {
-                        byte currentByte = buffer[i];
-                        leftoverIndex++;
-                        if (currentByte == ':' && i + 1 < bytesRead && buffer[i + 1] == 'q') {
-                            stopReading = true;
-                            leftoverIndex++;
-                            break;
-                        }
-                        if (count == 1 && buffer[i] == 'q') {
-                            stopReading = true;
-                            break;
-                        }
-                        if (currentByte == ':') {
-                            count = 1;
-                            while (i + 1 < bytesRead && buffer[i + 1] == ':') {
-                                leftoverIndex++;
-                                count++;
-                                if (count == 2) {
-                                    bos.write(':');
-                                    count = 0;
-                                }
-                                i++;
-                            }
-                            continue;
-                        }
-                        bos.write(currentByte);
+                for (int i = 0; i < bytesRead; i++) {
+                    byte currentByte = buffer[i];
+                    leftoverIndex++;
+//                    if (currentByte == ':' && i + 1 < bytesRead && buffer[i + 1] == 'q') {
+//                        stopReading = true;
+//                        leftoverIndex++;
+//                        break;
+//                    }
+                    if (count == 1 && buffer[i] == 'q') {
+                        stopReading = true;
+                        break;
                     }
-                    bos.flush();
+                    if (currentByte == ':') {
+                        count = 1;
+                        while (i + 1 < bytesRead && buffer[i + 1] == ':') {
+                            leftoverIndex++;
+                            count++;
+                            if (count == 2) {
+                                bos.write(':');
+                                count = 0;
+                            }
+                            i++;
+                        }
+                        continue;
+                    }
+                    bos.write(currentByte);
                 }
-                if (leftoverIndex < bytesRead) {
-                    bin.reset();
-                    bin.skip(leftoverIndex);
-                    bin.mark(1024);
-                }
-                out.write("\n222 File Uploaded Successfully.\r\n\n".getBytes(StandardCharsets.UTF_8));
-            } catch (IOException e) {
-                out.write("552 Could not create file.\r\n\n".getBytes(StandardCharsets.UTF_8));
+                bos.flush();
             }
-        } else {
-            out.write("501 Syntax error in parameters or arguments.\r\n\n".getBytes(StandardCharsets.UTF_8));
+            if (leftoverIndex < bytesRead) {
+                bin.reset();
+                bin.skip(leftoverIndex);
+                bin.mark(1024);
+            }
+            writeResponse(out, "\n222 File Uploaded Successfully.");
+        } catch (IOException e) {
+            writeResponse(out, "552 Could not create file.");
         }
+
     }
 
 }

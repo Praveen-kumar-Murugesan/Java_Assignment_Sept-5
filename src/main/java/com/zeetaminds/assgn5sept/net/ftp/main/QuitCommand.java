@@ -16,9 +16,9 @@ public class QuitCommand implements Command {
 
 
     @Override
-    public void execute(BufferedInputStream in, OutputStream out, String command) throws IOException {
-        out.write("221 Goodbye.\r\n".getBytes(StandardCharsets.UTF_8));
-        out.flush();
+    public void execute(BufferedInputStream in, OutputStream out) throws IOException {
+
+        writeResponse(out, "221 Goodbye.");
 
         if(clientSocket!=null && !clientSocket.isClosed()){
             clientSocket.close();

@@ -14,8 +14,6 @@ public class CommandParser {
         return CMD;
     }
 
-    private final ResponseSender responseSender = new ResponseSender();
-
     private int getIndexOfCR(byte[] buff, int len) {
         for(int i = 0; i < len; i++) {
             if(buff[i] == '\n') return i;
@@ -23,12 +21,11 @@ public class CommandParser {
         return -1;
     }
 
-    public void readCommand(BufferedInputStream bin, OutputStream out, Socket clientSocket) throws IOException {
-//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    public Command readCommand(BufferedInputStream bin, OutputStream out, Socket clientSocket) throws IOException {
         byte[] buffer = new byte[1024];
         int bytesRead;
 
-//        boolean hasMore = true;
+        //noinspection WhileCanBeDoWhile
         while (true) {
             bytesRead = bin.read(buffer);
 
@@ -38,16 +35,18 @@ public class CommandParser {
             if(len == -1) continue;
 
             String command = new String(buffer, 0, len, StandardCharsets.UTF_8);
-            parseCommand(command, bin, out, clientSocket);
 
             bin.reset();
+            //noinspection ResultOfMethodCallIgnored
             bin.skip(len + 1);
             bin.mark(1024);
+
+            return (parseCommand(command, clientSocket));
         }
     }
 
 
-    private void parseCommand(String command, BufferedInputStream bin, OutputStream out, Socket clientSocket) throws IOException {
+    private Command parseCommand(String command, Socket clientSocket) {
         String[] tokens = command.split(" ");
         String cmd = tokens[0].toUpperCase();
 
@@ -58,10 +57,10 @@ public class CommandParser {
                 cmdHandler = new ListCommand();
                 break;
             case "GET":
-                cmdHandler = new GetCommand();
+                cmdHandler = new GetCommand(tokens[1]);
                 break;
             case "PUT":
-                cmdHandler = new PutCommand();
+                cmdHandler = new PutCommand(tokens[1]);
                 break;
             case "PWD":
                 cmdHandler = new PwdCommand();
@@ -70,9 +69,8 @@ public class CommandParser {
                 cmdHandler = new QuitCommand(clientSocket);
                 break;
             default:
-                responseSender.sendResponse(out, "502 Command not implemented.\n");
-                return;
+                return null;
         }
-        cmdHandler.execute(bin, out, tokens.length > 1 ? tokens[1] : null);
+        return cmdHandler;
     }
 }

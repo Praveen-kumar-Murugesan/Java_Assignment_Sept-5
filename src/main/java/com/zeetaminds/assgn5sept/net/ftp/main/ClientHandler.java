@@ -8,28 +8,33 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class ClientHandler extends Thread {
+
     private static final Logger LOG = LogManager.getLogger(ClientHandler.class);
+
     private final Socket clientSocket;
     private final CommandParser commandParser;
-    private final ResponseSender responseSender;
 
     public ClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
         this.commandParser = CommandParser.getInstance();
-        this.responseSender = new ResponseSender();
     }
 
     @Override
     public void run() {
-        try (BufferedInputStream bin = new BufferedInputStream(clientSocket.getInputStream()); OutputStream out = clientSocket.getOutputStream()) {
+        try (BufferedInputStream bin = new BufferedInputStream(clientSocket.getInputStream());
+             OutputStream out = clientSocket.getOutputStream()) {
 
-            responseSender.sendResponse(out, "220 FTP Server ready");
+            out.write("220 FTP Server ready\n".getBytes(StandardCharsets.UTF_8));
+
             bin.mark(1024);
+
             //noinspection InfiniteLoopStatement
             while (true) {
-                commandParser.readCommand(bin, out, clientSocket);
+                Command cmd = commandParser.readCommand(bin, out, clientSocket);
+                cmd.execute(bin, out);
             }
         } catch (IOException e) {
             LOG.error("Client {}", e.getMessage());
