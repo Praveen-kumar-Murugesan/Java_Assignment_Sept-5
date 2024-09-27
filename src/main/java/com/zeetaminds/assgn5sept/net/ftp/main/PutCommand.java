@@ -11,7 +11,7 @@ public class PutCommand implements Command {
         if (fileName.length() > 1) {
             File file = new File(fileName);
 
-            try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
+            try (FileOutputStream bos = new FileOutputStream(file)) {
                 byte[] buffer = new byte[1024];
                 int bytesRead = 0;
 
@@ -21,25 +21,23 @@ public class PutCommand implements Command {
 
                 bin.reset();
                 while (!stopReading && (bytesRead = bin.read(buffer)) != -1) {
+                    /*
+                    read min 2 bytes
+                    if file end. -> reset and mark, close fout
+                    else continue reading
+                     */
                     for (int i = 0; i < bytesRead; i++) {
                         byte currentByte = buffer[i];
                         leftoverIndex++;
-                        if (currentByte == ':') {
-                            if (i + 1 < bytesRead && buffer[i + 1] == 'q') {
-                                stopReading = true;
-                                leftoverIndex ++;
-                                break;
-                            }
+                        if (currentByte == ':' && i + 1 < bytesRead && buffer[i + 1] == 'q') {
+                            stopReading = true;
+                            leftoverIndex++;
+                            break;
                         }
-
-                        if (count == 1) {
-                            if (buffer[i] == 'q') {
-                                stopReading = true;
-//                                leftoverIndex++;
-                                break;
-                            }
+                        if (count == 1 && buffer[i] == 'q') {
+                            stopReading = true;
+                            break;
                         }
-
                         if (currentByte == ':') {
                             count = 1;
                             while (i + 1 < bytesRead && buffer[i + 1] == ':') {
@@ -57,12 +55,12 @@ public class PutCommand implements Command {
                     }
                     bos.flush();
                 }
-                if(leftoverIndex < bytesRead){
+                if (leftoverIndex < bytesRead) {
                     bin.reset();
                     bin.skip(leftoverIndex);
                     bin.mark(1024);
                 }
-                out.write("226 Transfer complete.\r\n\n".getBytes(StandardCharsets.UTF_8));
+                out.write("\n222 File Uploaded Successfully.\r\n\n".getBytes(StandardCharsets.UTF_8));
             } catch (IOException e) {
                 out.write("552 Could not create file.\r\n\n".getBytes(StandardCharsets.UTF_8));
             }

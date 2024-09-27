@@ -2,7 +2,6 @@ package com.zeetaminds.assgn5sept.net.ftp.main;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 
 public interface Command {

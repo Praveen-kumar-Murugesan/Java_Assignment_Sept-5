@@ -10,7 +10,7 @@ public class ListCommand implements Command {
         File[] files = dir.listFiles();
         if (files != null) {
             out.write("150 Opening data connection for file list.\r\n".getBytes(StandardCharsets.UTF_8));
-            out.write(("Number of files in Server: "+Long.toString(files.length)+"\r\n").getBytes());
+            out.write(("Number of files in Server: "+(files.length)+"\r\n").getBytes());
             for (File file : files) {
                 out.write((file.getName() + "\r\n").getBytes(StandardCharsets.UTF_8));
             }
