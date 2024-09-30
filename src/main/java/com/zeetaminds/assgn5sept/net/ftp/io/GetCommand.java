@@ -1,7 +1,6 @@
-package com.zeetaminds.assgn5sept.net.ftp.main;
+package com.zeetaminds.assgn5sept.net.ftp.io;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 public class GetCommand implements Command {
@@ -13,15 +12,14 @@ public class GetCommand implements Command {
 
     @Override
     public void execute(BufferedInputStream in, OutputStream out) throws IOException {
-
-        if (!(fileName.length() > 1)) {
-            writeResponse(out, "501 Syntax error in parameters or arguments.");
-            return;
-        }
-
         File file = new File(fileName);
         if (!file.exists() && file.isDirectory()) {
             writeResponse(out, "550 File not found.");
+            return;
+        }
+
+        if(!file.canRead()){
+            writeResponse(out, "505 Read Permission Denied");
             return;
         }
 

@@ -1,13 +1,14 @@
-package com.zeetaminds.assgn5sept.net.ftp.main;
+package com.zeetaminds.assgn5sept.net.ftp.io;
 
+import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 
 public class ClientHandler extends Thread {
@@ -33,11 +34,17 @@ public class ClientHandler extends Thread {
 
             //noinspection InfiniteLoopStatement
             while (true) {
-                Command cmd = commandParser.readCommand(bin, out, clientSocket);
-                cmd.execute(bin, out);
+                try {
+                    Command cmd = commandParser.readCommand(bin, clientSocket);
+                    if (cmd != null) {
+                        cmd.execute(bin, out);
+                    }
+                } catch (InvalidCommandException | SocketException e) {
+                    out.write(("500 " + e.getMessage() + "\r\n").getBytes(StandardCharsets.UTF_8));
+                }
             }
         } catch (IOException e) {
-            LOG.error("Client {}", e.getMessage());
+            throw new RuntimeException(e);
         } finally {
             try {
                 if (!clientSocket.isClosed()) {

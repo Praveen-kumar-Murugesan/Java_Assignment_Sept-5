@@ -1,11 +1,9 @@
-package com.zeetaminds.assgn5sept.net.ftp.main;
+package com.zeetaminds.assgn5sept.net.ftp.nio;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 
 public class QuitCommand implements Command {
     private final Socket clientSocket;
@@ -13,7 +11,6 @@ public class QuitCommand implements Command {
     public QuitCommand(Socket clientSocket){
         this.clientSocket = clientSocket;
     }
-
 
     @Override
     public void execute(BufferedInputStream in, OutputStream out) throws IOException {

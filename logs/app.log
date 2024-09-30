@@ -1002,35 +1002,35 @@ test3.txt
 2024-09-23 12:59:47 [main] [Server.java] [main] [com.zeetaminds.assgn5sept.net.ftp.basic.Server.main(Server.java:25)] 
  INFO  com.zeetaminds.assgn5sept.net.ftp.basic.Server - Server Connected to Client/192.168.1.10
  
-2024-09-24 14:40:36 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Error: Socket closed
+2024-09-24 14:40:36 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:47)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Error: Socket closed
  
-2024-09-24 14:51:18 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-24 14:51:18 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:47)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-24 16:12:38 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-24 16:12:38 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:47)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-24 16:13:10 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-24 16:13:10 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:47)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-24 17:02:40 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:47)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-24 17:02:40 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:47)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-25 11:48:17 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.main.FTPServer.main(FTPServer.java:25)] 
- INFO  com.zeetaminds.assgn5sept.net.ftp.main.FTPServer - Address already in use (Bind failed)
+2024-09-25 11:48:17 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.io.FTPServer.main(FTPServer.java:25)]
+ INFO  com.zeetaminds.assgn5sept.net.ftp.io.FTPServer - Address already in use (Bind failed)
  
-2024-09-25 11:48:58 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.main.FTPServer.main(FTPServer.java:25)] 
- INFO  com.zeetaminds.assgn5sept.net.ftp.main.FTPServer - Address already in use (Bind failed)
+2024-09-25 11:48:58 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.io.FTPServer.main(FTPServer.java:25)]
+ INFO  com.zeetaminds.assgn5sept.net.ftp.io.FTPServer - Address already in use (Bind failed)
  
-2024-09-25 11:49:20 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.main.FTPServer.main(FTPServer.java:25)] 
- INFO  com.zeetaminds.assgn5sept.net.ftp.main.FTPServer - Address already in use (Bind failed)
+2024-09-25 11:49:20 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.io.FTPServer.main(FTPServer.java:25)]
+ INFO  com.zeetaminds.assgn5sept.net.ftp.io.FTPServer - Address already in use (Bind failed)
  
-2024-09-25 11:51:22 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.main.FTPServer.main(FTPServer.java:25)] 
- INFO  com.zeetaminds.assgn5sept.net.ftp.main.FTPServer - Address already in use (Bind failed)
+2024-09-25 11:51:22 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.io.FTPServer.main(FTPServer.java:25)]
+ INFO  com.zeetaminds.assgn5sept.net.ftp.io.FTPServer - Address already in use (Bind failed)
  
-2024-09-25 13:08:38 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:53)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-25 13:08:38 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:53)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
 2024-09-25 14:19:21 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
  INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
@@ -1044,45 +1044,51 @@ test3.txt
 2024-09-25 14:19:44 [Test worker] [BinarySerializer.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer.serialize(BinarySerializer.java:20)] 
  INFO  com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer - Serialized data has been written to the provided OutputStream.
  
-2024-09-25 14:47:30 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:52)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-25 14:47:30 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:52)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-25 14:47:52 [Thread-2] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:52)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-25 14:47:52 [Thread-2] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:52)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-25 14:49:47 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:52)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-25 14:49:47 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:52)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-25 14:52:09 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:53)] 
- INFO  com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Resources closed for client: /127.0.0.1
+2024-09-25 14:52:09 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:53)]
+ INFO  com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Resources closed for client: /127.0.0.1
  
-2024-09-25 14:55:17 [Thread-0] [ClientHandler.java] [closeResources] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.closeResources(ClientHandler.java:68)] 
- INFO  com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Resources closed for client: /127.0.0.1
+2024-09-25 14:55:17 [Thread-0] [ClientHandler.java] [closeResources] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.closeResources(ClientHandler.java:68)]
+ INFO  com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Resources closed for client: /127.0.0.1
  
-2024-09-25 14:55:17 [Thread-0] [ClientHandler.java] [closeResources] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.closeResources(ClientHandler.java:68)] 
- INFO  com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Resources closed for client: /127.0.0.1
+2024-09-25 14:55:17 [Thread-0] [ClientHandler.java] [closeResources] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.closeResources(ClientHandler.java:68)]
+ INFO  com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Resources closed for client: /127.0.0.1
  
-2024-09-26 11:51:47 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:36)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-26 11:51:47 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:36)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-26 11:54:37 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:36)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-26 11:54:37 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:36)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-26 11:56:16 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:36)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-26 11:56:16 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:36)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-26 11:58:26 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:36)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-26 11:58:26 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:36)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-26 12:00:35 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:36)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-26 12:00:35 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:36)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
  
-2024-09-26 15:45:07 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:36)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Resetting to invalid mark
+2024-09-26 15:45:07 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:36)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Resetting to invalid mark
  
-2024-09-26 15:46:27 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:36)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Resetting to invalid mark
+2024-09-26 15:46:27 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:36)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Resetting to invalid mark
  
-2024-09-27 18:02:28 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler.run(ClientHandler.java:40)] 
- ERROR com.zeetaminds.assgn5sept.net.ftp.main.ClientHandler - Client Socket closed
+2024-09-27 18:02:28 [Thread-1] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:40)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client Socket closed
+ 
+2024-09-30 10:02:11 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:40)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Client null
+ 
+2024-09-30 10:02:25 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:40)]
+ ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Clent null
  

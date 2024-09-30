@@ -1,4 +1,4 @@
-package com.zeetaminds.assgn5sept.net.ftp.main;
+package com.zeetaminds.assgn5sept.net.ftp.nio;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

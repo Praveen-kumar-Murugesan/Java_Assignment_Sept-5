@@ -1,6 +1,6 @@
 //package com.zeetaminds.assgn5sept.ftp;
 //
-//import com.zeetaminds.assgn5sept.net.ftp.main.*;
+//import com.zeetaminds.assgn5sept.net.ftp.io.*;
 //
 //import org.junit.jupiter.api.*;
 //import org.mockito.ArgumentCaptor;
@@ -12,14 +12,14 @@
 //import static org.mockito.Mockito.*;
 //
 //class FTPServerTest {
-//    private Socket mockSocket;
-//    private InputStream is;
+//    private Socket mockSocket;io
+//    private InputStream in;
 //    private OutputStream os;
-//
+//    private BufferedInputStream is = new BufferedInputStream(InputStream);
 //    @BeforeEach
 //    void setUp() throws IOException {
 //        mockSocket = mock(Socket.class);
-//        is = mock(InputStream.class);
+//        is = (BufferedInputStream) mock(InputStream.class);
 //        os = mock(OutputStream.class);
 //        when(mockSocket.getInputStream()).thenReturn(is);
 //        when(mockSocket.getOutputStream()).thenReturn(os);

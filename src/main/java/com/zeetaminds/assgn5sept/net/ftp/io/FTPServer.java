@@ -1,4 +1,4 @@
-package com.zeetaminds.assgn5sept.net.ftp.main;
+package com.zeetaminds.assgn5sept.net.ftp.io;
 
 import java.io.IOException;
 import java.net.ServerSocket;

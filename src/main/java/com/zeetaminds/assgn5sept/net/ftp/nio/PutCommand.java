@@ -1,10 +1,11 @@
-package com.zeetaminds.assgn5sept.net.ftp.main;
+package com.zeetaminds.assgn5sept.net.ftp.nio;
 
 import java.io.*;
 
 public class PutCommand implements Command {
 
     private final String fileName;
+    private final static int DEFAULT_SIZE = 1024;
 
     public PutCommand(String token) {
         this.fileName = token;
@@ -13,15 +14,15 @@ public class PutCommand implements Command {
     @Override
     public void execute(BufferedInputStream bin, OutputStream out) throws IOException {
 
-        if (fileName.isEmpty()) {
-            writeResponse(out, "501 Syntax error in parameters or arguments.");
-        }
-
         File file = new File(fileName);
+
+        if(file.exists() && !file.canWrite()){
+            writeResponse(out, "510 Write Permission Denied");
+        }
 
         try (FileOutputStream bos = new FileOutputStream(file)) {
 
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[DEFAULT_SIZE];
             boolean stopReading = false;
             int bytesRead = 0;
             int count = 0;
@@ -38,11 +39,7 @@ public class PutCommand implements Command {
                 for (int i = 0; i < bytesRead; i++) {
                     byte currentByte = buffer[i];
                     leftoverIndex++;
-//                    if (currentByte == ':' && i + 1 < bytesRead && buffer[i + 1] == 'q') {
-//                        stopReading = true;
-//                        leftoverIndex++;
-//                        break;
-//                    }
+
                     if (count == 1 && buffer[i] == 'q') {
                         stopReading = true;
                         break;
@@ -67,7 +64,7 @@ public class PutCommand implements Command {
             if (leftoverIndex < bytesRead) {
                 bin.reset();
                 bin.skip(leftoverIndex);
-                bin.mark(1024);
+                bin.mark(DEFAULT_SIZE);
             }
             writeResponse(out, "\n222 File Uploaded Successfully.");
         } catch (IOException e) {
