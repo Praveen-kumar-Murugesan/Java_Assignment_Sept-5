@@ -39,8 +39,7 @@ public class GetCommand implements Command {
         // Open the file and transfer its content using non-blocking I/O
         try (FileChannel fileChannel = FileChannel.open(filePath, StandardOpenOption.READ)) {
             ByteBuffer fileBuffer = ByteBuffer.allocate(1024);
-            int bytesRead;
-            while ((bytesRead = fileChannel.read(fileBuffer)) != -1) {
+            while (fileChannel.read(fileBuffer) != -1) {
                 fileBuffer.flip();  // Prepare the buffer for reading
                 channel.write(fileBuffer);
                 fileBuffer.clear();  // Prepare the buffer for writing again

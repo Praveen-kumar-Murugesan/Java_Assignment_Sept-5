@@ -1119,3 +1119,54 @@ test3.txt
 2024-09-30 15:22:18 [Test worker] [BinarySerializer.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer.serialize(BinarySerializer.java:20)] 
  INFO  com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer - Serialized data has been written to the provided OutputStream.
  
+2024-09-30 18:03:47 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-09-30 18:04:13 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:37234
+ 
+2024-09-30 18:06:51 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-09-30 18:06:55 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:35862
+ 
+2024-09-30 18:07:10 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-09-30 18:07:11 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:60372
+ 
+2024-09-30 18:08:14 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-09-30 18:08:17 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:33886
+ 
+2024-09-30 18:12:32 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-09-30 18:12:37 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:54902
+ 
+2024-09-30 18:15:56 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-09-30 18:15:59 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:38468
+ 
+2024-09-30 18:18:23 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-09-30 18:18:27 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:49012
+ 
+2024-09-30 18:21:35 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-09-30 18:21:40 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:37654
+ 
+2024-09-30 18:21:49 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:34192
+ 

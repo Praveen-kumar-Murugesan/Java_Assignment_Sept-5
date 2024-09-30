@@ -20,16 +20,16 @@ public class CommandParser {
         String cmd = tokens[0].toUpperCase();
 
         switch (cmd) {
-//            case "LIST":
-//                return new ListCommand();
+            case "LIST":
+                return new ListCommand();
             case "GET":
                 if (tokens.length < 2) throw new InvalidCommandException("Missing filename for GET.");
                 return new GetCommand(tokens[1]);
-//            case "PUT":
-//                if (tokens.length < 2) throw new InvalidCommandException("Missing filename for PUT.");
-//                return new PutCommand(tokens[1]);
-//            case "PWD":
-//                return new PwdCommand();
+            case "PUT":
+                if (tokens.length < 2) throw new InvalidCommandException("Missing filename for PUT.");
+                return new PutCommand(tokens[1]);
+            case "PWD":
+                return new PwdCommand();
             case "QUIT":
                 return new QuitCommand(clientChannel);
             default:

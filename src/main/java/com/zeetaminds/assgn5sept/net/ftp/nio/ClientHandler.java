@@ -53,6 +53,8 @@ public class ClientHandler {
     }
 
     public void handleWrite(SelectionKey key) {
-        // This would handle writing data back to the client if needed
+        // Implement response writing logic here
+        // After writing the response, reset interest ops to OP_READ
+        key.interestOps(SelectionKey.OP_READ);
     }
 }
