@@ -14,7 +14,7 @@ public class GetCommand implements Command {
     @Override
     public void execute(BufferedInputStream in, OutputStream out) throws IOException {
         File file = new File(fileName);
-        if (!file.exists() && file.isDirectory()) {
+        if (!file.exists() || file.isDirectory()) {
             writeResponse(out, "550 File not found.");
             return;
         }

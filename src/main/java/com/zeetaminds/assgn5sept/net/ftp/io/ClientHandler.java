@@ -35,7 +35,7 @@ public class ClientHandler extends Thread {
             //noinspection InfiniteLoopStatement
             while (true) {
                 try {
-                    Command cmd = commandParser.readCommand(bin, clientSocket);
+                    Command cmd = commandParser.parseCommand(bin, clientSocket);
                     if (cmd != null) {
                         cmd.execute(bin, out);
                     }

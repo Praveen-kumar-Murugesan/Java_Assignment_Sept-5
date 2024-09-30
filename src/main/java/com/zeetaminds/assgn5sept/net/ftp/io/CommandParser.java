@@ -19,7 +19,7 @@ public class CommandParser {
         return CMD;
     }
 
-    public Command readCommand(BufferedInputStream bin, Socket clientSocket) throws IOException, InvalidCommandException {
+    public Command parseCommand(BufferedInputStream bin, Socket clientSocket) throws IOException, InvalidCommandException {
         byte[] buffer = new byte[DEFAULT_SIZE];
         int bytesRead;
 
@@ -38,11 +38,11 @@ public class CommandParser {
             bin.skip(len + 1);
             bin.mark(DEFAULT_SIZE);
 
-            return (parseCommand(command, clientSocket));
+            return (_parseCommand(command, clientSocket));
         }
     }
 
-    private Command parseCommand(String command, Socket clientSocket) throws InvalidCommandException {
+    private Command _parseCommand(String command, Socket clientSocket) throws InvalidCommandException {
         String[] tokens = command.split(" ");
         String cmd = tokens[0].toUpperCase();
 

@@ -1107,3 +1107,15 @@ test3.txt
 2024-09-30 12:39:45 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.io.FTPServer.main(FTPServer.java:24)] 
  INFO  com.zeetaminds.assgn5sept.net.ftp.io.FTPServer - Error in Socket: Address already in use (Bind failed)
  
+2024-09-30 15:16:57 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-30 15:16:57 [Test worker] [BinarySerializer.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer.serialize(BinarySerializer.java:20)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-30 15:22:18 [Test worker] [SerializationAndDeserialization.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization.serialize(SerializationAndDeserialization.java:19)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.SerializationAndDeserialization - Serialized data has been written to the provided OutputStream.
+ 
+2024-09-30 15:22:18 [Test worker] [BinarySerializer.java] [serialize] [com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer.serialize(BinarySerializer.java:20)] 
+ INFO  com.zeetaminds.assgn5sept.fileio.serialize.BinarySerializer - Serialized data has been written to the provided OutputStream.
+ 
