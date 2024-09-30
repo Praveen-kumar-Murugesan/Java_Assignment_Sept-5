@@ -16,15 +16,11 @@ public class PutCommand implements Command {
 
         File file = new File(fileName);
 
-        if(file.exists() && !file.canWrite()){
-            writeResponse(out, "510 Write Permission Denied");
-        }
-
         try (FileOutputStream bos = new FileOutputStream(file)) {
 
             byte[] buffer = new byte[DEFAULT_SIZE];
             boolean stopReading = false;
-            int bytesRead = 0;
+            int bytesRead;
             int count = 0;
             int leftoverIndex = 0;
 
@@ -45,7 +41,7 @@ public class PutCommand implements Command {
                         break;
                     }
                     if (currentByte == ':') {
-                        count = 1;
+                        count++;
                         while (i + 1 < bytesRead && buffer[i + 1] == ':') {
                             leftoverIndex++;
                             count++;
@@ -61,11 +57,10 @@ public class PutCommand implements Command {
                 }
                 bos.flush();
             }
-            if (leftoverIndex < bytesRead) {
                 bin.reset();
                 bin.skip(leftoverIndex);
                 bin.mark(DEFAULT_SIZE);
-            }
+//            }
             writeResponse(out, "\n222 File Uploaded Successfully.");
         } catch (IOException e) {
             writeResponse(out, "552 Could not create file.");

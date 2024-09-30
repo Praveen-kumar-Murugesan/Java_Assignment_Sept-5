@@ -6,9 +6,10 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 public class CommandParser {
-
+    private static final int DEFAULT_SIZE = 1024;
     private static final CommandParser CMD = new CommandParser();
 
     private CommandParser() {
@@ -18,15 +19,8 @@ public class CommandParser {
         return CMD;
     }
 
-    private int getIndexOfCR(byte[] buff, int len) {
-        for (int i = 0; i < len; i++) {
-            if (buff[i] == '\n') return i;
-        }
-        return -1;
-    }
-
     public Command readCommand(BufferedInputStream bin, Socket clientSocket) throws IOException, InvalidCommandException {
-        byte[] buffer = new byte[10];
+        byte[] buffer = new byte[DEFAULT_SIZE];
         int bytesRead;
 
         //noinspection WhileCanBeDoWhile
@@ -42,18 +36,9 @@ public class CommandParser {
 
             bin.reset();
             bin.skip(len + 1);
-            bin.mark(10);
+            bin.mark(DEFAULT_SIZE);
 
             return (parseCommand(command, clientSocket));
-        }
-    }
-
-    private void InvalidCommand(String[] tokens) throws InvalidCommandException {
-        if (tokens.length < 2) {
-            throw new InvalidCommandException("Syntax Error");
-        }
-        if (tokens[1].isEmpty() || tokens[1].equals(" ")) {
-            throw new InvalidCommandException("Invalid Filename");
         }
     }
 
@@ -61,19 +46,19 @@ public class CommandParser {
         String[] tokens = command.split(" ");
         String cmd = tokens[0].toUpperCase();
 
-        Command cmdHandler = null;
+        Command cmdHandler;
 
         switch (cmd) {
             case "LIST":
                 cmdHandler = new ListCommand();
                 break;
             case "GET":
-                InvalidCommand(tokens);
-                    cmdHandler = new GetCommand(tokens[1]);
+                validateCommand(tokens);
+                cmdHandler = new GetCommand(tokens[1]);
                 break;
             case "PUT":
-                InvalidCommand(tokens);
-                    cmdHandler = new PutCommand(tokens[1]);
+                validateCommand(tokens);
+                cmdHandler = new PutCommand(tokens[1]);
                 break;
             case "PWD":
                 cmdHandler = new PwdCommand();
@@ -85,5 +70,21 @@ public class CommandParser {
                 throw new InvalidCommandException(command);
         }
         return cmdHandler;
+    }
+
+    private int getIndexOfCR(byte[] buff, int len) {
+        for (int i = 0; i < len; i++) {
+            if (buff[i] == '\n') return i;
+        }
+        return -1;
+    }
+
+    private void validateCommand(String[] tokens) throws InvalidCommandException {
+        if (tokens.length < 2) {
+            throw new InvalidCommandException("Syntax Error");
+        }
+        if (tokens[1].isEmpty() || tokens[1].equals(" ")) {
+            throw new InvalidCommandException("Invalid Filename");
+        }
     }
 }

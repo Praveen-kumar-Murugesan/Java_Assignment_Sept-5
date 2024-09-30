@@ -1,24 +1,20 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
+import java.nio.channels.WritableByteChannel;
 
 public class QuitCommand implements Command {
-    private final Socket clientSocket;
+    private final SocketChannel clientChannel;
 
-    public QuitCommand(Socket clientSocket){
-        this.clientSocket = clientSocket;
+    public QuitCommand(SocketChannel clientChannel) {
+        this.clientChannel = clientChannel;
     }
 
     @Override
-    public void execute(BufferedInputStream in, OutputStream out) throws IOException {
-
-        writeResponse(out, "221 Goodbye.");
-
-        if(clientSocket!=null && !clientSocket.isClosed()){
-            clientSocket.close();
-        }
+    public void execute(ByteBuffer buffer, WritableByteChannel channel) throws IOException {
+        writeResponse(clientChannel, "221 Goodbye.");
+        clientChannel.close();
     }
 }

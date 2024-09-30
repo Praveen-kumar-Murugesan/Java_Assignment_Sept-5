@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 
 public class GetCommand implements Command {
+
     private final String fileName;
 
     public GetCommand(String token) {
@@ -15,11 +16,6 @@ public class GetCommand implements Command {
         File file = new File(fileName);
         if (!file.exists() && file.isDirectory()) {
             writeResponse(out, "550 File not found.");
-            return;
-        }
-
-        if(!file.canRead()){
-            writeResponse(out, "505 Read Permission Denied");
             return;
         }
 

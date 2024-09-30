@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 public class FTPServer {
     private static final Logger LOG = LogManager.getLogger(FTPServer.class);
-    private static final int PORT = 8888;
+    private static final int PORT = 8080;
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {

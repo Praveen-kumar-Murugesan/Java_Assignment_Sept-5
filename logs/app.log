@@ -1092,3 +1092,18 @@ test3.txt
 2024-09-30 10:02:25 [Thread-0] [ClientHandler.java] [run] [com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler.run(ClientHandler.java:40)]
  ERROR com.zeetaminds.assgn5sept.net.ftp.io.ClientHandler - Clent null
  
+2024-09-30 12:15:29 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:53)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Error in FTP Server: Address already in use
+ 
+2024-09-30 12:15:46 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8080
+ 
+2024-09-30 12:20:23 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-09-30 12:20:36 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:44324
+ 
+2024-09-30 12:39:45 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.io.FTPServer.main(FTPServer.java:24)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.io.FTPServer - Error in Socket: Address already in use (Bind failed)
+ 
