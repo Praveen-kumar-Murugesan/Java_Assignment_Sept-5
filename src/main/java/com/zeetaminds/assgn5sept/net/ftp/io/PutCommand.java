@@ -62,6 +62,7 @@ public class PutCommand implements Command {
             }
 
             if (buffer[i] == ':') {
+
                 if(count==1 && prev == ':'){
                     bos.write(':');
                     i++;
@@ -69,12 +70,15 @@ public class PutCommand implements Command {
                 }else {
                     count=1;
                 }
+
                 while (i + 1 < bytesRead && buffer[i + 1] == ':') {
                     index++;
+
                     if (++count == 2) {
                         bos.write(':');
                         count = 0;
                     }
+
                     i++;
                 }
                 continue;

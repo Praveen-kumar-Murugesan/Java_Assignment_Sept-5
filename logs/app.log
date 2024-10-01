@@ -1170,3 +1170,12 @@ test3.txt
 2024-09-30 18:21:49 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
  INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:34192
  
+2024-10-01 09:51:44 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
+2024-10-01 09:51:55 [main] [FTPServer.java] [handleAccept] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.handleAccept(FTPServer.java:51)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected: /127.0.0.1:51294
+ 
+2024-10-01 10:58:14 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
+ 
