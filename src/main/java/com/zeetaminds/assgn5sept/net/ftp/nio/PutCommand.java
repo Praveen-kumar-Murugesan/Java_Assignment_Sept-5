@@ -1,59 +1,95 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.WritableByteChannel;
+import java.io.*;
 
 public class PutCommand implements Command {
 
     private final static int DEFAULT_SIZE = 1024;
     private final String fileName;
+    private byte prev;
+    private int count = 0;
+    private int index = 0;
 
     public PutCommand(String token) {
         this.fileName = token;
     }
 
     @Override
-    public void execute(ByteBuffer buffer, WritableByteChannel channel) throws IOException {
+    public void execute(BufferedInputStream bin, OutputStream out) throws IOException {
 
         File file = new File(fileName);
 
-        if (file.exists() && !file.canWrite()) {
-            writeResponse(channel, "510 Write Permission Denied");
-            return;
-        }
+        try (FileOutputStream bos = new FileOutputStream(file)) {
 
-        try (FileOutputStream fos = new FileOutputStream(file)) {
-
-            byte[] byteBuffer = new byte[DEFAULT_SIZE];
+            byte[] buffer = new byte[DEFAULT_SIZE];
             boolean stopReading = false;
-            int bytesRead = 0;
+            int bytesRead;
+            int readIndex=0;
 
-            while (!stopReading && buffer.hasRemaining()) {
-                bytesRead = Math.min(buffer.remaining(), DEFAULT_SIZE);
-                buffer.get(byteBuffer, 0, bytesRead); // Read from ByteBuffer
+            bin.reset();
 
-                for (int i = 0; i < bytesRead; i++) {
-                    byte currentByte = byteBuffer[i];
-
-                    // Check for stopping condition (e.g., ':q')
-                    if (byteBuffer[i] == ':' && i + 1 < bytesRead && byteBuffer[i + 1] == 'q') {
-                        stopReading = true;
-                        break;
-                    }
-
-                    // Write the byte to the file
-                    fos.write(currentByte);
+            while (!stopReading && (bytesRead = bin.read(buffer)) != -1) {
+                    /*
+                    read min 2 bytes
+                    if file end. -> reset and mark, close fout
+                    else continue reading
+                     */
+                readIndex = getIndex(buffer, bytesRead, bos);
+                if(readIndex < bytesRead){
+                    stopReading = true;
                 }
-
-                fos.flush();
             }
 
-            writeResponse(channel, "222 File Uploaded Successfully.");
+            bin.reset();
+            bin.skip(readIndex);
+            bin.mark(DEFAULT_SIZE);
+
+            writeResponse(out, "\n222 File Uploaded Successfully.");
+
         } catch (IOException e) {
-            writeResponse(channel, "552 Could not create file.");
+            writeResponse(out, "552 Could not create file.");
         }
+
     }
+
+    private int getIndex(byte[] buffer, int bytesRead, FileOutputStream bos) throws IOException {
+
+        for (int i = 0; i < bytesRead; i++) {
+            index++;
+
+            if (count == 1 && buffer[i] == 'q') {
+                return index;
+            }
+
+            if (buffer[i] == ':') {
+
+                if(count==1 && prev == ':'){
+                    bos.write(':');
+                    i++;
+                    count=0;
+                }else {
+                    count=1;
+                }
+
+                while (i + 1 < bytesRead && buffer[i + 1] == ':') {
+                    index++;
+
+                    if (++count == 2) {
+                        bos.write(':');
+                        count = 0;
+                    }
+
+                    i++;
+                }
+                continue;
+            }
+
+            bos.write(buffer[i]);
+            prev = buffer[i];
+        }
+
+        bos.flush();
+        return index;
+    }
+
 }

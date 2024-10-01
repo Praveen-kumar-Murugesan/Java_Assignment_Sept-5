@@ -1,3 +1,2 @@
-put tes.txt
-testing
-:ewfe
+test
+:Q:q:::

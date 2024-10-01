@@ -1,55 +1,27 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.channels.*;
-import java.util.Iterator;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 public class FTPServer {
     private static final Logger LOG = LogManager.getLogger(FTPServer.class);
-    private static final int PORT = 8888;
+    private static final int PORT = 8080;
 
     public static void main(String[] args) {
-        try (Selector selector = Selector.open();
-             ServerSocketChannel serverSocketChannel = ServerSocketChannel.open()) {
-
-            serverSocketChannel.bind(new InetSocketAddress(PORT));
-            serverSocketChannel.configureBlocking(false);  // Non-blocking mode
-            serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-
-            LOG.info("FTP Server started on port {}", PORT);
-
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            System.out.println("FTP Server started on port " + PORT);
+            //noinspection InfiniteLoopStatement
             while (true) {
-                selector.select();  // Blocking until at least one channel is ready
-                Iterator<SelectionKey> keyIterator = selector.selectedKeys().iterator();
-                while (keyIterator.hasNext()) {
-                    SelectionKey key = keyIterator.next();
-                    keyIterator.remove();
-
-                    if (key.isAcceptable()) {
-                        handleAccept(serverSocketChannel, selector);
-                    } else if (key.isReadable()) {
-                        ClientHandler clientHandler = (ClientHandler) key.attachment();
-                        clientHandler.handleRead(key);
-                    } else if (key.isWritable()) {
-                        ClientHandler clientHandler = (ClientHandler) key.attachment();
-                        clientHandler.handleWrite(key);
-                    }
-                }
+                Socket clientSocket = serverSocket.accept();
+                System.out.println("Client connected...");
+                new ClientHandler(clientSocket).start();
             }
         } catch (IOException e) {
-            LOG.error("Error in FTPServer: {}", e.getMessage());
+            LOG.info("Error in Socket: {}", e.getMessage());
         }
-    }
-
-    private static void handleAccept(ServerSocketChannel serverSocketChannel, Selector selector) throws IOException {
-        SocketChannel clientChannel = serverSocketChannel.accept();
-        clientChannel.configureBlocking(false);  // Non-blocking mode
-        LOG.info("Client connected: {}", clientChannel.getRemoteAddress());
-        ClientHandler clientHandler = new ClientHandler(clientChannel);
-        clientChannel.register(selector, SelectionKey.OP_READ, clientHandler);
     }
 }

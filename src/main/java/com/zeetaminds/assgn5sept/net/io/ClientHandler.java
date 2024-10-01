@@ -9,7 +9,8 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
 public class ClientHandler {
-    private StringBuilder accumulatedCommand = new StringBuilder();
+
+    private final StringBuilder accumulatedCommand = new StringBuilder();
     private static final int BUFFER_SIZE = 1024;
     private final SocketChannel clientChannel;
     private final CommandParser commandParser;
@@ -62,7 +63,6 @@ public class ClientHandler {
 
         } catch (IOException e) {
             accumulatedCommand.setLength(0);  // Reset on exception
-            e.printStackTrace();
         }
     }
 

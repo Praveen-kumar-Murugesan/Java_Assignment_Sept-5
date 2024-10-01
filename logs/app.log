@@ -1179,3 +1179,6 @@ test3.txt
 2024-10-01 10:58:14 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
  INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8888
  
+2024-10-01 11:42:32 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:24)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Error in Socket: Address already in use (Bind failed)
+ 

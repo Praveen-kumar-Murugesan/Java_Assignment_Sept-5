@@ -4,57 +4,55 @@ import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.net.SocketException;
-import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.SocketChannel;
-import java.nio.channels.WritableByteChannel;
+import java.nio.charset.StandardCharsets;
 
-public class ClientHandler {
+public class ClientHandler extends Thread {
 
     private static final Logger LOG = LogManager.getLogger(ClientHandler.class);
 
-    private final SocketChannel clientChannel;
+    private final Socket clientSocket;
     private final CommandParser commandParser;
-    private final ByteBuffer buffer = ByteBuffer.allocate(1024);
 
-    public ClientHandler(SocketChannel clientChannel) {
-        this.clientChannel = clientChannel;
+    public ClientHandler(Socket clientSocket) {
+        this.clientSocket = clientSocket;
         this.commandParser = CommandParser.getInstance();
     }
 
-    public void handleRead(SelectionKey key) {
-        try {
-            buffer.clear();
-            int bytesRead = clientChannel.read(buffer);
+    @Override
+    public void run() {
+        try (BufferedInputStream bin = new BufferedInputStream(clientSocket.getInputStream());
+             OutputStream out = clientSocket.getOutputStream()) {
 
-            if (bytesRead == -1) {
-                clientChannel.close();
-                key.cancel();
-                System.out.println("Client disconnected.");
-                return;
-            }
+            out.write("220 FTP Server ready\n".getBytes(StandardCharsets.UTF_8));
 
-            buffer.flip();
-            String commandLine = new String(buffer.array(), 0, buffer.limit());
-            Command cmd = commandParser.readCommand(commandLine, clientChannel);
-            if (cmd != null) {
-                cmd.execute(buffer, clientChannel);
-                key.interestOps(SelectionKey.OP_WRITE);
+            bin.mark(1024);
+
+            //noinspection InfiniteLoopStatement
+            while (true) {
+                try {
+                    Command cmd = commandParser.parseCommand(bin, clientSocket);
+                    if (cmd != null) {
+                        cmd.execute(bin, out);
+                    }
+                } catch (InvalidCommandException | SocketException e) {
+                    out.write(("500 " + e.getMessage() + "\r\n").getBytes(StandardCharsets.UTF_8));
+                }
             }
-        } catch (IOException | InvalidCommandException e) {
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
             try {
-                clientChannel.write(ByteBuffer.wrap(("500 " + e.getMessage() + "\r\n").getBytes()));
-            } catch (IOException ex) {
-                LOG.error("Error writing response: {}", ex.getMessage());
+                if (!clientSocket.isClosed()) {
+                    clientSocket.close();
+                }
+            } catch (IOException e) {
+                LOG.error("Error in Socket: {}", e.getMessage());
             }
         }
-    }
-
-    public void handleWrite(SelectionKey key) {
-        // Implement response writing logic here
-        // After writing the response, reset interest ops to OP_READ
-        key.interestOps(SelectionKey.OP_READ);
     }
 }

@@ -6,11 +6,12 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 
 public class CommandParser {
-    private static final int DEFAULT_SIZE = 1024;
+    private static final int DEFAULT_SIZE = 10;
     private static final CommandParser CMD = new CommandParser();
+    private static int commandLength = 0;
+    byte[] buffer = new byte[DEFAULT_SIZE];
 
     private CommandParser() {
     }
@@ -20,25 +21,32 @@ public class CommandParser {
     }
 
     public Command parseCommand(BufferedInputStream bin, Socket clientSocket) throws IOException, InvalidCommandException {
-        byte[] buffer = new byte[DEFAULT_SIZE];
+        StringBuilder commandBuilder = new StringBuilder();
+        commandLength = 0;
         int bytesRead;
+        String command = "";
 
-        //noinspection WhileCanBeDoWhile
         while (true) {
             bytesRead = bin.read(buffer);
+            if (bytesRead == -1) {
+                throw new IOException("Connection closed");
+            }
 
-            if (bytesRead == -1) throw new IOException("Connection closed");
+            commandBuilder.append(new String(buffer, 0, bytesRead, StandardCharsets.UTF_8));
 
             int len = getIndexOfCR(buffer, bytesRead);
-            if (len == -1) continue;
+            if (len != -1) {
+                command = command + commandBuilder.substring(0, commandLength).trim();
 
-            String command = new String(buffer, 0, len, StandardCharsets.UTF_8);
+                bin.reset();
+                //noinspection ResultOfMethodCallIgnored
+                bin.skip(len + 1);
+                bin.mark(DEFAULT_SIZE);
 
-            bin.reset();
-            bin.skip(len + 1);
-            bin.mark(DEFAULT_SIZE);
-
-            return (_parseCommand(command, clientSocket));
+                return _parseCommand(command, clientSocket);
+            } else {
+                bin.mark(DEFAULT_SIZE);
+            }
         }
     }
 
@@ -75,6 +83,9 @@ public class CommandParser {
     private int getIndexOfCR(byte[] buff, int len) {
         for (int i = 0; i < len; i++) {
             if (buff[i] == '\n') return i;
+            char c = (char) buff[i];
+            commandLength++;
+            System.out.println(c);
         }
         return -1;
     }

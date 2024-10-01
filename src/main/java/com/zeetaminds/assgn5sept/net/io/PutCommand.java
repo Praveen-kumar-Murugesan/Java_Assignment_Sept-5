@@ -59,7 +59,7 @@ public class PutCommand implements Command {
             if (count == 1 && buffer[i] == 'q') {
                 return index;
             }
-
+            char c = (char) buffer[i];
             if (buffer[i] == ':') {
                 if (count == 1 && prev == ':') {
                     fos.write(':');

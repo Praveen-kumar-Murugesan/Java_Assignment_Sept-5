@@ -4,7 +4,7 @@ import java.io.*;
 
 public class PutCommand implements Command {
 
-    private final static int DEFAULT_SIZE = 1024;
+    private final static int DEFAULT_SIZE = 10;
     private final String fileName;
     private byte prev;
     private int count = 0;
@@ -24,19 +24,21 @@ public class PutCommand implements Command {
             byte[] buffer = new byte[DEFAULT_SIZE];
             boolean stopReading = false;
             int bytesRead;
-            int readIndex=0;
+            int readIndex = 0;
 
-            bin.reset();
-
-            while (!stopReading && (bytesRead = bin.read(buffer)) != -1) {
-                    /*
-                    read min 2 bytes
+                /*  read min 2 bytes
                     if file end. -> reset and mark, close fout
                     else continue reading
                      */
-                readIndex = getIndex(buffer, bytesRead, bos);
-                if(readIndex < bytesRead){
+
+            while (!stopReading && (bytesRead = bin.read(buffer)) != -1) {
+                readIndex = writeToFile(buffer, bytesRead, bos);
+
+                if (readIndex < bytesRead) {
                     stopReading = true;
+                } else {
+                    bin.mark(DEFAULT_SIZE);
+                    index = 0;
                 }
             }
 
@@ -52,42 +54,38 @@ public class PutCommand implements Command {
 
     }
 
-    private int getIndex(byte[] buffer, int bytesRead, FileOutputStream bos) throws IOException {
+    private int writeToFile(byte[] buffer, int bytesRead, FileOutputStream bos) throws IOException {
 
         for (int i = 0; i < bytesRead; i++) {
             index++;
 
-            if (count == 1 && buffer[i] == 'q') {
+            if (prev == ':' && count == 1 && buffer[i] == 'q') {
                 return index;
             }
 
             if (buffer[i] == ':') {
-
-                if(count==1 && prev == ':'){
+                if (count == 1 && prev == ':') {
                     bos.write(':');
-                    i++;
-                    count=0;
-                }else {
-                    count=1;
+                    count = 0;
+                    continue;
+                } else {
+                    count = 1;
                 }
 
                 while (i + 1 < bytesRead && buffer[i + 1] == ':') {
                     index++;
-
                     if (++count == 2) {
                         bos.write(':');
                         count = 0;
                     }
-
                     i++;
                 }
+                prev = buffer[i];
                 continue;
             }
-
             bos.write(buffer[i]);
             prev = buffer[i];
         }
-
         bos.flush();
         return index;
     }
