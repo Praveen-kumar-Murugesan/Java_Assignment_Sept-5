@@ -59,19 +59,23 @@ public class PutCommand implements Command {
         for (int i = 0; i < bytesRead; i++) {
             index++;
 
+            //to check the end condition
             if (prev == ':' && count == 1 && buffer[i] == 'q') {
                 return index;
             }
 
+            //to check previous buffer ends with :
             if (buffer[i] == ':') {
                 if (count == 1 && prev == ':') {
                     bos.write(':');
+                    prev = buffer[i];
                     count = 0;
                     continue;
                 } else {
                     count = 1;
                 }
 
+                //count the number of colon
                 while (i + 1 < bytesRead && buffer[i + 1] == ':') {
                     index++;
                     if (++count == 2) {
