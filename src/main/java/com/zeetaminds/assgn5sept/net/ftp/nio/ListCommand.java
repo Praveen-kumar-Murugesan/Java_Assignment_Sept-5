@@ -4,10 +4,11 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.channels.SocketChannel;
 
 public class ListCommand implements Command {
     @Override
-    public void execute(BufferedInputStream bin, OutputStream out) throws IOException {
+    public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
 
         File dir = new File(".");
         File[] files = dir.listFiles();

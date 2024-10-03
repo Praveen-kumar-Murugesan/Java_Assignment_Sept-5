@@ -1,58 +1,44 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
-import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.net.Socket;
-import java.net.SocketException;
-import java.nio.charset.StandardCharsets;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
 
-public class ClientHandler extends Thread {
+public class ClientHandler {
 
     private static final Logger LOG = LogManager.getLogger(ClientHandler.class);
-
-    private final Socket clientSocket;
+    private final SocketChannel clientChannel;
     private final CommandParser commandParser;
+    private final BufferManager bufferManager;
 
-    public ClientHandler(Socket clientSocket) {
-        this.clientSocket = clientSocket;
+    public ClientHandler(SocketChannel clientChannel, BufferManager bufferManager) {
+        this.clientChannel = clientChannel;
         this.commandParser = CommandParser.getInstance();
+        this.bufferManager = bufferManager;
     }
 
-    @Override
-    public void run() {
-        try (BufferedInputStream bin = new BufferedInputStream(clientSocket.getInputStream());
-             OutputStream out = clientSocket.getOutputStream()) {
+    public void handle() throws IOException {
+        ByteBuffer buffer = bufferManager.getBuffer();
+        buffer.clear();
 
-            out.write("220 FTP Server ready\n".getBytes(StandardCharsets.UTF_8));
+        int bytesRead = clientChannel.read(buffer);
+        if (bytesRead == -1) {
+            clientChannel.close();
+            return;
+        }
 
-            bin.mark(1024);
+        buffer.flip();
 
-            //noinspection InfiniteLoopStatement
-            while (true) {
-                try {
-                    Command cmd = commandParser.parseCommand(bin, clientSocket);
-                    if (cmd != null) {
-                        cmd.execute(bin, out);
-                    }
-                } catch (InvalidCommandException | SocketException e) {
-                    out.write(("500 " + e.getMessage() + "\r\n").getBytes(StandardCharsets.UTF_8));
-                }
+        try {
+            Command cmd = commandParser.parseCommand(bufferManager, clientChannel);
+            if (cmd != null) {
+                cmd.execute(bufferManager, clientChannel);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                if (!clientSocket.isClosed()) {
-                    clientSocket.close();
-                }
-            } catch (IOException e) {
-                LOG.error("Error in Socket: {}", e.getMessage());
-            }
+        } catch (Exception e) {
+            LOG.error("Error handling command: {}", e.getMessage());
         }
     }
 }

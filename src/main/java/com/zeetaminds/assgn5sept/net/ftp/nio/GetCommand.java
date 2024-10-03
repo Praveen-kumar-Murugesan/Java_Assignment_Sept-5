@@ -1,6 +1,8 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
 import java.nio.file.Files;
 
 public class GetCommand implements Command {
@@ -12,7 +14,7 @@ public class GetCommand implements Command {
     }
 
     @Override
-    public void execute(BufferedInputStream in, OutputStream out) throws IOException {
+    public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
         File file = new File(fileName);
         if (!file.exists() || file.isDirectory()) {
             writeResponse(out, "550 File not found.");
@@ -23,10 +25,12 @@ public class GetCommand implements Command {
         writeResponse(out, ("File size: " + fileSize + " bytes"));
 
         try (FileInputStream fileReader = new FileInputStream(file)) {
-            byte[] buffer = new byte[1024];
+            ByteBuffer buffer = ByteBuffer.allocate(1024);
             int bytesRead;
-            while ((bytesRead = fileReader.read(buffer)) != -1) {
-                out.write(buffer, 0, bytesRead);
+            while ((bytesRead = fileReader.read(buffer.array())) != -1) {
+                buffer.limit(bytesRead);
+                out.write(buffer);
+                buffer.clear();
             }
         }
         writeResponse(out, "\n225 File Downloaded Successfully.");

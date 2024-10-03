@@ -4,13 +4,19 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
 
 public class PwdCommand implements Command {
     @Override
-    public void execute(BufferedInputStream in, OutputStream out) throws IOException {
+    public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
 
         String currentDir = new File(".").getAbsolutePath();
-
-        writeResponse(out, ("100 \"" + currentDir + "\" is the current directory."));
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        buffer.clear();
+        int bytesRead = out.read(buffer);
+        buffer.flip();
+        String input = new String(buffer.array(), 0, buffer.limit());
+        writeResponse(out, ("100 \"" + currentDir + "\" is the current directory." + input));
     }
 }

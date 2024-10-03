@@ -1,6 +1,10 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.SocketChannel;
+import java.nio.file.StandardOpenOption;
 
 public class PutCommand implements Command {
 
@@ -15,36 +19,32 @@ public class PutCommand implements Command {
     }
 
     @Override
-    public void execute(BufferedInputStream bin, OutputStream out) throws IOException {
+    public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
 
         File file = new File(fileName);
 
-        try (FileOutputStream bos = new FileOutputStream(file)) {
+        try (FileChannel fileChannel = FileChannel.open(file.toPath(),
+                StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
 
-            byte[] buffer = new byte[DEFAULT_SIZE];
+            ByteBuffer buffer = ByteBuffer.allocate(DEFAULT_SIZE);
             boolean stopReading = false;
             int bytesRead;
             int readIndex = 0;
 
-                /*  read min 2 bytes
-                    if file end. -> reset and mark, close fout
-                    else continue reading
-                     */
+            while (!stopReading && (bytesRead = out.read(buffer)) != -1) {
+                if (bytesRead == 0) {
+                    continue; // No data read, continue reading
+                }
 
-            while (!stopReading && (bytesRead = bin.read(buffer)) != -1) {
-                readIndex = writeToFile(buffer, bytesRead, bos);
+                // Prepare buffer for reading (flip changes from writing mode to reading mode)
+                buffer.flip();
+                readIndex = writeToFile(buffer, fileChannel);
 
                 if (readIndex < bytesRead) {
                     stopReading = true;
-                } else {
-                    bin.mark(DEFAULT_SIZE);
-                    index = 0;
                 }
+                buffer.compact();
             }
-
-            bin.reset();
-            bin.skip(readIndex);
-            bin.mark(DEFAULT_SIZE);
 
             writeResponse(out, "\n222 File Uploaded Successfully.");
 
@@ -54,43 +54,48 @@ public class PutCommand implements Command {
 
     }
 
-    private int writeToFile(byte[] buffer, int bytesRead, FileOutputStream bos) throws IOException {
+    private int writeToFile(ByteBuffer buffer, FileChannel fileChannel) throws IOException {
 
-        for (int i = 0; i < bytesRead; i++) {
+        while (buffer.hasRemaining()) {
+            byte currentByte = buffer.get();
             index++;
 
-            //to check the end condition
-            if (prev == ':' && count == 1 && buffer[i] == 'q') {
-                return index;
+            // Check the end condition (":q" marker)
+            if (prev == ':' && count == 1 && currentByte == 'q') {
+                return index - 1; // Stop writing here
             }
 
-            //to check previous buffer ends with :
-            if (buffer[i] == ':') {
+            // Handle colon ":" count logic for "::" sequence
+            if (currentByte == ':') {
                 if (count == 1 && prev == ':') {
-                    bos.write(':');
-                    prev = buffer[i];
+                    fileChannel.write(ByteBuffer.wrap(new byte[]{':'})); // Write one colon
+                    prev = currentByte;
                     count = 0;
                     continue;
                 } else {
                     count = 1;
                 }
 
-                //count the number of colon
-                while (i + 1 < bytesRead && buffer[i + 1] == ':') {
+                // Count consecutive colons "::"
+                while (buffer.hasRemaining() && buffer.get(buffer.position()) == ':') {
                     index++;
                     if (++count == 2) {
-                        bos.write(':');
+                        fileChannel.write(ByteBuffer.wrap(new byte[]{':'})); // Write "::"
                         count = 0;
                     }
-                    i++;
+                    buffer.get();                                                                           // Move position forward
                 }
-                prev = buffer[i];
+
+                prev = currentByte;
                 continue;
             }
-            bos.write(buffer[i]);
-            prev = buffer[i];
+
+            // Write current byte to file
+            fileChannel.write(ByteBuffer.wrap(new byte[]{currentByte}));
+            prev = currentByte;
         }
-        bos.flush();
+
+        fileChannel.force(true); // Force writing to disk
         return index;
     }
 
