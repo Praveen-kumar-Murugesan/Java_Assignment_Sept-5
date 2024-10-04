@@ -27,9 +27,8 @@ public class CommandParser {
         commandLength = 0;
         String command = "";
 
-
         ByteBuffer byteBuffer = bufferManager.getBuffer();
-//        byteBuffer.flip();
+        int previousPosition = byteBuffer.position();
 
         while (byteBuffer.hasRemaining()) {
             int bytesToRead = Math.min(byteBuffer.remaining(), buffer.length);
@@ -37,13 +36,16 @@ public class CommandParser {
 
             commandBuilder.append(new String(buffer, 0, bytesToRead, StandardCharsets.UTF_8));
 
-            int len = getIndexOfCR(buffer, bytesToRead);
+            int len;
+            while ((len = getIndexOfCR(buffer, bytesToRead)) != -1) {
+                command = commandBuilder.substring(0, commandLength).trim();
+                int newPosition = previousPosition + len + 1; // +1 to skip the '\n'
+                byteBuffer.position(newPosition);  // Set the buffer position to after the '\n'
 
-            if (len != -1) {
-                command = command + commandBuilder.substring(0, commandLength).trim();
-                byteBuffer.position(len + 1);  // Move position to after '\n'
-                byteBuffer.compact();  // Prepare buffer for next read
-                return _parseCommand(command, clientChannel);
+                previousPosition = byteBuffer.position();  // Store the new position for the next iteration
+
+                commandLength = 0;  // Reset length for the next command
+                return _parseCommand(command, clientChannel);  // Return command for execution
             }
         }
         byteBuffer.compact();  // Prepare buffer for next read

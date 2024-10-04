@@ -1,5 +1,6 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
+import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,13 +33,19 @@ public class ClientHandler {
 
         buffer.flip();
 
-        try {
-            Command cmd = commandParser.parseCommand(bufferManager, clientChannel);
-            if (cmd != null) {
-                cmd.execute(bufferManager, clientChannel);
+        // Continue processing commands from the buffer
+        while (buffer.hasRemaining()) {
+            try {
+                Command cmd = commandParser.parseCommand(bufferManager, clientChannel);
+                if (cmd != null) {
+                    cmd.execute(bufferManager, clientChannel); // Execute the command
+                } else {
+                    break;  // No more commands to process
+                }
+            } catch (InvalidCommandException e) {
+                LOG.error("Error handling command: {}", e.getMessage());
+                break;  // Break on any error
             }
-        } catch (Exception e) {
-            LOG.error("Error handling command: {}", e.getMessage());
         }
     }
 }

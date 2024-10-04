@@ -1257,3 +1257,111 @@ test3.txt
 2024-10-03 17:35:25 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:44)] 
  ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
  
+2024-10-04 15:03:55 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:41)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: [A
+ 
+2024-10-04 15:33:18 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:41)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: lis
+ 
+2024-10-04 16:28:28 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:28:30 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:28:31 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:29:27 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:37:58 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:01 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:08 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:09 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:09 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:10 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:14 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:15 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:16 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:18 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:38:22 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: quir
+ 
+2024-10-04 16:38:36 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:40:06 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:40:12 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 16:47:11 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:30 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:33 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:34 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:35 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:36 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:36 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:36 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:43 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:44 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:45 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:45 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:45 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:11:45 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:45)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: 
+ 
+2024-10-04 17:37:57 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:46)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: test
+ 
+2024-10-04 17:37:57 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:46)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Error handling command: Invalid Command: s.txt
+ 

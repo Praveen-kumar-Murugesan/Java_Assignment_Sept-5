@@ -14,9 +14,6 @@ public class PwdCommand implements Command {
         String currentDir = new File(".").getAbsolutePath();
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         buffer.clear();
-        int bytesRead = out.read(buffer);
-        buffer.flip();
-        String input = new String(buffer.array(), 0, buffer.limit());
-        writeResponse(out, ("100 \"" + currentDir + "\" is the current directory." + input));
+        writeResponse(out, ("100 \"" + currentDir + "\" is the current directory."));
     }
 }

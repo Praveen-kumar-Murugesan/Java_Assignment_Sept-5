@@ -23,8 +23,7 @@ public class PutCommand implements Command {
 
         File file = new File(fileName);
 
-        try (FileChannel fileChannel = FileChannel.open(file.toPath(),
-                StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
+        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
 
             ByteBuffer buffer = ByteBuffer.allocate(DEFAULT_SIZE);
             boolean stopReading = false;
@@ -38,7 +37,7 @@ public class PutCommand implements Command {
 
                 // Prepare buffer for reading (flip changes from writing mode to reading mode)
                 buffer.flip();
-                readIndex = writeToFile(buffer, fileChannel);
+                readIndex = writeToFile(buffer, bos);
 
                 if (readIndex < bytesRead) {
                     stopReading = true;
@@ -54,21 +53,21 @@ public class PutCommand implements Command {
 
     }
 
-    private int writeToFile(ByteBuffer buffer, FileChannel fileChannel) throws IOException {
-
+    private int writeToFile(ByteBuffer buffer, BufferedOutputStream bos) throws IOException {
+        index=0;
         while (buffer.hasRemaining()) {
             byte currentByte = buffer.get();
             index++;
 
             // Check the end condition (":q" marker)
             if (prev == ':' && count == 1 && currentByte == 'q') {
-                return index - 1; // Stop writing here
+                return index-1; // Stop writing here
             }
 
             // Handle colon ":" count logic for "::" sequence
             if (currentByte == ':') {
                 if (count == 1 && prev == ':') {
-                    fileChannel.write(ByteBuffer.wrap(new byte[]{':'})); // Write one colon
+                    bos.write(':'); // Write one colon
                     prev = currentByte;
                     count = 0;
                     continue;
@@ -80,7 +79,7 @@ public class PutCommand implements Command {
                 while (buffer.hasRemaining() && buffer.get(buffer.position()) == ':') {
                     index++;
                     if (++count == 2) {
-                        fileChannel.write(ByteBuffer.wrap(new byte[]{':'})); // Write "::"
+                        bos.write(':'); // Write "::"
                         count = 0;
                     }
                     buffer.get();                                                                           // Move position forward
@@ -91,11 +90,11 @@ public class PutCommand implements Command {
             }
 
             // Write current byte to file
-            fileChannel.write(ByteBuffer.wrap(new byte[]{currentByte}));
+            bos.write(currentByte);
             prev = currentByte;
         }
 
-        fileChannel.force(true); // Force writing to disk
+        bos.flush(); // Force writing to disk
         return index;
     }
 

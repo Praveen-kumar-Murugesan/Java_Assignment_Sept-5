@@ -40,7 +40,7 @@ public class FTPServer {
                         ClientHandler handler = (ClientHandler) key.attachment();
                         handler.handle();
                     }
-                }
+                    }
             }
         } catch (IOException e) {
             LOG.info("Error in ServerSocket: {}", e.getMessage());
