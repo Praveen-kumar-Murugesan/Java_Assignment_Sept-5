@@ -6,7 +6,7 @@ import java.nio.channels.SocketChannel;
 
 public class CommandParser {
 
-    private static final int DEFAULT_SIZE = 10;
+    private static final int DEFAULT_SIZE = 1024;
     private static final CommandParser CMD = new CommandParser();
 
     private int commandLength = 0;
