@@ -11,13 +11,15 @@ import java.util.Iterator;
 public class FTPServer {
     private static final Logger LOG = LogManager.getLogger(FTPServer.class);
     private static final int PORT = 8080;
-    private static final int BUFFER_SIZE = 1024;
+    private static final int BUFFER_SIZE = 10;
 
     public static void main(String[] args) {
         try (Selector selector = Selector.open(); ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
+
             serverChannel.bind(new InetSocketAddress(PORT));
             serverChannel.configureBlocking(false);
             serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+
             System.out.println("FTP Server started on port " + PORT);
 
             //noinspection InfiniteLoopStatement

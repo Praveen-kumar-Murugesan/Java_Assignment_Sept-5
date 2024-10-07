@@ -1,9 +1,7 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.channels.SocketChannel;
 
 public class ListCommand implements Command {

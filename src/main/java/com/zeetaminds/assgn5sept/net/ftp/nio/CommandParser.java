@@ -1,17 +1,17 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
 import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
-
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.StandardCharsets;
 
 public class CommandParser {
-    private static final int DEFAULT_SIZE = 1024;
+
+    private static final int DEFAULT_SIZE = 10;
     private static final CommandParser CMD = new CommandParser();
+
     private int commandLength = 0;
     private final byte[] buffer = new byte[DEFAULT_SIZE];
+    private final StringBuilder commandBuilder = new StringBuilder();
 
     private CommandParser() {
     }
@@ -21,34 +21,33 @@ public class CommandParser {
     }
 
     public Command parseCommand(BufferManager bufferManager, SocketChannel clientChannel)
-            throws IOException, InvalidCommandException {
-
-        StringBuilder commandBuilder = new StringBuilder();
-        commandLength = 0;
-        String command = "";
+            throws InvalidCommandException {
 
         ByteBuffer byteBuffer = bufferManager.getBuffer();
         int previousPosition = byteBuffer.position();
+        String command;
 
         while (byteBuffer.hasRemaining()) {
             int bytesToRead = Math.min(byteBuffer.remaining(), buffer.length);
             byteBuffer.get(buffer, 0, bytesToRead);
 
-            commandBuilder.append(new String(buffer, 0, bytesToRead, StandardCharsets.UTF_8));
-
             int len;
+            //noinspection LoopStatementThatDoesntLoop
             while ((len = getIndexOfCR(buffer, bytesToRead)) != -1) {
                 command = commandBuilder.substring(0, commandLength).trim();
-                int newPosition = previousPosition + len + 1; // +1 to skip the '\n'
-                byteBuffer.position(newPosition);  // Set the buffer position to after the '\n'
 
-                previousPosition = byteBuffer.position();  // Store the new position for the next iteration
+                if(command.isEmpty()) break;
 
-                commandLength = 0;  // Reset length for the next command
-                return _parseCommand(command, clientChannel);  // Return command for execution
+                int newPosition = previousPosition + len + 1;
+                byteBuffer.position(newPosition);
+
+                commandBuilder.setLength(0);
+                commandLength = 0;
+
+                return _parseCommand(command, clientChannel);
             }
         }
-        byteBuffer.compact();  // Prepare buffer for next read
+        byteBuffer.compact();
         return null;
     }
 
@@ -86,6 +85,7 @@ public class CommandParser {
     private int getIndexOfCR(byte[] buff, int len) {
         for (int i = 0; i < len; i++) {
             if (buff[i] == '\n') return i;
+            commandBuilder.append((char)buff[i]);
             commandLength++;
         }
         return -1;

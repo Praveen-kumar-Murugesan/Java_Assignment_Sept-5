@@ -11,6 +11,7 @@ import java.nio.channels.SocketChannel;
 public class ClientHandler {
 
     private static final Logger LOG = LogManager.getLogger(ClientHandler.class);
+
     private final SocketChannel clientChannel;
     private final CommandParser commandParser;
     private final BufferManager bufferManager;
@@ -26,6 +27,7 @@ public class ClientHandler {
         buffer.clear();
 
         int bytesRead = clientChannel.read(buffer);
+
         if (bytesRead == -1) {
             clientChannel.close();
             return;
@@ -33,18 +35,20 @@ public class ClientHandler {
 
         buffer.flip();
 
-        // Continue processing commands from the buffer
         while (buffer.hasRemaining()) {
             try {
                 Command cmd = commandParser.parseCommand(bufferManager, clientChannel);
                 if (cmd != null) {
-                    cmd.execute(bufferManager, clientChannel); // Execute the command
+                    cmd.execute(bufferManager, clientChannel);
                 } else {
-                    break;  // No more commands to process
+                    break;
                 }
             } catch (InvalidCommandException e) {
-                LOG.error("Error handling command: {}", e.getMessage());
-                break;  // Break on any error
+                LOG.error(e.getMessage());
+
+                String errorMessage = e.getMessage() + "\n";
+                ByteBuffer errorBuffer = ByteBuffer.wrap(errorMessage.getBytes());
+                clientChannel.write(errorBuffer);
             }
         }
     }

@@ -1,18 +1,17 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 import java.nio.channels.SocketChannel;
-import java.nio.file.StandardOpenOption;
 
 public class PutCommand implements Command {
 
-    private final static int DEFAULT_SIZE = 10;
     private final String fileName;
     private byte prev;
     private int count = 0;
-    private int index = 0;
 
     public PutCommand(String token) {
         this.fileName = token;
@@ -24,25 +23,32 @@ public class PutCommand implements Command {
         File file = new File(fileName);
 
         try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
+            ByteBuffer buffer = bufferManager.getBuffer();
 
-            ByteBuffer buffer = ByteBuffer.allocate(DEFAULT_SIZE);
-            boolean stopReading = false;
             int bytesRead;
-            int readIndex = 0;
+            boolean flag = true;
+            boolean stopReading = false;
 
-            while (!stopReading && (bytesRead = out.read(buffer)) != -1) {
-                if (bytesRead == 0) {
-                    continue; // No data read, continue reading
+            while (!stopReading) {
+                if ((buffer.position() < buffer.limit()) && flag) {
+                    stopReading = writeToFile(buffer, bos);
+                    buffer.compact();
                 }
 
-                // Prepare buffer for reading (flip changes from writing mode to reading mode)
-                buffer.flip();
-                readIndex = writeToFile(buffer, bos);
+                flag = false;
 
-                if (readIndex < bytesRead) {
-                    stopReading = true;
+                if (!stopReading) {
+                    buffer.clear();
+                    bytesRead = out.read(buffer);
+
+                    if (bytesRead == -1) {
+                        break;
+                    }
+                    if (bytesRead == 0) continue;
+
+                    buffer.flip();
+                    stopReading = writeToFile(buffer, bos);
                 }
-                buffer.compact();
             }
 
             writeResponse(out, "\n222 File Uploaded Successfully.");
@@ -53,15 +59,12 @@ public class PutCommand implements Command {
 
     }
 
-    private int writeToFile(ByteBuffer buffer, BufferedOutputStream bos) throws IOException {
-        index=0;
+    private boolean writeToFile(ByteBuffer buffer, BufferedOutputStream bos) throws IOException {
         while (buffer.hasRemaining()) {
             byte currentByte = buffer.get();
-            index++;
 
-            // Check the end condition (":q" marker)
             if (prev == ':' && count == 1 && currentByte == 'q') {
-                return index-1; // Stop writing here
+                return true;
             }
 
             // Handle colon ":" count logic for "::" sequence
@@ -77,25 +80,23 @@ public class PutCommand implements Command {
 
                 // Count consecutive colons "::"
                 while (buffer.hasRemaining() && buffer.get(buffer.position()) == ':') {
-                    index++;
                     if (++count == 2) {
                         bos.write(':'); // Write "::"
                         count = 0;
                     }
-                    buffer.get();                                                                           // Move position forward
+                    buffer.get();
                 }
 
                 prev = currentByte;
                 continue;
             }
 
-            // Write current byte to file
             bos.write(currentByte);
             prev = currentByte;
         }
 
-        bos.flush(); // Force writing to disk
-        return index;
+        bos.flush();
+        return false;
     }
 
 }

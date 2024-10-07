@@ -3,6 +3,7 @@ package com.zeetaminds.assgn5sept.net.ftp.nio;
 import java.nio.ByteBuffer;
 
 public class BufferManager {
+
     private final ByteBuffer buffer;
     private boolean expectingFileContent = false;
     private String currentPutFilename;
