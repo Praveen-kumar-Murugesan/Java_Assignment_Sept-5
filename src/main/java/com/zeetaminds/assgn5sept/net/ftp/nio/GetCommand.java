@@ -17,7 +17,7 @@ public class GetCommand implements Command {
     public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
         File file = new File(fileName);
         if (!file.exists() || file.isDirectory()) {
-            writeResponse(out, "550 File not found.");
+            writeResponse(out, "550 File not found.\n");
             return;
         }
 
@@ -33,6 +33,6 @@ public class GetCommand implements Command {
                 buffer.clear();
             }
         }
-        writeResponse(out, "\n225 File Downloaded Successfully.");
+        writeResponse(out, "\n225 File Downloaded Successfully.\n");
     }
 }

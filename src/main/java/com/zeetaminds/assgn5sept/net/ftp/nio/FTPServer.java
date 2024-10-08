@@ -20,7 +20,7 @@ public class FTPServer {
             serverChannel.configureBlocking(false);
             serverChannel.register(selector, SelectionKey.OP_ACCEPT);
 
-            System.out.println("FTP Server started on port " + PORT);
+            LOG.info("FTP Server started on port {}", PORT);
 
             //noinspection InfiniteLoopStatement
             while (true) {
@@ -37,7 +37,7 @@ public class FTPServer {
                         BufferManager bufferManager = new BufferManager(BUFFER_SIZE);
                         clientChannel.register(selector, SelectionKey.OP_READ, new ClientHandler(clientChannel, bufferManager));
 
-                        System.out.println("Client connected...");
+                        LOG.info("Client connected {}", clientChannel.getLocalAddress());
                     } else if (key.isReadable()) {
                         ClientHandler handler = (ClientHandler) key.attachment();
                         handler.handle();

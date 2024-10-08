@@ -19,51 +19,46 @@ public class PutCommand implements Command {
 
     @Override
     public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
+        try {
+            BufferedOutputStream bos = bufferManager.getCurrentOutputStream();
 
-        File file = new File(fileName);
+            if (bos == null) {
+                File file = new File(fileName);
+                bos = new BufferedOutputStream(new FileOutputStream(file));
+                bufferManager.setCurrentOutputStream(bos);
+                bufferManager.setCurrentPutFilename(fileName);
+            }
+            /*
+            endReached = writeToFile(buff)
+            if(endReached) clearRes();
+             */
 
-        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
             ByteBuffer buffer = bufferManager.getBuffer();
 
-            int bytesRead;
-            boolean flag = true;
             boolean stopReading = false;
+            if (buffer.hasRemaining()) stopReading = writeToFile(bufferManager, buffer, bos, out);
 
-            while (!stopReading) {
-                if ((buffer.position() < buffer.limit()) && flag) {
-                    stopReading = writeToFile(buffer, bos);
-                    buffer.compact();
-                }
-
-                flag = false;
-
-                if (!stopReading) {
-                    buffer.clear();
-                    bytesRead = out.read(buffer);
-
-                    if (bytesRead == -1) {
-                        break;
-                    }
-                    if (bytesRead == 0) continue;
-
-                    buffer.flip();
-                    stopReading = writeToFile(buffer, bos);
-                }
-            }
-
-            writeResponse(out, "\n222 File Uploaded Successfully.");
+            bufferManager.setExpectingFileContent(!stopReading);
 
         } catch (IOException e) {
-            writeResponse(out, "552 Could not create file.");
+            writeResponse(out, "552 Could not create file.\n");
+            bufferManager.setCurrentOutputStream(null);
+            bufferManager.setExpectingFileContent(false);
+            bufferManager.setCurrentPutFilename(null);
         }
 
     }
 
-    private boolean writeToFile(ByteBuffer buffer, BufferedOutputStream bos) throws IOException {
+    private boolean writeToFile(BufferManager bufferManager, ByteBuffer buffer, BufferedOutputStream bos, SocketChannel out)
+            throws IOException {
         while (buffer.hasRemaining()) {
             byte currentByte = buffer.get();
 
             if (prev == ':' && count == 1 && currentByte == 'q') {
+                writeResponse(out, "\n222 File Uploaded Successfully.\n");
+                bos.flush();
+                bufferManager.setCurrentOutputStream(null);
+                bufferManager.setExpectingFileContent(false);
                 return true;
             }
 

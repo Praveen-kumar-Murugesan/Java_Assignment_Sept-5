@@ -36,7 +36,11 @@ public class CommandParser {
             while ((len = getIndexOfCR(buffer, bytesToRead)) != -1) {
                 command = commandBuilder.substring(0, commandLength).trim();
 
-                if(command.isEmpty()) break;
+                if(command.isEmpty()) {
+                    commandBuilder.setLength(0);
+                    commandLength = 0;
+                    break;
+                }
 
                 int newPosition = previousPosition + len + 1;
                 byteBuffer.position(newPosition);

@@ -14,6 +14,6 @@ public class PwdCommand implements Command {
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         buffer.clear();
 
-        writeResponse(out, ("100 \"" + currentDir + "\" is the current directory."));
+        writeResponse(out, ("100 \"" + currentDir + "\" is the current directory.\n"));
     }
 }

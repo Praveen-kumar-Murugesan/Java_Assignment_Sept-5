@@ -35,7 +35,19 @@ public class ClientHandler {
 
         buffer.flip();
 
-        while (buffer.hasRemaining()) {
+        if (bufferManager.isExpectingFileContent()) {
+            LOG.info("Resuming PUT command to receive file content for file: {}", bufferManager.getCurrentPutFilename());
+
+            PutCommand putCommand = new PutCommand(bufferManager.getCurrentPutFilename());
+            putCommand.execute(bufferManager, clientChannel);
+
+            if (!bufferManager.isExpectingFileContent()) {
+                LOG.info("File upload completed for: {}", bufferManager.getCurrentPutFilename());
+                bufferManager.setCurrentPutFilename(null);
+            }
+        }
+
+        while (buffer.hasRemaining() && !bufferManager.isExpectingFileContent()) {
             try {
                 Command cmd = commandParser.parseCommand(bufferManager, clientChannel);
                 if (cmd != null) {
@@ -47,6 +59,7 @@ public class ClientHandler {
                 LOG.error(e.getMessage());
 
                 String errorMessage = e.getMessage() + "\n";
+
                 ByteBuffer errorBuffer = ByteBuffer.wrap(errorMessage.getBytes());
                 clientChannel.write(errorBuffer);
             }

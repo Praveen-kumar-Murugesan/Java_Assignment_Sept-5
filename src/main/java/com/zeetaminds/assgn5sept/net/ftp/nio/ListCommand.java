@@ -12,7 +12,7 @@ public class ListCommand implements Command {
         File[] files = dir.listFiles();
 
         if (files == null) {
-            writeResponse(out, "000 Empty Folder");
+            writeResponse(out, "000 Empty Folder\n");
             return;
         }
 
@@ -22,6 +22,6 @@ public class ListCommand implements Command {
         for (File file : files) {
             writeResponse(out, (file.getName()));
         }
-        writeResponse(out, "226 Transfer complete.");
+        writeResponse(out, "226 Transfer complete.\n");
     }
 }
