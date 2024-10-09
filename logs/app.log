@@ -199,3 +199,147 @@
 2024-10-09 12:11:28 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:71)] 
  ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - [31mInvalid Command: fwae
  
+2024-10-09 12:26:03 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8080
+ 
+2024-10-09 12:26:09 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:40)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected /127.0.0.1:8080
+ 
+2024-10-09 12:26:12 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:40)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected /127.0.0.1:8080
+ 
+2024-10-09 12:26:25 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: Syntax Error
+ 
+2024-10-09 12:26:58 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: Syntax Error
+ 
+2024-10-09 12:27:01 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: ll
+ 
+2024-10-09 12:27:03 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: wefe
+ 
+2024-10-09 12:27:04 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: wefwael
+ 
+2024-10-09 12:27:05 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: lf
+ 
+2024-10-09 12:27:44 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: test.txt
+ 
+2024-10-09 12:27:44 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: test.txt
+ 
+2024-10-09 12:27:44 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: test.txt
+ 
+2024-10-09 12:27:49 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: f
+ 
+2024-10-09 12:27:54 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: test.txt
+ 
+2024-10-09 12:27:54 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: test.txt
+ 
+2024-10-09 12:27:56 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: test.txt
+ 
+2024-10-09 12:27:56 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:49)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - File upload completed for: test.txt
+ 
+2024-10-09 12:29:33 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8080
+ 
+2024-10-09 12:29:35 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:40)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected /127.0.0.1:8080
+ 
+2024-10-09 12:29:37 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: f
+ 
+2024-10-09 12:29:39 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: f
+ 
+2024-10-09 12:29:39 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: f
+ 
+2024-10-09 12:29:39 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: f
+ 
+2024-10-09 12:29:41 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: Syntax Error
+ 
+2024-10-09 12:30:11 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: Syntax Error
+ 
+2024-10-09 12:30:15 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: Invalid Filename
+ 
+2024-10-09 12:30:24 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:64)] 
+ ERROR com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Invalid Command: Invalid Filename
+ 
+2024-10-09 12:31:32 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: tes.txt
+ 
+2024-10-09 12:31:32 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:49)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - File upload completed for: tes.txt
+ 
+2024-10-09 12:31:53 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:40)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected /127.0.0.1:8080
+ 
+2024-10-09 12:31:58 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:40)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected /127.0.0.1:8080
+ 
+2024-10-09 12:32:04 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: tes.txt
+ 
+2024-10-09 12:32:06 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: tes.txt
+ 
+2024-10-09 12:32:06 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:49)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - File upload completed for: tes.txt
+ 
+2024-10-09 12:32:12 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:40)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected /127.0.0.1:8080
+ 
+2024-10-09 12:32:17 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: tes.txt
+ 
+2024-10-09 12:32:18 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: tes.txt
+ 
+2024-10-09 12:32:18 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:49)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - File upload completed for: tes.txt
+ 
+2024-10-09 12:32:53 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8080
+ 
+2024-10-09 12:33:41 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8080
+ 
+2024-10-09 12:33:57 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:40)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected /127.0.0.1:8080
+ 
+2024-10-09 12:34:43 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: tes.txt
+ 
+2024-10-09 12:35:13 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:49)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - File upload completed for: tes.txt
+ 
+2024-10-09 12:36:49 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:23)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - FTP Server started on port 8080
+ 
+2024-10-09 12:36:54 [main] [FTPServer.java] [main] [com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer.main(FTPServer.java:40)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.FTPServer - Client connected /127.0.0.1:8080
+ 
+2024-10-09 12:36:59 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: tes.txt
+ 
+2024-10-09 12:37:01 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:38)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - Resuming PUT command to receive file content for file: tes.txt
+ 
+2024-10-09 12:37:01 [main] [ClientHandler.java] [handle] [com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler.handle(ClientHandler.java:54)] 
+ INFO  com.zeetaminds.assgn5sept.net.ftp.nio.ClientHandler - File upload completed for: tes.txt
+ 

@@ -42,6 +42,11 @@ public class ClientHandler {
                 putCommand.execute(bufferManager, clientChannel);
             } catch (IOException | RuntimeException e) {
                 LOG.error("Error during file upload: {}", e.getMessage());
+
+                if (clientChannel.isOpen()) {
+                    clientChannel.close();
+                }
+
                 closeResources();
                 return;
             }
@@ -63,12 +68,16 @@ public class ClientHandler {
             } catch (InvalidCommandException e) {
                 LOG.error(e.getMessage());
 
-                String errorMessage = e.getMessage() + "\n";
+                String errorMessage = e.getMessage() + "\n\n";
 
                 ByteBuffer errorBuffer = ByteBuffer.wrap(errorMessage.getBytes());
                 clientChannel.write(errorBuffer);
             } catch (IOException | RuntimeException e) {
                 LOG.error("Error executing command: {}", e.getMessage());
+
+                if (clientChannel.isOpen()) {
+                    clientChannel.close();
+                }
                 closeResources();
                 return;
             }
@@ -77,10 +86,6 @@ public class ClientHandler {
 
     private void closeResources() {
         try {
-            if (clientChannel.isOpen()) {
-                clientChannel.close();
-            }
-
             bufferManager.closeOutputStream();
             bufferManager.setCurrentOutputStream(null);
             bufferManager.setExpectingFileContent(false);
