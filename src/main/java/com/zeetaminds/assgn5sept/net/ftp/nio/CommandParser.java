@@ -2,7 +2,6 @@ package com.zeetaminds.assgn5sept.net.ftp.nio;
 
 import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
 import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
 
 public class CommandParser {
 
@@ -10,6 +9,7 @@ public class CommandParser {
     private static final CommandParser CMD = new CommandParser();
 
     private int commandLength = 0;
+
     private final byte[] buffer = new byte[DEFAULT_SIZE];
     private final StringBuilder commandBuilder = new StringBuilder();
 
@@ -20,7 +20,7 @@ public class CommandParser {
         return CMD;
     }
 
-    public Command parseCommand(BufferManager bufferManager, SocketChannel clientChannel)
+    public Command parseCommand(BufferManager bufferManager)
             throws InvalidCommandException {
 
         ByteBuffer byteBuffer = bufferManager.getBuffer();
@@ -48,14 +48,14 @@ public class CommandParser {
                 commandBuilder.setLength(0);
                 commandLength = 0;
 
-                return _parseCommand(command, clientChannel);
+                return _parseCommand(command);
             }
         }
         byteBuffer.compact();
         return null;
     }
 
-    private Command _parseCommand(String command, SocketChannel clientChannel)
+    private Command _parseCommand(String command)
             throws InvalidCommandException {
         String[] tokens = command.split(" ");
         String cmd = tokens[0].toUpperCase();
@@ -78,7 +78,7 @@ public class CommandParser {
                 cmdHandler = new PwdCommand();
                 break;
             case "QUIT":
-                cmdHandler = new QuitCommand(clientChannel);
+                cmdHandler = new QuitCommand();
                 break;
             default:
                 throw new InvalidCommandException(command);

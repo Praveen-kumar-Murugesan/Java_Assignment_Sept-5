@@ -3,10 +3,7 @@ package com.zeetaminds.assgn5sept.net.ftp.nio;
 import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -15,13 +12,11 @@ class CommandParserTest {
 
     private CommandParser commandParser;
     private BufferManager mockBufferManager;
-    private SocketChannel mockSocketChannel;
 
     @BeforeEach
     void setUp() {
         commandParser = CommandParser.getInstance();
         mockBufferManager = mock(BufferManager.class);
-        mockSocketChannel = mock(SocketChannel.class);
     }
 
     @Test
@@ -30,7 +25,7 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        Command command = commandParser.parseCommand(mockBufferManager, mockSocketChannel);
+        Command command = commandParser.parseCommand(mockBufferManager);
 
         assertInstanceOf(ListCommand.class, command, "Expected ListCommand instance");
     }
@@ -41,7 +36,7 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        Command command = commandParser.parseCommand(mockBufferManager, mockSocketChannel);
+        Command command = commandParser.parseCommand(mockBufferManager);
 
         assertInstanceOf(GetCommand.class, command, "Expected GetCommand instance");
     }
@@ -52,7 +47,7 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        Command command = commandParser.parseCommand(mockBufferManager, mockSocketChannel);
+        Command command = commandParser.parseCommand(mockBufferManager);
 
         assertInstanceOf(PutCommand.class, command, "Expected PutCommand instance");
     }
@@ -63,7 +58,7 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        Command command = commandParser.parseCommand(mockBufferManager, mockSocketChannel);
+        Command command = commandParser.parseCommand(mockBufferManager);
 
         assertInstanceOf(PwdCommand.class, command, "Expected PwdCommand instance");
     }
@@ -74,7 +69,7 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        Command command = commandParser.parseCommand(mockBufferManager, mockSocketChannel);
+        Command command = commandParser.parseCommand(mockBufferManager);
 
         assertInstanceOf(QuitCommand.class, command, "Expected QuitCommand instance");
     }
@@ -85,9 +80,7 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        assertThrows(InvalidCommandException.class, () -> {
-            commandParser.parseCommand(mockBufferManager, mockSocketChannel);
-        });
+        assertThrows(InvalidCommandException.class, () -> commandParser.parseCommand(mockBufferManager));
     }
 
     @Test
@@ -96,9 +89,7 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        assertThrows(InvalidCommandException.class, () -> {
-            commandParser.parseCommand(mockBufferManager, mockSocketChannel);
-        });
+        assertThrows(InvalidCommandException.class, () -> commandParser.parseCommand(mockBufferManager));
     }
 
     @Test
@@ -107,9 +98,7 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        assertThrows(InvalidCommandException.class, () -> {
-            commandParser.parseCommand(mockBufferManager, mockSocketChannel);
-        });
+        assertThrows(InvalidCommandException.class, () -> commandParser.parseCommand(mockBufferManager));
     }
 
     @Test
@@ -118,11 +107,11 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        assertInstanceOf(ListCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
-        assertInstanceOf(PutCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
-        assertInstanceOf(GetCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
-        assertInstanceOf(PwdCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
-        assertInstanceOf(QuitCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
+        assertInstanceOf(ListCommand.class, commandParser.parseCommand(mockBufferManager));
+        assertInstanceOf(PutCommand.class, commandParser.parseCommand(mockBufferManager));
+        assertInstanceOf(GetCommand.class, commandParser.parseCommand(mockBufferManager));
+        assertInstanceOf(PwdCommand.class, commandParser.parseCommand(mockBufferManager));
+        assertInstanceOf(QuitCommand.class, commandParser.parseCommand(mockBufferManager));
     }
 
     @Test
@@ -131,16 +120,14 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        assertInstanceOf(ListCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
-        assertInstanceOf(PutCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
+        assertInstanceOf(ListCommand.class, commandParser.parseCommand(mockBufferManager));
+        assertInstanceOf(PutCommand.class, commandParser.parseCommand(mockBufferManager));
 
         // Expect the invalid command to throw an exception
-        assertThrows(InvalidCommandException.class, () -> {
-            commandParser.parseCommand(mockBufferManager, mockSocketChannel);
-        });
+        assertThrows(InvalidCommandException.class, () -> commandParser.parseCommand(mockBufferManager));
 
         // After handling the exception, the parser should still be able to handle subsequent valid commands
-        assertInstanceOf(GetCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
+        assertInstanceOf(GetCommand.class, commandParser.parseCommand(mockBufferManager));
     }
 
     @Test
@@ -150,9 +137,7 @@ class CommandParserTest {
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
         // The first invalid command should throw an exception
-        assertThrows(InvalidCommandException.class, () -> {
-            commandParser.parseCommand(mockBufferManager, mockSocketChannel);
-        });
+        assertThrows(InvalidCommandException.class, () -> commandParser.parseCommand(mockBufferManager));
     }
 
     @Test
@@ -162,9 +147,7 @@ class CommandParserTest {
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
         // Then the invalid command should also throw an exception
-        assertThrows(InvalidCommandException.class, () -> {
-            commandParser.parseCommand(mockBufferManager, mockSocketChannel);
-        });
+        assertThrows(InvalidCommandException.class, () -> commandParser.parseCommand(mockBufferManager));
     }
 
     @Test
@@ -173,20 +156,16 @@ class CommandParserTest {
         ByteBuffer buffer = ByteBuffer.wrap(input.getBytes());
         when(mockBufferManager.getBuffer()).thenReturn(buffer);
 
-        assertInstanceOf(ListCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
+        assertInstanceOf(ListCommand.class, commandParser.parseCommand(mockBufferManager));
 
         // The invalid command should throw an exception
-        assertThrows(InvalidCommandException.class, () -> {
-            commandParser.parseCommand(mockBufferManager, mockSocketChannel);
-        });
+        assertThrows(InvalidCommandException.class, () -> commandParser.parseCommand(mockBufferManager));
 
-        assertInstanceOf(PutCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
+        assertInstanceOf(PutCommand.class, commandParser.parseCommand(mockBufferManager));
 
         // The final empty command should throw an exception
-        assertThrows(InvalidCommandException.class, () -> {
-            commandParser.parseCommand(mockBufferManager, mockSocketChannel);
-        });
+        assertThrows(InvalidCommandException.class, () -> commandParser.parseCommand(mockBufferManager));
 
-        assertInstanceOf(GetCommand.class, commandParser.parseCommand(mockBufferManager, mockSocketChannel));
+        assertInstanceOf(GetCommand.class, commandParser.parseCommand(mockBufferManager));
     }
 }

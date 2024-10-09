@@ -4,19 +4,13 @@ import java.io.IOException;
 import java.nio.channels.SocketChannel;
 
 public class QuitCommand implements Command {
-    private final SocketChannel clientSocket;
-
-    public QuitCommand(SocketChannel clientSocket){
-        this.clientSocket = clientSocket;
-    }
-
     @Override
     public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
 
         writeResponse(out, "221 Goodbye.");
 
-        if(clientSocket!=null && clientSocket.isOpen()){
-            clientSocket.close();
+        if(out!=null && out.isOpen()){
+            out.close();
         }
     }
 }

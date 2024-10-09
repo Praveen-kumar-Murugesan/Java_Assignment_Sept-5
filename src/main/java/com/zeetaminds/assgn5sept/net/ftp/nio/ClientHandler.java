@@ -3,7 +3,6 @@ package com.zeetaminds.assgn5sept.net.ftp.nio;
 import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
@@ -24,7 +23,7 @@ public class ClientHandler {
 
     public void handle() throws IOException {
         ByteBuffer buffer = bufferManager.getBuffer();
-        buffer.clear();
+        bufferManager.clearBuffer();
 
         int bytesRead = clientChannel.read(buffer);
 
@@ -39,17 +38,23 @@ public class ClientHandler {
             LOG.info("Resuming PUT command to receive file content for file: {}", bufferManager.getCurrentPutFilename());
 
             PutCommand putCommand = new PutCommand(bufferManager.getCurrentPutFilename());
-            putCommand.execute(bufferManager, clientChannel);
-
+            try {
+                putCommand.execute(bufferManager, clientChannel);
+            } catch (IOException | RuntimeException e) {
+                LOG.error("Error during file upload: {}", e.getMessage());
+                closeResources();
+                return;
+            }
             if (!bufferManager.isExpectingFileContent()) {
                 LOG.info("File upload completed for: {}", bufferManager.getCurrentPutFilename());
-                bufferManager.setCurrentPutFilename(null);
+
+                closeResources();
             }
         }
 
         while (buffer.hasRemaining() && !bufferManager.isExpectingFileContent()) {
             try {
-                Command cmd = commandParser.parseCommand(bufferManager, clientChannel);
+                Command cmd = commandParser.parseCommand(bufferManager);
                 if (cmd != null) {
                     cmd.execute(bufferManager, clientChannel);
                 } else {
@@ -62,7 +67,27 @@ public class ClientHandler {
 
                 ByteBuffer errorBuffer = ByteBuffer.wrap(errorMessage.getBytes());
                 clientChannel.write(errorBuffer);
+            } catch (IOException | RuntimeException e) {
+                LOG.error("Error executing command: {}", e.getMessage());
+                closeResources();
+                return;
             }
+        }
+    }
+
+    private void closeResources() {
+        try {
+            if (clientChannel.isOpen()) {
+                clientChannel.close();
+            }
+
+            bufferManager.closeOutputStream();
+            bufferManager.setCurrentOutputStream(null);
+            bufferManager.setExpectingFileContent(false);
+            bufferManager.setCurrentPutFilename(null);
+
+        } catch (IOException e) {
+            LOG.error("Error while closing resources: {}", e.getMessage());
         }
     }
 }
