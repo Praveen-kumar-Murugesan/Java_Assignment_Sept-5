@@ -1,5 +1,6 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
+import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,135 +22,47 @@ public class ClientHandler {
         this.stateManager = stateManager;
     }
 
-    public void handle() {
-        try {
-            if (!readDataFromClient()) return;
-
-            while (stateManager.getBuffer().hasRemaining()) {
-                if (stateManager.isExpectingFileContent()) {
-                    stateManager.getCurrentPutCommand().execute(stateManager, clientChannel);
-                } else {
-                    processCommands();
-                }
-            }
-
-        } catch (IOException e) {
-            LOG.error("Error during client handling {}", e.getMessage());
-            closeResources();
-        }
-    }
-
-    private v
-    private boolean readDataFromClient() throws IOException {
+    public void handle() throws IOException {
         ByteBuffer buffer = stateManager.getBuffer();
-        stateManager.clearBuffer();
+        buffer.clear();
 
         int bytesRead = clientChannel.read(buffer);
+
         if (bytesRead == -1) {
-            closeResources();
-            return false;
+            clientChannel.close();
+            return;
         }
+
         buffer.flip();
-        return true;
-    }
 
-    private void closeResources() {
-        try {
-            if (clientChannel.isOpen()) clientChannel.close();
+        if (stateManager.isExpectingFileContent()) {
+            LOG.info("Resuming PUT command to receive file content for file: {}", stateManager.getCurrentPutFilename());
 
-            stateManager.reset();
-        } catch (IOException e) {
-            LOG.error("Error closing resources {}", e.getMessage());
+            PutCommand putCommand = new PutCommand(stateManager.getCurrentPutFilename());
+            putCommand.execute(stateManager, clientChannel);
+
+            if (!stateManager.isExpectingFileContent()) {
+                LOG.info("File upload completed for: {}", stateManager.getCurrentPutFilename());
+                stateManager.setCurrentPutFilename(null);
+            }
+        }
+
+        while (buffer.hasRemaining() && !stateManager.isExpectingFileContent()) {
+            try {
+                Command cmd = commandParser.parseCommand(stateManager);
+                if (cmd != null) {
+                    cmd.execute(stateManager, clientChannel);
+                } else {
+                    break;
+                }
+            } catch (InvalidCommandException e) {
+                LOG.error(e.getMessage());
+
+                String errorMessage = e.getMessage() + "\n";
+
+                ByteBuffer errorBuffer = ByteBuffer.wrap(errorMessage.getBytes());
+                clientChannel.write(errorBuffer);
+            }
         }
     }
 }
-
-
-//        ByteBuffer buffer = bufferManager.getBuffer();
-//        bufferManager.clearBuffer();
-//        int bytesRead = clientChannel.read(buffer);
-//
-//        if (bytesRead == -1) {
-//            clientChannel.close();
-//            return;
-//        }
-//
-//        buffer.flip();
-//
-//
-////        while (buffer.hasRemaining()) {
-////            try {
-////                if (bufferManager.isExpectingFileContent()) {
-////                    bufferManager.getCurrent().execute();
-////                } else {
-////                    Command cmd = commandParser.parseCommand(bufferManager);
-////                    if (cmd != null) cmd.execute(bufferManager, clientChannel);
-////                }
-////            } catch (InvalidCommandException e) {
-////                processInvalidCmd(e);
-////            } catch (IOException e) {
-////                closeResources();
-////            }
-////        }
-//
-//        if (bufferManager.isExpectingFileContent()) {
-//            LOG.info("Resuming PUT command to receive file content for file: {}",
-//                    bufferManager.getCurrentPutFilename());
-//
-//            PutCommand putCommand = new PutCommand(bufferManager.getCurrentPutFilename());
-//            try {
-//                putCommand.execute(bufferManager, clientChannel);
-//            } catch (IOException | RuntimeException e) {
-//                LOG.error("Error during file upload: {}", e.getMessage());
-//
-//                if (clientChannel.isOpen()) {
-//                    clientChannel.close();
-//                }
-//
-//                closeResources();
-//                return;
-//            }
-//            if (!bufferManager.isExpectingFileContent()) {
-//                LOG.info("File upload completed for: {}", bufferManager.getCurrentPutFilename());
-//
-//                closeResources();
-//            }
-//        }
-//
-//        while (buffer.hasRemaining() && !bufferManager.isExpectingFileContent()) {
-//            try {
-//                Command cmd = commandParser.parseCommand(bufferManager);
-//                if (cmd != null) {
-//                    cmd.execute(bufferManager, clientChannel);
-//                } else {
-//                    break;
-//                }
-//            } catch (InvalidCommandException e) {
-//                LOG.error(e.getMessage());
-//
-//                String errorMessage = e.getMessage() + "\n\n";
-//
-//                ByteBuffer errorBuffer = ByteBuffer.wrap(errorMessage.getBytes());
-//                clientChannel.write(errorBuffer);
-//            } catch (IOException | RuntimeException e) {
-//                LOG.error("Error executing command: {}", e.getMessage());
-//
-//
-//                closeResources();
-//                return;
-//            }
-//        }
-//    }
-//
-//    private void closeResources() {
-//        try {
-//            bufferManager.closeOutputStream();
-//            bufferManager.setCurrentOutputStream(null);
-//            bufferManager.setExpectingFileContent(false);
-//            bufferManager.setCurrentPutFilename(null);
-//
-//        } catch (IOException e) {
-//            LOG.error("Error while closing resources: {}", e.getMessage());
-//        }
-//    }
-//}

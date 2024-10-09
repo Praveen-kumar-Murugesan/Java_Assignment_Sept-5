@@ -28,37 +28,29 @@ public class StateManager {
         this.expectingFileContent = expectingFileContent;
     }
 
-//    public String getCurrentPutFilename() {
-//        return currentPutFilename;
-//    }
-//
-//    public void setCurrentPutFilename(String currentPutFilename) {
-//        this.currentPutFilename = currentPutFilename;
-//    }
-//
-//    public BufferedOutputStream getCurrentOutputStream() {
-//        return currentOutputStream;
-//    }
-//
-//    public void setCurrentOutputStream(BufferedOutputStream currentOutputStream) {
-//        this.currentOutputStream = currentOutputStream;
-//    }
-
-    public PutCommand getCurrentPutCommand() {
-        return currentPutCommand;
+    public String getCurrentPutFilename() {
+        return currentPutFilename;
     }
 
-    public void setCurrentPutCommand(PutCommand currentPutCommand) {
-        this.currentPutCommand = currentPutCommand;
+    public void setCurrentPutFilename(String currentPutFilename) {
+        this.currentPutFilename = currentPutFilename;
+    }
+
+    public BufferedOutputStream getCurrentOutputStream() {
+        return currentOutputStream;
+    }
+
+    public void setCurrentOutputStream(BufferedOutputStream currentOutputStream) {
+        this.currentOutputStream = currentOutputStream;
     }
 
     public void clearBuffer() {
         buffer.clear();
     }
 
-    public void reset() {
-        expectingFileContent = false;
-        currentPutCommand = null;
-        buffer.clear();
+    public void closeOutputStream() throws IOException {
+        if (currentOutputStream != null) {
+            currentOutputStream.close();
+        }
     }
 }
