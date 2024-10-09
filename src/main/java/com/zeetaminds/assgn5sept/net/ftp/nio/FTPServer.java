@@ -34,8 +34,8 @@ public class FTPServer {
                     if (key.isAcceptable()) {
                         SocketChannel clientChannel = serverChannel.accept();
                         clientChannel.configureBlocking(false);
-                        BufferManager bufferManager = new BufferManager(BUFFER_SIZE);
-                        clientChannel.register(selector, SelectionKey.OP_READ, new ClientHandler(clientChannel, bufferManager));
+                        StateManager stateManager = new StateManager(BUFFER_SIZE);
+                        clientChannel.register(selector, SelectionKey.OP_READ, new ClientHandler(clientChannel, stateManager));
 
                         LOG.info("Client connected {}", clientChannel.getLocalAddress());
                     } else if (key.isReadable()) {

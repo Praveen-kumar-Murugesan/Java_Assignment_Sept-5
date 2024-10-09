@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 
 public interface Command {
 
-    void execute(BufferManager bufferManager, SocketChannel clientChannel) throws IOException;
+    void execute(StateManager stateManager, SocketChannel clientChannel) throws IOException;
 
     default void writeResponse(SocketChannel clientChannel, String msg) throws IOException {
         ByteBuffer buffer = ByteBuffer.wrap((msg + "\r\n").getBytes(StandardCharsets.UTF_8));

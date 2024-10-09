@@ -6,7 +6,7 @@ import java.nio.channels.SocketChannel;
 
 public class ListCommand implements Command {
     @Override
-    public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
+    public void execute(StateManager stateManager, SocketChannel out) throws IOException {
 
         File dir = new File(".");
         File[] files = dir.listFiles();

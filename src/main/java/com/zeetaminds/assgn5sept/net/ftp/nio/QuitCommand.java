@@ -5,7 +5,7 @@ import java.nio.channels.SocketChannel;
 
 public class QuitCommand implements Command {
     @Override
-    public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
+    public void execute(StateManager stateManager, SocketChannel out) throws IOException {
 
         writeResponse(out, "221 Goodbye.");
 

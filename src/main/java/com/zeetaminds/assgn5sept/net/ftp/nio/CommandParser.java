@@ -20,10 +20,10 @@ public class CommandParser {
         return CMD;
     }
 
-    public Command parseCommand(BufferManager bufferManager)
+    public Command parseCommand(StateManager stateManager)
             throws InvalidCommandException {
 
-        ByteBuffer byteBuffer = bufferManager.getBuffer();
+        ByteBuffer byteBuffer = stateManager.getBuffer();
         int previousPosition = byteBuffer.position();
         String command;
 

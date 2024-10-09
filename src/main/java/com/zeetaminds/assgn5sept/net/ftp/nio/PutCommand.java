@@ -6,42 +6,73 @@ import java.nio.channels.SocketChannel;
 
 public class PutCommand implements Command {
 
+//    private static final Logger LOG = LogManager.getLogger(PutCommand.class);
     private final String fileName;
+    private BufferedOutputStream bos;
 
-    private byte prev;
+        private byte prev;
     private int count = 0;
 
-    public PutCommand(String token) {
-        this.fileName = token;
+    public PutCommand(String fileName) {
+        this.fileName = fileName;
     }
 
     @Override
-    public void execute(BufferManager bufferManager, SocketChannel out) throws IOException, RuntimeException {
-        BufferedOutputStream bos = gocFileStream(bufferManager);
-            /*
-            endReached = writeToFile(buff)
-            if(endReached) clearRes();
-             */
-        ByteBuffer buffer = bufferManager.getBuffer();
+    public void execute(StateManager stateManager, SocketChannel out) throws IOException {
+        if (bos == null) {
+            bos = new BufferedOutputStream(new FileOutputStream(fileName));
+        }
 
-        boolean stopReading = writeToFile(buffer, bos);
+        ByteBuffer buffer = stateManager.getBuffer();
+        boolean uploadCompleted = writeToFile(buffer, bos);
 
-        bufferManager.setExpectingFileContent(!stopReading);
+        stateManager.setExpectingFileContent(!uploadCompleted);
 
-        if (stopReading) writeResponse(out, "\n222 File Uploaded Successfully.\n");
+        if (uploadCompleted) {
+            bos.close();
+            writeResponse(out, "\n222 File Uploaded Successfully.\n");
+            stateManager.setCurrentPutCommand(null);  // Reset the PutCommand in StateManager
+        }
     }
 
-    private BufferedOutputStream gocFileStream(BufferManager bufferManager) throws FileNotFoundException {
-        BufferedOutputStream bos = bufferManager.getCurrentOutputStream();
-        if (bos != null) return bos;
-
-        File file = new File(fileName);
-        bos = new BufferedOutputStream(new FileOutputStream(file));
-        bufferManager.setCurrentOutputStream(bos);
-        bufferManager.setCurrentPutFilename(fileName);
-
-        return bos;
-    }
+//public class PutCommand implements Command {
+//
+//    private final String fileName;
+//
+//    private byte prev;
+//    private int count = 0;
+//
+//    public PutCommand(String token) {
+//        this.fileName = token;
+//    }
+//
+//    @Override
+//    public void execute(StateManager bufferManager, SocketChannel out) throws IOException, RuntimeException {
+//        BufferedOutputStream bos = gocFileStream(bufferManager);
+//            /*
+//            endReached = writeToFile(buff)
+//            if(endReached) clearRes();
+//             */
+//        ByteBuffer buffer = bufferManager.getBuffer();
+//
+//        boolean stopReading = writeToFile(buffer, bos);
+//
+//        bufferManager.setExpectingFileContent(!stopReading);
+//
+//        if (stopReading) writeResponse(out, "\n222 File Uploaded Successfully.\n");
+//    }
+//
+//    private BufferedOutputStream gocFileStream(BufferManager bufferManager) throws FileNotFoundException {
+//        BufferedOutputStream bos = bufferManager.getCurrentOutputStream();
+//        if (bos != null) return bos;
+//
+//        File file = new File(fileName);
+//        bos = new BufferedOutputStream(new FileOutputStream(file));
+//        bufferManager.setCurrentOutputStream(bos);
+//        bufferManager.setCurrentPutFilename(fileName);
+//
+//        return bos;
+//    }
 
     /**
      * @param buffer File content from user.

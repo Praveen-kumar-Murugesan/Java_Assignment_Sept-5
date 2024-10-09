@@ -7,7 +7,7 @@ import java.nio.channels.SocketChannel;
 
 public class PwdCommand implements Command {
     @Override
-    public void execute(BufferManager bufferManager, SocketChannel out) throws IOException {
+    public void execute(StateManager stateManager, SocketChannel out) throws IOException {
 
         String currentDir = new File(".").getAbsolutePath();
 
