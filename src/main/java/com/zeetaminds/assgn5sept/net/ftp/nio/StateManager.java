@@ -44,13 +44,22 @@ public class StateManager {
         this.currentOutputStream = currentOutputStream;
     }
 
-    public void clearBuffer() {
+    public void  clearBuffer() {
         buffer.clear();
     }
 
-    public void closeOutputStream() throws IOException {
-        if (currentOutputStream != null) {
-            currentOutputStream.close();
-        }
+    public PutCommand getCurrentPutCommand() {
+        return currentPutCommand;
+    }
+
+    public void setCurrentPutCommand(PutCommand currentPutCommand) {
+        this.currentPutCommand = currentPutCommand;
+    }
+
+    public void reset() {
+        setCurrentOutputStream(null);
+        setCurrentPutCommand(null);
+        setExpectingFileContent(false);
+        setCurrentPutFilename(null);
     }
 }

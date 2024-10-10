@@ -16,53 +16,59 @@ public class ClientHandler {
     private final CommandParser commandParser;
     private final StateManager stateManager;
 
-    public ClientHandler(SocketChannel clientChannel, StateManager stateManager) {
+    ClientHandler(SocketChannel clientChannel, StateManager stateManager) {
         this.clientChannel = clientChannel;
         this.commandParser = CommandParser.getInstance();
         this.stateManager = stateManager;
     }
 
-    public void handle() throws IOException {
-        ByteBuffer buffer = stateManager.getBuffer();
-        buffer.clear();
+    public void handle() {
+        try {
+            ByteBuffer buffer = stateManager.getBuffer();
+            buffer.clear();
 
-        int bytesRead = clientChannel.read(buffer);
+            if(clientChannel.read(buffer) < 0) throw new IOException("Read -1");
+            buffer.flip();
 
-        if (bytesRead == -1) {
-            clientChannel.close();
-            return;
-        }
-
-        buffer.flip();
-
-        if (stateManager.isExpectingFileContent()) {
-            LOG.info("Resuming PUT command to receive file content for file: {}", stateManager.getCurrentPutFilename());
-
-            PutCommand putCommand = new PutCommand(stateManager.getCurrentPutFilename());
-            putCommand.execute(stateManager, clientChannel);
-
-            if (!stateManager.isExpectingFileContent()) {
-                LOG.info("File upload completed for: {}", stateManager.getCurrentPutFilename());
-                stateManager.setCurrentPutFilename(null);
+            while (buffer.hasRemaining()) {
+                if(!_handle()) break;
             }
+        } catch (IOException | RuntimeException e) {
+            LOG.error("Error in handling client {}", e.getMessage());
+            closeResources();
         }
+    }
 
-        while (buffer.hasRemaining() && !stateManager.isExpectingFileContent()) {
-            try {
-                Command cmd = commandParser.parseCommand(stateManager);
-                if (cmd != null) {
-                    cmd.execute(stateManager, clientChannel);
-                } else {
-                    break;
-                }
-            } catch (InvalidCommandException e) {
-                LOG.error(e.getMessage());
+    private boolean _handle() throws IOException {
+        try {
+            Command cmd = stateManager.isExpectingFileContent() ? stateManager.getCurrentPutCommand() :
+                    commandParser.parseCommand(stateManager);
 
-                String errorMessage = e.getMessage() + "\n";
+            if (cmd != null) cmd.execute(stateManager, clientChannel);
+            else return false;
+        } catch (InvalidCommandException e) {
+            sendErrorToClient(e.getMessage());
+        }
+        return true;
+    }
 
-                ByteBuffer errorBuffer = ByteBuffer.wrap(errorMessage.getBytes());
-                clientChannel.write(errorBuffer);
+    private void closeResources() {
+        try {
+            if (clientChannel.isOpen()) {
+                clientChannel.close();
             }
+
+            stateManager.reset();
+        } catch (IOException e) {
+            LOG.error("Error closing resources: {}", e.getMessage(), e);
         }
+    }
+
+    private void sendErrorToClient(String msg) throws IOException {
+        LOG.error(msg);
+        String errorMessage = msg + "\n\n";
+
+        ByteBuffer errorBuffer = ByteBuffer.wrap(errorMessage.getBytes());
+        clientChannel.write(errorBuffer);
     }
 }

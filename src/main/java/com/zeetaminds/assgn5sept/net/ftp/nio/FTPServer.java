@@ -5,15 +5,19 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.channels.*;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
 public class FTPServer {
     private static final Logger LOG = LogManager.getLogger(FTPServer.class);
     private static final int PORT = 8080;
-    private static final int BUFFER_SIZE = 1024;
+    private static final int BUFFER_SIZE = 10;
 
     public static void main(String[] args) {
+
         try (Selector selector = Selector.open(); ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
 
             serverChannel.bind(new InetSocketAddress(PORT));
@@ -35,14 +39,15 @@ public class FTPServer {
                         SocketChannel clientChannel = serverChannel.accept();
                         clientChannel.configureBlocking(false);
                         StateManager stateManager = new StateManager(BUFFER_SIZE);
-                        clientChannel.register(selector, SelectionKey.OP_READ, new ClientHandler(clientChannel, stateManager));
+                        clientChannel.register(selector, SelectionKey.OP_READ,
+                                new ClientHandler(clientChannel, stateManager));
 
                         LOG.info("Client connected {}", clientChannel.getLocalAddress());
                     } else if (key.isReadable()) {
                         ClientHandler handler = (ClientHandler) key.attachment();
                         handler.handle();
                     }
-                    }
+                }
             }
         } catch (IOException e) {
             LOG.info("Error in ServerSocket: {}", e.getMessage());

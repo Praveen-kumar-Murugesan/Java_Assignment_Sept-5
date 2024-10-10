@@ -15,39 +15,39 @@ public class PutCommand implements Command {
         this.fileName = token;
     }
 
+
     @Override
-    public void execute(StateManager bufferManager, SocketChannel out) throws IOException, RuntimeException {
-        BufferedOutputStream bos = gocFileStream(bufferManager);
+    public void execute(StateManager stateManager, SocketChannel out) throws IOException, RuntimeException {
+        BufferedOutputStream bos = gocFileStream(stateManager);
             /*
             endReached = writeToFile(buff)
             if(endReached) clearRes();
              */
-        ByteBuffer buffer = bufferManager.getBuffer();
+        ByteBuffer buffer = stateManager.getBuffer();
 
         boolean stopReading = writeToFile(buffer, bos);
 
-        bufferManager.setExpectingFileContent(!stopReading);
+        stateManager.setExpectingFileContent(!stopReading);
 
-        if (stopReading) writeResponse(out, "\n222 File Uploaded Successfully.\n");
+        if (stopReading) writeResponse(out, "\n222 File Upload Successfully\n");
+
+        else stateManager.setExpectingFileContent(true);
+
     }
 
-    private BufferedOutputStream gocFileStream(StateManager bufferManager) throws FileNotFoundException {
-        BufferedOutputStream bos = bufferManager.getCurrentOutputStream();
+    private BufferedOutputStream gocFileStream(StateManager stateManager) throws FileNotFoundException {
+        BufferedOutputStream bos = stateManager.getCurrentOutputStream();
+
         if (bos != null) return bos;
 
         File file = new File(fileName);
         bos = new BufferedOutputStream(new FileOutputStream(file));
-        bufferManager.setCurrentOutputStream(bos);
-        bufferManager.setCurrentPutFilename(fileName);
+        stateManager.setCurrentOutputStream(bos);
+        stateManager.setCurrentPutFilename(fileName);
+        stateManager.setCurrentPutCommand(this);
 
         return bos;
     }
-
-    /**
-     * @param buffer File content from user.
-     * @param bos Wrapped in FileOutputStream to write content to file.
-     * @return True if the file's content has been fully written; False if there is still content left to be written.
-     */
 
     private boolean writeToFile(ByteBuffer buffer, BufferedOutputStream bos) throws IOException {
         while (buffer.hasRemaining()) {
