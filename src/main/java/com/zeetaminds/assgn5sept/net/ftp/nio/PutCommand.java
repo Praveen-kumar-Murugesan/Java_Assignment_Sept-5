@@ -7,46 +7,40 @@ import java.nio.channels.SocketChannel;
 public class PutCommand implements Command {
 
     private final String fileName;
+    BufferedOutputStream bos;
 
     private byte prev;
     private int count = 0;
 
-    public PutCommand(String token) {
-        this.fileName = token;
+    public PutCommand(String fileName) {
+        this.fileName = fileName;
     }
 
 
     @Override
     public void execute(StateManager stateManager, SocketChannel out) throws IOException, RuntimeException {
-        BufferedOutputStream bos = gocFileStream(stateManager);
+        if (stateManager.getCurrentPutCommand() == null) {
+            stateManager.setCurrentPutCommand(this);
+        }
+
+        if(bos==null) bos = createFileStream();
             /*
             endReached = writeToFile(buff)
             if(endReached) clearRes();
              */
         ByteBuffer buffer = stateManager.getBuffer();
 
-        boolean stopReading = writeToFile(buffer, bos);
-
-        stateManager.setExpectingFileContent(!stopReading);
-
-        if (stopReading) writeResponse(out, "\n222 File Upload Successfully\n");
-
-        else stateManager.setExpectingFileContent(true);
+        if(writeToFile(buffer, bos)){
+            reset();
+            stateManager.reset();
+            writeResponse(out, "\n222 File Upload Successfully\n");
+        }
 
     }
 
-    private BufferedOutputStream gocFileStream(StateManager stateManager) throws FileNotFoundException {
-        BufferedOutputStream bos = stateManager.getCurrentOutputStream();
-
-        if (bos != null) return bos;
-
+    private BufferedOutputStream createFileStream() throws FileNotFoundException {
         File file = new File(fileName);
-        bos = new BufferedOutputStream(new FileOutputStream(file));
-        stateManager.setCurrentOutputStream(bos);
-        stateManager.setCurrentPutFilename(fileName);
-        stateManager.setCurrentPutCommand(this);
-
-        return bos;
+        return new BufferedOutputStream(new FileOutputStream(file));
     }
 
     private boolean writeToFile(ByteBuffer buffer, BufferedOutputStream bos) throws IOException {
@@ -90,4 +84,12 @@ public class PutCommand implements Command {
         return false;
     }
 
+    private void reset() throws IOException {
+        if (bos != null) {
+            bos.close();  // Close the stream when done
+            bos = null;   // Clear the reference for future uploads
+        }
+        prev = 0;
+        count = 0;
+    }
 }

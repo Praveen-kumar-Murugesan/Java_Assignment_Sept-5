@@ -1,16 +1,12 @@
 package com.zeetaminds.assgn5sept.net.ftp.nio;
 
 import com.zeetaminds.assgn5sept.exception.InvalidCommandException;
-
 import java.nio.ByteBuffer;
 
 public class CommandParser {
 
-    private static final int DEFAULT_SIZE = 10;
     private static final CommandParser CMD = new CommandParser();
-    private final byte[] buffer = new byte[DEFAULT_SIZE];
     private final StringBuilder commandBuilder = new StringBuilder();
-    private int commandLength = 0;
 
     private CommandParser() {
     }
@@ -25,28 +21,21 @@ public class CommandParser {
         int previousPosition = byteBuffer.position();
         String command;
 
-        int bytesToRead = Math.min(byteBuffer.remaining(), buffer.length);
-        byteBuffer.get(buffer, 0, bytesToRead);
-
         int len;
-        //noinspection LoopStatementThatDoesntLoop
-        while ((len = getIndexOfCR(buffer, bytesToRead)) != -1) {
-            command = commandBuilder.substring(0, commandLength).trim();
+        if ((len = getIndexOfCR(byteBuffer)) != -1) {
+            command = commandBuilder.toString().trim();
 
             if (command.isEmpty()) {
                 commandBuilder.setLength(0);
-                commandLength = 0;
-                break;
+            } else {
+                int newPosition = previousPosition + len + 1;
+                byteBuffer.position(newPosition);
+
+                commandBuilder.setLength(0);
+                return _parseCommand(command);
             }
-
-            int newPosition = previousPosition + len + 1;
-            byteBuffer.position(newPosition);
-
-            commandBuilder.setLength(0);
-            commandLength = 0;
-
-            return _parseCommand(command);
         }
+
         byteBuffer.compact();
         return null;
     }
@@ -55,46 +44,47 @@ public class CommandParser {
         String[] tokens = command.split(" ");
         String cmd = tokens[0].toUpperCase();
 
-        Command cmdHandler;
-
         switch (cmd) {
             case "LIST":
-                cmdHandler = new ListCommand();
-                break;
+                return new ListCommand();
             case "GET":
                 validateCommand(tokens);
-                cmdHandler = new GetCommand(tokens[1]);
-                break;
+                return new GetCommand(tokens[1]);
             case "PUT":
                 validateCommand(tokens);
-                cmdHandler = new PutCommand(tokens[1]);
-                break;
+                return new PutCommand(tokens[1]);
             case "PWD":
-                cmdHandler = new PwdCommand();
-                break;
+                return new PwdCommand();
             case "QUIT":
-                cmdHandler = new QuitCommand();
-                break;
+                return new QuitCommand();
             default:
                 throw new InvalidCommandException(command);
         }
-        return cmdHandler;
     }
 
-    private int getIndexOfCR(byte[] buff, int len) {
+    /**
+     * Scans the ByteBuffer for a newline character ('\n') and appends characters to commandBuilder.
+     *
+     * @param byteBuffer the buffer containing the command data
+     * @return the position of the newline character, or -1 if not found
+     */
+    private int getIndexOfCR(ByteBuffer byteBuffer) {
+        int len = byteBuffer.remaining();
+
         for (int i = 0; i < len; i++) {
-            if (buff[i] == '\n') return i;
-            commandBuilder.append((char) buff[i]);
-            commandLength++;
+            byte currentByte = byteBuffer.get();
+
+            if (currentByte == '\n') {
+                return i;
+            } else if (currentByte != '\r') {
+                commandBuilder.append((char) currentByte);
+            }
         }
         return -1;
     }
 
     private void validateCommand(String[] tokens) throws InvalidCommandException {
-        if (tokens.length < 2) {
-            throw new InvalidCommandException("Syntax Error");
-        }
-        if (tokens[1].isEmpty() || tokens[1].equals(" ")) {
+        if (tokens.length < 2 || tokens[1].isEmpty() || tokens[1].equals(" ")) {
             throw new InvalidCommandException("Invalid Filename");
         }
     }

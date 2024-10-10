@@ -27,11 +27,11 @@ public class ClientHandler {
             ByteBuffer buffer = stateManager.getBuffer();
             buffer.clear();
 
-            if(clientChannel.read(buffer) < 0) throw new IOException("Read -1");
+            if (clientChannel.read(buffer) < 0) throw new IOException("Read -1");
             buffer.flip();
 
             while (buffer.hasRemaining()) {
-                if(!_handle()) break;
+                if (!_handle()) break;
             }
         } catch (IOException | RuntimeException e) {
             LOG.error("Error in handling client {}", e.getMessage());
@@ -41,8 +41,8 @@ public class ClientHandler {
 
     private boolean _handle() throws IOException {
         try {
-            Command cmd = stateManager.isExpectingFileContent() ? stateManager.getCurrentPutCommand() :
-                    commandParser.parseCommand(stateManager);
+            Command cmd = stateManager.getCurrentPutCommand()!= null ? stateManager.getCurrentPutCommand()
+                    : commandParser.parseCommand(stateManager);
 
             if (cmd != null) cmd.execute(stateManager, clientChannel);
             else return false;
@@ -54,11 +54,11 @@ public class ClientHandler {
 
     private void closeResources() {
         try {
+            stateManager.reset();
+
             if (clientChannel.isOpen()) {
                 clientChannel.close();
             }
-
-            stateManager.reset();
         } catch (IOException e) {
             LOG.error("Error closing resources: {}", e.getMessage(), e);
         }
