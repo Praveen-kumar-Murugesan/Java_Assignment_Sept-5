@@ -44,8 +44,8 @@ public class ClientHandler {
             Command cmd = stateManager.getCurrentPutCommand()!= null ? stateManager.getCurrentPutCommand()
                     : commandParser.parseCommand(stateManager);
 
-            if (cmd != null) cmd.execute(stateManager, clientChannel);
-            else return false;
+            if (cmd == null) return false;
+            cmd.execute(stateManager, clientChannel);
         } catch (InvalidCommandException e) {
             sendErrorToClient(e.getMessage());
         }
@@ -54,7 +54,7 @@ public class ClientHandler {
 
     private void closeResources() {
         try {
-            stateManager.reset();
+            stateManager.clear();
 
             if (clientChannel.isOpen()) {
                 clientChannel.close();

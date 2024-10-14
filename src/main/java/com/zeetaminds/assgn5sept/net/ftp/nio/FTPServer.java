@@ -38,7 +38,7 @@ public class FTPServer {
                     if (key.isAcceptable()) {
                         SocketChannel clientChannel = serverChannel.accept();
                         clientChannel.configureBlocking(false);
-                        StateManager stateManager = new StateManager(BUFFER_SIZE);
+                        StateManager stateManager = new StateManager();
                         clientChannel.register(selector, SelectionKey.OP_READ,
                                 new ClientHandler(clientChannel, stateManager));
 

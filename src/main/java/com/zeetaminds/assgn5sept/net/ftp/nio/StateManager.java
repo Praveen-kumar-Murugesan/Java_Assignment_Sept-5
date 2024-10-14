@@ -6,9 +6,11 @@ public class StateManager {
 
     private final ByteBuffer buffer;
     private PutCommand currentPutCommand;
+    private final StringBuilder commandBuilder;
 
-    public StateManager(int size) {
-        this.buffer = ByteBuffer.allocate(size);
+    public StateManager() {
+        this.buffer = ByteBuffer.allocate(1024);
+        this.commandBuilder = new StringBuilder();
     }
 
     public ByteBuffer getBuffer() {
@@ -23,7 +25,15 @@ public class StateManager {
         this.currentPutCommand = currentPutCommand;
     }
 
-    public void reset() {
+    public StringBuilder getCommandBuilder() {
+        return commandBuilder;
+    }
+
+    public void resetCommandBuilder() {
+        commandBuilder.setLength(0); // Clear the commandBuilder for reuse
+    }
+
+    public void clear() {
         setCurrentPutCommand(null);
     }
 }

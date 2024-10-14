@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 public class CommandParser {
 
     private static final CommandParser CMD = new CommandParser();
-    private final StringBuilder commandBuilder = new StringBuilder();
+//    private final StringBuilder commandBuilder = new StringBuilder();
 
     private CommandParser() {
     }
@@ -18,20 +18,21 @@ public class CommandParser {
     public Command parseCommand(StateManager stateManager) throws InvalidCommandException {
 
         ByteBuffer byteBuffer = stateManager.getBuffer();
+        StringBuilder commandBuilder = stateManager.getCommandBuilder();
         int previousPosition = byteBuffer.position();
         String command;
 
         int len;
-        if ((len = getIndexOfCR(byteBuffer)) != -1) {
+        if ((len = getIndexOfCR(byteBuffer, commandBuilder)) != -1) {
             command = commandBuilder.toString().trim();
 
             if (command.isEmpty()) {
-                commandBuilder.setLength(0);
+                stateManager.resetCommandBuilder();
             } else {
                 int newPosition = previousPosition + len + 1;
                 byteBuffer.position(newPosition);
 
-                commandBuilder.setLength(0);
+                stateManager.resetCommandBuilder();
                 return _parseCommand(command);
             }
         }
@@ -68,7 +69,7 @@ public class CommandParser {
      * @param byteBuffer the buffer containing the command data
      * @return the position of the newline character, or -1 if not found
      */
-    private int getIndexOfCR(ByteBuffer byteBuffer) {
+    private int getIndexOfCR(ByteBuffer byteBuffer, StringBuilder commandBuilder) {
         int len = byteBuffer.remaining();
 
         for (int i = 0; i < len; i++) {

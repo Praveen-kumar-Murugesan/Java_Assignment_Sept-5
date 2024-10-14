@@ -32,7 +32,7 @@ public class PutCommand implements Command {
 
         if(writeToFile(buffer, bos)){
             reset();
-            stateManager.reset();
+            stateManager.clear();
             writeResponse(out, "\n222 File Upload Successfully\n");
         }
 
@@ -47,7 +47,7 @@ public class PutCommand implements Command {
         while (buffer.hasRemaining()) {
             byte currentByte = buffer.get();
 
-            if (prev == ':' && count == 1 && currentByte == 'q') {
+            if (isUploadTerminated(currentByte)) {
                 bos.flush();
                 return true;
             }
@@ -62,15 +62,7 @@ public class PutCommand implements Command {
                 } else {
                     count = 1;
                 }
-
-                // Count consecutive colons "::"
-                while (buffer.hasRemaining() && buffer.get(buffer.position()) == ':') {
-                    if (++count == 2) {
-                        bos.write(':'); // Write "::"
-                        count = 0;
-                    }
-                    buffer.get();
-                }
+                colonCount(buffer);
 
                 prev = currentByte;
                 continue;
@@ -79,9 +71,22 @@ public class PutCommand implements Command {
             bos.write(currentByte);
             prev = currentByte;
         }
-
         bos.flush();
         return false;
+    }
+
+    private void colonCount(ByteBuffer buffer) throws IOException {
+        while (buffer.hasRemaining() && buffer.get(buffer.position()) == ':') {
+            if (++count == 2) {
+                bos.write(':'); // Write "::"
+                count = 0;
+            }
+            buffer.get();
+        }
+    }
+
+    private boolean isUploadTerminated(byte currentByte) {
+        return prev == ':' && count == 1 && currentByte == 'q';
     }
 
     private void reset() throws IOException {
