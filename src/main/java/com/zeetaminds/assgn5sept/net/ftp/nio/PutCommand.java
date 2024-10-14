@@ -59,9 +59,9 @@ public class PutCommand implements Command {
                     prev = currentByte;
                     count = 0;
                     continue;
-                } else {
-                    count = 1;
                 }
+                else count = 1;
+
                 colonCount(buffer);
 
                 prev = currentByte;
